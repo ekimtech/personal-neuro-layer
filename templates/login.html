@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <title>Jarvis — Login</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f1117;
+            color: #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .login-card {
+            background-color: #1a1f2e;
+            border: 1px solid #2d3748;
+            border-radius: 12px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+        .login-card img { width: 80px; margin-bottom: 1rem; }
+        .login-card h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; color: #63b3ed; }
+        .login-card p  { font-size: 0.85rem; color: #718096; margin-bottom: 1.75rem; }
+        .form-input {
+            width: 100%; padding: 0.75rem 1rem; margin-bottom: 1rem;
+            border-radius: 8px; border: 1px solid #2d3748;
+            background-color: #0f1117; color: #e2e8f0;
+            font-size: 0.95rem; outline: none; transition: border-color 0.2s;
+        }
+        .form-input:focus { border-color: #63b3ed; }
+        .form-button {
+            width: 100%; padding: 0.75rem; border-radius: 8px; border: none;
+            background-color: #3182ce; color: white; font-size: 1rem;
+            font-weight: 600; cursor: pointer; transition: background-color 0.2s;
+        }
+        .form-button:hover { background-color: #2b6cb0; }
+        .flash { padding: 0.65rem 1rem; margin-bottom: 1rem; border-radius: 6px; font-size: 0.9rem; text-align: left; }
+        .flash.danger { background-color: #742a2a; color: #fed7d7; }
+        .flash.info   { background-color: #1a365d; color: #bee3f8; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <img src="/static/images/JarvisLogo.png" alt="Jarvis Logo">
+        <h2>Jarvis 4.0.1</h2>
+        <p>Ekim Technologies Neuro Layer</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" class="form-input" required autofocus>
+            <input type="password" name="password" placeholder="Password" class="form-input" required>
+            <button type="submit" class="form-button">Log In</button>
+        </form>
+    </div>
+<footer style="text-align:center;padding:18px 0 12px;color:#777;font-size:0.82rem;border-top:1px solid #2d3a52;margin-top:30px;">
+    &copy; 2026 Jarvis AI - Engineered by Ekimtech.com
+</footer>
+</body>
+</html>

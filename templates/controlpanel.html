@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis AI Dashboard - Advanced Interface</title>
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+    <style>
+        /* Futuristic High-Tech Styling */
+        :root {
+            --primary-color: #00bfff; /* Electric blue/cyan */
+            --secondary-color: #1e2736; /* Deeper dark background */
+            --text-color-primary: #e0e0e0; /* Light gray text */
+            --text-color-secondary: #999; /* Medium gray text */
+            --border-color: #384459; /* Darker border */
+            --accent-gradient: linear-gradient(90deg, var(--primary-color) 0%, #6dd5ed 50%, var(--primary-color) 100%);
+            --animation-speed: 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
+            background: var(--secondary-color);
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 0 8px;
+            /* overflow: hidden; Removed to allow scrolling */
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(120deg, #30384d, var(--secondary-color));
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-color-secondary);
+            margin: 15px 0 0 0;
+            font-weight: 300;
+        }
+
+        .hero img {
+            margin-top: 25px;
+            filter: drop-shadow(0 0 5px var(--primary-color));
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        main {
+            max-width: 1000px; /* Wider for a more spacious feel */
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(30, 39, 52, 0.8); /* Semi-transparent background */
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .jarvis-navigation-flex {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* More flexible grid layout */
+            gap: 30px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .nav-block, .developer-tools-block {
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            transition: transform var(--animation-speed), box-shadow var(--animation-speed);
+        }
+
+        .nav-block:hover, .developer-tools-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-block h3, .developer-tools-block h3 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            letter-spacing: 0.8px;
+        }
+
+        .nav-block a, .developer-tools-block a {
+            display: block;
+            margin-bottom: 15px;
+            text-decoration: none;
+        }
+
+        .nav-block button, .developer-tools-block button {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            color: var(--primary-color);
+            background: transparent;
+            cursor: pointer;
+            transition: background-color var(--animation-speed), color var(--animation-speed);
+        }
+
+        .nav-block button:hover, .developer-tools-block button:hover {
+            background: var(--accent-gradient);
+            color: var(--secondary-color);
+            border-color: transparent;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: var(--text-color-secondary);
+            text-align: center;
+            padding: 30px 10px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        /* Subtle background animation (optional) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+            animation: pulseBackground 10s infinite alternate;
+        }
+
+        @keyframes pulseBackground {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 0.3; transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>Jarvis AI Personal Assistant</h1>
+        <p>Engage with the future of intelligent assistance.</p>
+        <img src="{{ url_for('static', filename='images/JarvisLogo.png') }}" alt="Jarvis AI" width="128" height="128">
+    </header>
+
+    <main>
+        <div class="jarvis-navigation-flex">
+            <div class="nav-block">
+                <h3><span aria-hidden="true">⚙️</span> Documents</h3>
+                <a href="/email/email" target="_blank"><button>Integrated Mail Client<br>(All email Functions)<span style="opacity: 0.6;"><br></span></button></a>
+                <a href="/contacts" target="_blank"><button>Contact Database<span style="opacity: 0.6;"><br>(All Contacts)</span></button></a>
+                <a href="/lists_pdf" target="_blank"><button>Document Pdf System <br></button></a>                
+                <a href="/crypto" target="_blank"><button>Crypto Trading Layer<span style="opacity: 0.6;"><br>
+</span></button></a>
+                <a href="/code_review" target="_blank"><button>Code Review<span style="opacity: 0.6;"><br>(Review code made by Jarvis)</span></button></a>                
+            </div>
+
+            <div class="nav-block">
+                <h3><span aria-hidden="true">🧠</span> Intelligence Hub</h3>
+                <a href="{{ url_for('jarvis_bp.index') }}" target="_blank"><button>AI Chat <br><span style="opacity: 0.6;">(Talk To Jarvis)</span></button></a>
+                <a href="/documents/vector_db_manager" target="_blank"><button>Knowledge Entry Manager<span style="opacity: 0.6;"><br>(View/Remove .db files)</span></button></a>
+                <a href="/jan/memory_manager" target="_blank"><button>Jarvis Ai Memory<span style="opacity: 0.6;"><br>(Memory plugin)</span></button></a>
+                <a href="/upload" target="_blank"><button>File Management<span style="opacity: 0.6;"><br>(Upload files)</span></button></a>                                
+            </div>
+
+            <div class="nav-block">
+                <h3><span aria-hidden="true">🛠️</span> Hardware</h3>
+                <a href="http://YOUR-NAS-IP:8080/" target="_blank"><button>Qnap Storage Access <span style="opacity: 0.6;"><br>(Live Stats)</span></button></a>
+                <a href="http://YOUR-ROUTER-IP" target="_blank"><button>Mikrotik Router Access<span style="opacity: 0.6;"><br>(Router Access)</span></button></a>
+                <a href="http://YOUR-HA-IP:8123/" target="_blank"><button>Home Assistant<span style="opacity: 0.6;"><br>(Live Stats)</span></button></a>
+                <a href="/face" target="_blank"><button>Jarvis Face<br>(Talk to Jarvis Face)<span style="opacity: 0.6;"><BR>(Face)</span></button></a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Jarvis AI - Engineered by Ekimtech.com</p>
+    </footer>
+</body>
+</html>

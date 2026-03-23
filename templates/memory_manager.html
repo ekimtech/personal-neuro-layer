@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis Memory Manager - Advanced Interface</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <style>
+        /* Futuristic High-Tech Styling from Jarvis Dashboard */
+        :root {
+            --primary-color: #00bfff; /* Electric blue/cyan */
+            --secondary-color: #1e2736; /* Deeper dark background */
+            --text-color-primary: #e0e0e0; /* Light gray text */
+            --text-color-secondary: #999; /* Medium gray text */
+            --border-color: #384459; /* Darker border */
+            --accent-gradient: linear-gradient(90deg, var(--primary-color) 0%, #6dd5ed 50%, var(--primary-color) 100%);
+            --animation-speed: 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
+            background: var(--secondary-color);
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 0;
+            /* overflow: hidden; Removed to allow scrolling */
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(120deg, #30384d, var(--secondary-color));
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-color-secondary);
+            margin: 15px 0 0 0;
+            font-weight: 300;
+        }
+
+        .hero img {
+            margin-top: 25px;
+            filter: drop-shadow(0 0 5px var(--primary-color));
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        main {
+            max-width: 1000px; /* Wider for a more spacious feel */
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(30, 39, 52, 0.8); /* Semi-transparent background */
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Controls/Search section styling - adapted from .nav-block */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px; /* Increased gap for better spacing */
+            margin-bottom: 30px; /* More space below controls */
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .controls input[type="text"] {
+            flex-grow: 1;
+            padding: 12px; /* Larger padding */
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            background: #1c1f26; /* Darker input background */
+            color: var(--text-color-primary);
+            font-size: 1.1rem;
+            transition: border-color var(--animation-speed);
+        }
+
+        .controls input[type="text"]:focus {
+            outline: none;
+            border-color: #6dd5ed; /* Lighter border on focus */
+            box-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .controls button {
+            padding: 10px 25px; /* More padding for buttons */
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            color: var(--primary-color);
+            background: transparent;
+            cursor: pointer;
+            transition: background-color var(--animation-speed), color var(--animation-speed);
+            font-size: 1.1rem;
+        }
+
+        .controls button:hover {
+            background: var(--accent-gradient);
+            color: var(--secondary-color);
+            border-color: transparent;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+
+        /* Edit Modal Styling - adapted to the new theme */
+        #editModal {
+            position: relative; /* Keep as relative if you don't want it full screen overlay */
+            display: block; /* Control visibility with JS */
+            margin-bottom: 30px;
+            padding: 30px; /* More padding */
+            border: 2px solid var(--primary-color); /* Primary color border */
+            background-color: var(--secondary-color); /* Dark background */
+            border-radius: 10px; /* Slightly larger radius */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7); /* Consistent shadow */
+        }
+
+        #editModal h3 {
+            margin-top: 0;
+            color: var(--primary-color); /* Primary color for heading */
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        #editModal input[type="text"],
+        #editModal select,
+        #editModal textarea {
+            width: 100%;
+            margin-bottom: 15px; /* Increased margin */
+            padding: 12px; /* More padding */
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: #2e3b4e; /* Darker input background */
+            color: var(--text-color-primary);
+            font-size: 1rem;
+        }
+
+        #editModal button {
+            padding: 10px 20px;
+            margin-right: 15px; /* More space between buttons */
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            background: transparent;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: background-color var(--animation-speed), color var(--animation-speed);
+        }
+
+        #editModal button:hover {
+            background: var(--accent-gradient);
+            color: var(--secondary-color);
+            border-color: transparent;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+
+        /* Table Styling - aligned with futuristic theme */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px; /* Rounded corners for the table */
+            overflow: hidden; /* Ensures rounded corners apply to content */
+        }
+
+        th, td {
+            padding: 15px; /* More padding */
+            border: 1px solid var(--border-color); /* Darker borders */
+            text-align: left;
+        }
+
+        thead {
+            background: var(--primary-color); /* Primary color header */
+            color: var(--secondary-color); /* Dark text on primary color */
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        tbody tr {
+            background: var(--secondary-color);
+            transition: background-color var(--animation-speed);
+        }
+
+        tbody tr:nth-child(even) {
+            background: #1a222e; /* Slightly different shade for even rows */
+        }
+
+        tbody tr:hover {
+            background: rgba(0, 191, 255, 0.1); /* Light blue highlight on hover */
+        }
+
+        td code {
+            color: var(--primary-color); /* Highlight code-like IDs */
+            font-weight: bold;
+        }
+
+        .delete-form button {
+            background: #d9534f; /* Red for delete */
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color var(--animation-speed);
+        }
+
+        .delete-form button:hover {
+            background: #c9302c;
+        }
+
+        .edit-button {
+            background: #007bff; /* Blue for edit, or primary color */
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color var(--animation-speed);
+        }
+
+        .edit-button:hover {
+            background: #0056b3; /* Darker blue on hover */
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .pagination a {
+            color: var(--primary-color); /* Primary color for pagination links */
+            margin: 0 15px; /* More spacing */
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color var(--animation-speed), text-shadow var(--animation-speed);
+        }
+
+        .pagination a:hover {
+            text-decoration: underline;
+            color: #6dd5ed; /* Lighter blue on hover */
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: var(--text-color-secondary);
+            text-align: center;
+            padding: 30px 10px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Shadow for footer */
+        }
+
+        /* Subtle background animation (optional, from Jarvis page) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+            animation: pulseBackground 10s infinite alternate;
+        }
+
+        @keyframes pulseBackground {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 0.3; transform: scale(1.1); }
+        }
+
+        /* For the error message if it exists (from Jarvis page) */
+        .bg-red-100 { background-color: #fee2e2; } /* A light red */
+        .border-red-400 { border-color: #fca5a5; } /* A slightly darker red */
+        .text-red-700 { color: #b91c1c; } /* A dark red */
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .rounded { border-radius: 0.25rem; }
+        .relative { position: relative; }
+        .mb-4 { margin-bottom: 1rem; }
+        .font-bold { font-weight: 700; }
+        .block { display: block; }
+        .sm\:inline { display: inline; } /* Tailwind-like utility, keep if needed */
+
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Jarvis Memory Manager</h1>
+        <p>Review, filter, and manage Jarvis stored memories</p>
+        <img src="{{ url_for('static', filename='images/JarvisLogo.png') }}" alt="Jarvis AI" width="128" height="128">
+    </div>
+<section class="file-selector" style="text-align:center; margin-top:1rem; margin-bottom:2rem;">
+    <h2>Selected Memory File:</h2>
+    <form method="GET" action="/jan/memory_manager">
+      <label for="file">Choose a JSONL file to edit:</label>
+
+    <select name="file" id="file">
+     {% for f, path in available_files %}
+       <option value="{{ f }}|{{ path }}" {% if f == selected_file and path == selected_path %}selected{% endif %}>
+         {{ f }} ({{ path.split('/')[-1] or path.split('\\')[-1] }})
+       </option>
+     {% endfor %}
+   </select>
+
+      <button type="submit">Load File</button>
+    </form>
+    <p>Currently viewing: <strong>{{ selected_file }}</strong> from <em>{{ selected_path.split('/')[-1] or selected_path.split('\\')[-1] }}</em></p>
+
+</section>
+
+    <main>
+        <div class="controls">
+            <input type="text" id="search-box" placeholder="Search by keyword, tag, or intent..." />
+            <button onclick="searchMemories()">Search</button>
+        </div>
+
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <h3>Edit Memory</h3>
+                <input type="text" id="editContent" placeholder="Content" />
+                <label for="editTags">Tags:</label>
+                <select id="editTags" name="tags" multiple></select>
+                <select id="editIntent"></select>
+                <select id="editMood"></select>
+                <select id="editTopic"></select>
+                <select id="editPriority"></select>
+                <input type="text" id="editRelatedTo" placeholder="Related To (ID)" />
+                <textarea id="editResponse" placeholder="Response (if any)"></textarea>
+                <input type="text" id="editPerspective" placeholder="Perspective (e.g. third-person)" />
+                <input type="text" id="editReferAs" placeholder="Refer As (e.g. John Smith)" />
+                <input type="hidden" id="editTimestamp" />
+                <input type="hidden" id="editFile" value="{{ selected_file }}">
+                <button onclick="submitEdit()">Save</button>
+                <button onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+
+        {% if memories %}
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Time</th>
+                    <th>Intent</th>
+                    <th>Priority</th>
+                    <th>Tags</th>
+                    <th>Content</th>
+                    <th>Delete/Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mem in memories %}
+                <tr>
+                    <td><code>#{{ mem.id or "—" }}</code></td>
+                    <td>{{ mem.timestamp }}</td>
+                    <td>{{ mem.intent }}</td>
+                    <td>{{ mem.priority }}</td>
+                    <td>{{ mem.tags | join(', ') }}</td>
+                    <td>{{ mem.content }}</td>
+                    <td>
+                        <form class="delete-form" action="/jan/delete_memory" method="POST" onsubmit="return confirm('Delete this memory?');" style="display:inline-block;">
+                            <input type="hidden" name="timestamp" value="{{ mem.timestamp }}">
+                            <button type="submit">🗑️</button>
+                        </form>
+                        <button class="edit-button" data-mem='{{ mem | tojson | safe }}' onclick="handleEditClick(this)" style="margin-left:6px;">✏️</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="?page={{ page - 1 }}&file={{ selected_file }}">Prev</a>
+            {% endif %}
+            Page {{ page }}
+            {% if total > page * per_page %}
+                <a href="?page={{ page + 1 }}&file={{ selected_file }}">Next</a>
+            {% endif %}
+        </div>
+
+        {% else %}
+            <p style="text-align:center; color: var(--text-color-secondary);">No memories found.</p>
+        {% endif %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Jarvis AI - Engineered by Ekimtech.com</p>
+    </footer>
+
+    <script>
+        const INTENT_OPTIONS = ["observation", "reminder", "reflection", "belief", "user_note"];
+        const MOOD_OPTIONS = ["neutral", "positive", "concerned", "confused", "reflective"];
+        const TOPIC_OPTIONS = ["work", "family", "travel", "holiday", "project", "system", "contacts"];
+        const PRIORITY_OPTIONS = Array.from({ length: 10 }, (_, i) => i + 1);
+        const TAG_OPTIONS = ["Family", "Ancestry", "Siblings", "Marriage", "Pets", "Resident", "Residence", "Address", "Location", "Hometown", "Current_Residence", "Event", "Significant_Date", "Anniversary", "Birth", "Wedding", "System_Configuration", "Network", "Hardware", "Software", "Vehicle", "Camping", "Parents", "Children", "Grandchildren", "Profile", "Communication", "Contact_info", "NamePreference", "API_Integration"];
+
+        function searchMemories() {
+            const query = document.getElementById("search-box").value.trim();
+            window.location.href = query ? `/jan/memory_manager?search=${encodeURIComponent(query)}` : `/jan/memory_manager`;
+        }
+
+        function populateDropdown(id, options) {
+            const select = document.getElementById(id);
+            select.innerHTML = '';
+            options.forEach(opt => {
+                const el = document.createElement("option");
+                el.value = opt;
+                el.textContent = opt;
+                select.appendChild(el);
+            });
+        }
+
+        function handleEditClick(button) {
+            const raw = button.getAttribute("data-mem");
+            try {
+                const mem = JSON.parse(raw);
+                openEditModal(mem);
+            } catch (err) {
+                console.error("💥 Failed to parse memory JSON:", err);
+                alert("Memory could not be loaded for editing.");
+            }
+        }
+
+        function openEditModal(mem) {
+            document.getElementById("editContent").value = mem.content || "";
+            document.getElementById("editRelatedTo").value = mem.related_to || "";
+            document.getElementById("editResponse").value = mem.response || "";
+            document.getElementById("editTimestamp").value = mem.timestamp || "";
+
+            document.getElementById("editPerspective").value = mem.perspective || "";
+            document.getElementById("editReferAs").value = mem.refer_as || "";
+            
+            populateDropdown("editIntent", INTENT_OPTIONS);
+            populateDropdown("editMood", MOOD_OPTIONS);
+            populateDropdown("editTopic", TOPIC_OPTIONS);
+            populateDropdown("editPriority", PRIORITY_OPTIONS);
+            populateDropdown("editTags", TAG_OPTIONS);
+
+            document.getElementById("editIntent").value = mem.intent || "observation";
+            document.getElementById("editMood").value = mem.mood || "neutral";
+            document.getElementById("editTopic").value = mem.topic || "system";
+            document.getElementById("editPriority").value = mem.priority || 5;
+
+            // ✅ Pre-select tags in dropdown
+            const tagSelect = document.getElementById("editTags");
+            (mem.tags || []).forEach(tag => {
+                const option = Array.from(tagSelect.options).find(opt => opt.value === tag);
+                if (option) option.selected = true;
+            });
+
+            document.getElementById("editModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("editModal").style.display = "none";
+        }
+
+        function submitEdit() {
+    // collect tags first
+    const tagSelect = document.getElementById("editTags");
+    const selectedTags = Array.from(tagSelect.selectedOptions).map(opt => opt.value);
+
+    // then build the payload object
+    const payload = {
+        timestamp: document.getElementById("editTimestamp").value,
+        content: document.getElementById("editContent").value.trim(),
+        tags: selectedTags,   // ✅ use the dropdown selections
+        intent: document.getElementById("editIntent").value,
+        mood: document.getElementById("editMood").value,
+        topic: document.getElementById("editTopic").value,
+        priority: parseInt(document.getElementById("editPriority").value),
+        related_to: document.getElementById("editRelatedTo").value || null,
+        response: document.getElementById("editResponse").value || null,
+        perspective: document.getElementById("editPerspective").value.trim() || null,
+        refer_as: document.getElementById("editReferAs").value.trim() || null,
+        filename: document.getElementById("editFile").value  // 🧠 This tells Flask where to save!
+    };
+
+    console.log("Saving to file:", payload.filename);
+
+    fetch("/jan/update_memory", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message || "Memory updated!");
+        closeModal();
+        window.location.reload();
+    })
+    .catch(err => {
+        console.error("Edit failed:", err);
+        alert("Failed to update memory.");
+    });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1904 @@
+[
+  {
+    "signal": "HOLD",
+    "price": 0.264135,
+    "change_24h": -0.62,
+    "ema_short": 0.264193,
+    "ema_long": 0.264357,
+    "reason": "No crossover \u2014 Fast EMA (0.2642) below Slow EMA (0.2644).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T17:03:12.618509+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.263724,
+    "change_24h": -0.8,
+    "ema_short": 0.264036,
+    "ema_long": 0.264296,
+    "reason": "No crossover \u2014 Fast EMA (0.2640) below Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T17:19:06.239769+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264052,
+    "change_24h": -0.57,
+    "ema_short": 0.264042,
+    "ema_long": 0.264273,
+    "reason": "No crossover \u2014 Fast EMA (0.2640) below Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T17:34:06.607767+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264275,
+    "change_24h": -0.17,
+    "ema_short": 0.264119,
+    "ema_long": 0.264273,
+    "reason": "No crossover \u2014 Fast EMA (0.2641) below Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T17:49:07.044545+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264198,
+    "change_24h": -0.56,
+    "ema_short": 0.264146,
+    "ema_long": 0.264266,
+    "reason": "No crossover \u2014 Fast EMA (0.2641) below Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T18:04:07.468810+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264138,
+    "change_24h": -0.6,
+    "ema_short": 0.264143,
+    "ema_long": 0.264254,
+    "reason": "No crossover \u2014 Fast EMA (0.2641) below Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T18:19:07.909988+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264248,
+    "change_24h": -0.1,
+    "ema_short": 0.264178,
+    "ema_long": 0.264253,
+    "reason": "No crossover \u2014 Fast EMA (0.2642) below Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T18:34:08.346483+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.264705,
+    "change_24h": 0.25,
+    "ema_short": 0.264354,
+    "ema_long": 0.264296,
+    "reason": "Fast EMA (0.2644) crossed above Slow EMA (0.2643) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.264705,
+      "stop_loss": 0.2568,
+      "take_profit": 0.2779
+    },
+    "timestamp": "2026-03-21T18:49:08.779655+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264344,
+    "change_24h": 0.25,
+    "ema_short": 0.26435,
+    "ema_long": 0.264301,
+    "reason": "No crossover \u2014 Fast EMA (0.2643) above Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T19:04:09.160213+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.26424,
+    "change_24h": 0.34,
+    "ema_short": 0.264314,
+    "ema_long": 0.264295,
+    "reason": "No crossover \u2014 Fast EMA (0.2643) above Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T19:19:09.551151+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264387,
+    "change_24h": 0.53,
+    "ema_short": 0.264338,
+    "ema_long": 0.264304,
+    "reason": "No crossover \u2014 Fast EMA (0.2643) above Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T19:34:09.935805+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264318,
+    "change_24h": 0.41,
+    "ema_short": 0.264331,
+    "ema_long": 0.264305,
+    "reason": "No crossover \u2014 Fast EMA (0.2643) above Slow EMA (0.2643).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T19:49:10.308108+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.26489,
+    "change_24h": 0.4,
+    "ema_short": 0.264518,
+    "ema_long": 0.264361,
+    "reason": "No crossover \u2014 Fast EMA (0.2645) above Slow EMA (0.2644).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T20:04:10.744039+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.265072,
+    "change_24h": 0.44,
+    "ema_short": 0.264702,
+    "ema_long": 0.264429,
+    "reason": "No crossover \u2014 Fast EMA (0.2647) above Slow EMA (0.2644).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T20:19:11.182021+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.265646,
+    "change_24h": 1.0,
+    "ema_short": 0.265017,
+    "ema_long": 0.264545,
+    "reason": "No crossover \u2014 Fast EMA (0.2650) above Slow EMA (0.2645).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T20:34:11.619751+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.266032,
+    "change_24h": 1.06,
+    "ema_short": 0.265355,
+    "ema_long": 0.264686,
+    "reason": "No crossover \u2014 Fast EMA (0.2654) above Slow EMA (0.2647).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T20:49:12.043205+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.266092,
+    "change_24h": 0.89,
+    "ema_short": 0.265601,
+    "ema_long": 0.26482,
+    "reason": "No crossover \u2014 Fast EMA (0.2656) above Slow EMA (0.2648).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T21:04:12.473404+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.265896,
+    "change_24h": 0.53,
+    "ema_short": 0.265699,
+    "ema_long": 0.264923,
+    "reason": "No crossover \u2014 Fast EMA (0.2657) above Slow EMA (0.2649).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T21:19:12.911531+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.265667,
+    "change_24h": -0.06,
+    "ema_short": 0.265688,
+    "ema_long": 0.264993,
+    "reason": "No crossover \u2014 Fast EMA (0.2657) above Slow EMA (0.2650).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T21:34:13.354752+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.265656,
+    "change_24h": 0.12,
+    "ema_short": 0.265678,
+    "ema_long": 0.265057,
+    "reason": "No crossover \u2014 Fast EMA (0.2657) above Slow EMA (0.2651).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T21:49:13.793674+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.265319,
+    "change_24h": -0.46,
+    "ema_short": 0.265558,
+    "ema_long": 0.265082,
+    "reason": "No crossover \u2014 Fast EMA (0.2656) above Slow EMA (0.2651).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T22:04:14.231366+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264849,
+    "change_24h": -0.92,
+    "ema_short": 0.265322,
+    "ema_long": 0.265059,
+    "reason": "No crossover \u2014 Fast EMA (0.2653) above Slow EMA (0.2651).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T22:19:14.685947+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264984,
+    "change_24h": -0.7,
+    "ema_short": 0.265209,
+    "ema_long": 0.265052,
+    "reason": "No crossover \u2014 Fast EMA (0.2652) above Slow EMA (0.2651).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T22:34:15.115397+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.265172,
+    "change_24h": -0.57,
+    "ema_short": 0.265197,
+    "ema_long": 0.265064,
+    "reason": "No crossover \u2014 Fast EMA (0.2652) above Slow EMA (0.2651).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T22:49:15.537806+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264646,
+    "change_24h": -0.87,
+    "ema_short": 0.265013,
+    "ema_long": 0.265024,
+    "reason": "Fast EMA (0.2650) crossed below Slow EMA (0.2650) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264646,
+      "stop_loss": 0.2726,
+      "take_profit": 0.2514
+    },
+    "timestamp": "2026-03-21T23:04:15.985428+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264277,
+    "change_24h": -0.47,
+    "ema_short": 0.264768,
+    "ema_long": 0.264953,
+    "reason": "No crossover \u2014 Fast EMA (0.2648) below Slow EMA (0.2650).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T23:19:16.441486+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264293,
+    "change_24h": -0.5,
+    "ema_short": 0.26461,
+    "ema_long": 0.26489,
+    "reason": "No crossover \u2014 Fast EMA (0.2646) below Slow EMA (0.2649).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T23:34:16.877694+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264063,
+    "change_24h": -0.75,
+    "ema_short": 0.264427,
+    "ema_long": 0.264811,
+    "reason": "No crossover \u2014 Fast EMA (0.2644) below Slow EMA (0.2648).",
+    "would_trade": null,
+    "timestamp": "2026-03-21T23:49:17.266545+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255629,
+    "change_24h": -3.96,
+    "ema_short": 0.261495,
+    "ema_long": 0.263937,
+    "reason": "No crossover \u2014 Fast EMA (0.2615) below Slow EMA (0.2639).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T00:04:17.547305+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256753,
+    "change_24h": -3.53,
+    "ema_short": 0.259914,
+    "ema_long": 0.263253,
+    "reason": "No crossover \u2014 Fast EMA (0.2599) below Slow EMA (0.2633).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T00:19:18.013110+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257552,
+    "change_24h": -3.27,
+    "ema_short": 0.259127,
+    "ema_long": 0.26271,
+    "reason": "No crossover \u2014 Fast EMA (0.2591) below Slow EMA (0.2627).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T00:34:18.405012+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257795,
+    "change_24h": -3.12,
+    "ema_short": 0.258683,
+    "ema_long": 0.262242,
+    "reason": "No crossover \u2014 Fast EMA (0.2587) below Slow EMA (0.2622).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T00:49:18.749528+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257377,
+    "change_24h": -3.34,
+    "ema_short": 0.258248,
+    "ema_long": 0.261778,
+    "reason": "No crossover \u2014 Fast EMA (0.2582) below Slow EMA (0.2618).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T01:04:19.183515+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256967,
+    "change_24h": -3.7,
+    "ema_short": 0.257821,
+    "ema_long": 0.26132,
+    "reason": "No crossover \u2014 Fast EMA (0.2578) below Slow EMA (0.2613).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T01:19:19.620646+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256899,
+    "change_24h": -3.64,
+    "ema_short": 0.257513,
+    "ema_long": 0.260899,
+    "reason": "No crossover \u2014 Fast EMA (0.2575) below Slow EMA (0.2609).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T01:34:20.054193+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256249,
+    "change_24h": -3.65,
+    "ema_short": 0.257092,
+    "ema_long": 0.260456,
+    "reason": "No crossover \u2014 Fast EMA (0.2571) below Slow EMA (0.2605).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T01:49:20.482187+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256887,
+    "change_24h": -3.38,
+    "ema_short": 0.257024,
+    "ema_long": 0.260116,
+    "reason": "No crossover \u2014 Fast EMA (0.2570) below Slow EMA (0.2601).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T02:04:20.914150+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257058,
+    "change_24h": -3.31,
+    "ema_short": 0.257035,
+    "ema_long": 0.259825,
+    "reason": "No crossover \u2014 Fast EMA (0.2570) below Slow EMA (0.2598).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T02:19:21.293486+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258088,
+    "change_24h": -3.07,
+    "ema_short": 0.257386,
+    "ema_long": 0.25966,
+    "reason": "No crossover \u2014 Fast EMA (0.2574) below Slow EMA (0.2597).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T02:34:21.738606+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257608,
+    "change_24h": -3.41,
+    "ema_short": 0.25746,
+    "ema_long": 0.259464,
+    "reason": "No crossover \u2014 Fast EMA (0.2575) below Slow EMA (0.2595).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T02:49:22.184161+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257593,
+    "change_24h": -3.46,
+    "ema_short": 0.257504,
+    "ema_long": 0.259286,
+    "reason": "No crossover \u2014 Fast EMA (0.2575) below Slow EMA (0.2593).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T03:04:22.645068+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257649,
+    "change_24h": -3.31,
+    "ema_short": 0.257553,
+    "ema_long": 0.25913,
+    "reason": "No crossover \u2014 Fast EMA (0.2576) below Slow EMA (0.2591).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T03:19:23.095586+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258814,
+    "change_24h": -2.81,
+    "ema_short": 0.257973,
+    "ema_long": 0.2591,
+    "reason": "No crossover \u2014 Fast EMA (0.2580) below Slow EMA (0.2591).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T03:34:23.545019+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258693,
+    "change_24h": -2.73,
+    "ema_short": 0.258213,
+    "ema_long": 0.259061,
+    "reason": "No crossover \u2014 Fast EMA (0.2582) below Slow EMA (0.2591).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T03:49:23.945789+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258436,
+    "change_24h": -2.92,
+    "ema_short": 0.258287,
+    "ema_long": 0.259002,
+    "reason": "No crossover \u2014 Fast EMA (0.2583) below Slow EMA (0.2590).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T04:09:20.755521+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25836,
+    "change_24h": -2.91,
+    "ema_short": 0.258312,
+    "ema_long": 0.258941,
+    "reason": "No crossover \u2014 Fast EMA (0.2583) below Slow EMA (0.2589).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T04:24:21.051332+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258283,
+    "change_24h": -2.89,
+    "ema_short": 0.258302,
+    "ema_long": 0.258878,
+    "reason": "No crossover \u2014 Fast EMA (0.2583) below Slow EMA (0.2589).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T04:39:21.351923+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258666,
+    "change_24h": -2.77,
+    "ema_short": 0.258423,
+    "ema_long": 0.258858,
+    "reason": "No crossover \u2014 Fast EMA (0.2584) below Slow EMA (0.2589).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T04:54:21.656188+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258331,
+    "change_24h": -3.02,
+    "ema_short": 0.258393,
+    "ema_long": 0.258808,
+    "reason": "No crossover \u2014 Fast EMA (0.2584) below Slow EMA (0.2588).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T05:09:22.096637+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25826,
+    "change_24h": -3.13,
+    "ema_short": 0.258348,
+    "ema_long": 0.258755,
+    "reason": "No crossover \u2014 Fast EMA (0.2583) below Slow EMA (0.2588).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T05:24:22.404145+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257736,
+    "change_24h": -3.32,
+    "ema_short": 0.258144,
+    "ema_long": 0.258658,
+    "reason": "No crossover \u2014 Fast EMA (0.2581) below Slow EMA (0.2587).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T05:39:22.809789+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257544,
+    "change_24h": -3.23,
+    "ema_short": 0.257944,
+    "ema_long": 0.258552,
+    "reason": "No crossover \u2014 Fast EMA (0.2579) below Slow EMA (0.2586).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T05:54:23.235992+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257349,
+    "change_24h": -3.29,
+    "ema_short": 0.257746,
+    "ema_long": 0.258438,
+    "reason": "No crossover \u2014 Fast EMA (0.2577) below Slow EMA (0.2584).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T06:09:23.658957+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257152,
+    "change_24h": -3.44,
+    "ema_short": 0.257548,
+    "ema_long": 0.258315,
+    "reason": "No crossover \u2014 Fast EMA (0.2575) below Slow EMA (0.2583).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T06:24:24.082155+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257224,
+    "change_24h": -3.52,
+    "ema_short": 0.25744,
+    "ema_long": 0.258211,
+    "reason": "No crossover \u2014 Fast EMA (0.2574) below Slow EMA (0.2582).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T06:39:24.445685+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257389,
+    "change_24h": -3.48,
+    "ema_short": 0.257423,
+    "ema_long": 0.258133,
+    "reason": "No crossover \u2014 Fast EMA (0.2574) below Slow EMA (0.2581).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T06:54:24.877892+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258183,
+    "change_24h": -3.09,
+    "ema_short": 0.257676,
+    "ema_long": 0.258138,
+    "reason": "No crossover \u2014 Fast EMA (0.2577) below Slow EMA (0.2581).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T07:09:25.282574+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258411,
+    "change_24h": -3.01,
+    "ema_short": 0.257921,
+    "ema_long": 0.258164,
+    "reason": "No crossover \u2014 Fast EMA (0.2579) below Slow EMA (0.2582).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T07:24:25.690262+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258157,
+    "change_24h": -3.1,
+    "ema_short": 0.258,
+    "ema_long": 0.258163,
+    "reason": "No crossover \u2014 Fast EMA (0.2580) below Slow EMA (0.2582).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T07:39:26.008722+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.257605,
+    "change_24h": -2.81,
+    "ema_short": 0.257868,
+    "ema_long": 0.25811,
+    "reason": "No crossover \u2014 Fast EMA (0.2579) below Slow EMA (0.2581).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T07:54:26.403561+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.2565,
+    "change_24h": -3.17,
+    "ema_short": 0.257412,
+    "ema_long": 0.257957,
+    "reason": "No crossover \u2014 Fast EMA (0.2574) below Slow EMA (0.2580).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T08:09:26.790212+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255715,
+    "change_24h": -3.46,
+    "ema_short": 0.256846,
+    "ema_long": 0.257743,
+    "reason": "No crossover \u2014 Fast EMA (0.2568) below Slow EMA (0.2577).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T08:24:27.211050+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25579,
+    "change_24h": -3.34,
+    "ema_short": 0.256494,
+    "ema_long": 0.257557,
+    "reason": "No crossover \u2014 Fast EMA (0.2565) below Slow EMA (0.2576).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T08:39:27.526594+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25628,
+    "change_24h": -3.29,
+    "ema_short": 0.256423,
+    "ema_long": 0.257436,
+    "reason": "No crossover \u2014 Fast EMA (0.2564) below Slow EMA (0.2574).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T08:54:27.951607+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256877,
+    "change_24h": -3.22,
+    "ema_short": 0.256574,
+    "ema_long": 0.257382,
+    "reason": "No crossover \u2014 Fast EMA (0.2566) below Slow EMA (0.2574).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T09:09:28.371162+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256661,
+    "change_24h": -3.12,
+    "ema_short": 0.256603,
+    "ema_long": 0.257314,
+    "reason": "No crossover \u2014 Fast EMA (0.2566) below Slow EMA (0.2573).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T09:24:28.795143+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256198,
+    "change_24h": -3.05,
+    "ema_short": 0.256468,
+    "ema_long": 0.257207,
+    "reason": "No crossover \u2014 Fast EMA (0.2565) below Slow EMA (0.2572).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T09:39:29.055839+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256152,
+    "change_24h": -3.03,
+    "ema_short": 0.256363,
+    "ema_long": 0.257107,
+    "reason": "No crossover \u2014 Fast EMA (0.2564) below Slow EMA (0.2571).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T09:54:29.481911+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255762,
+    "change_24h": -3.33,
+    "ema_short": 0.256162,
+    "ema_long": 0.256979,
+    "reason": "No crossover \u2014 Fast EMA (0.2562) below Slow EMA (0.2570).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T10:09:29.924567+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255825,
+    "change_24h": -3.14,
+    "ema_short": 0.25605,
+    "ema_long": 0.256869,
+    "reason": "No crossover \u2014 Fast EMA (0.2560) below Slow EMA (0.2569).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T10:24:43.165023+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25528,
+    "change_24h": -3.37,
+    "ema_short": 0.255793,
+    "ema_long": 0.256718,
+    "reason": "No crossover \u2014 Fast EMA (0.2558) below Slow EMA (0.2567).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T10:50:01.085877+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25554,
+    "change_24h": -3.34,
+    "ema_short": 0.255709,
+    "ema_long": 0.256605,
+    "reason": "No crossover \u2014 Fast EMA (0.2557) below Slow EMA (0.2566).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T11:07:23.531103+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255629,
+    "change_24h": -3.28,
+    "ema_short": 0.255682,
+    "ema_long": 0.256512,
+    "reason": "No crossover \u2014 Fast EMA (0.2557) below Slow EMA (0.2565).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T11:22:23.997345+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255493,
+    "change_24h": -3.3,
+    "ema_short": 0.255619,
+    "ema_long": 0.256415,
+    "reason": "No crossover \u2014 Fast EMA (0.2556) below Slow EMA (0.2564).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T11:37:24.431851+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255436,
+    "change_24h": -3.4,
+    "ema_short": 0.255558,
+    "ema_long": 0.256322,
+    "reason": "No crossover \u2014 Fast EMA (0.2556) below Slow EMA (0.2563).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T11:52:24.835519+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255276,
+    "change_24h": -3.54,
+    "ema_short": 0.255464,
+    "ema_long": 0.256222,
+    "reason": "No crossover \u2014 Fast EMA (0.2555) below Slow EMA (0.2562).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T12:07:25.271385+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.2557,
+    "change_24h": -3.42,
+    "ema_short": 0.255543,
+    "ema_long": 0.256173,
+    "reason": "No crossover \u2014 Fast EMA (0.2555) below Slow EMA (0.2562).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T12:22:25.704455+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256315,
+    "change_24h": -3.24,
+    "ema_short": 0.2558,
+    "ema_long": 0.256186,
+    "reason": "No crossover \u2014 Fast EMA (0.2558) below Slow EMA (0.2562).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T12:37:26.168788+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255752,
+    "change_24h": -3.39,
+    "ema_short": 0.255784,
+    "ema_long": 0.256145,
+    "reason": "No crossover \u2014 Fast EMA (0.2558) below Slow EMA (0.2561).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T12:52:26.576549+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256302,
+    "change_24h": -3.17,
+    "ema_short": 0.255957,
+    "ema_long": 0.25616,
+    "reason": "No crossover \u2014 Fast EMA (0.2560) below Slow EMA (0.2562).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T13:07:27.076859+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256542,
+    "change_24h": -3.08,
+    "ema_short": 0.256152,
+    "ema_long": 0.256196,
+    "reason": "No crossover \u2014 Fast EMA (0.2562) below Slow EMA (0.2562).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T13:22:27.542408+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.25636,
+    "change_24h": -3.0,
+    "ema_short": 0.256221,
+    "ema_long": 0.256212,
+    "reason": "Fast EMA (0.2562) crossed above Slow EMA (0.2562) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.25636,
+      "stop_loss": 0.2487,
+      "take_profit": 0.2692
+    },
+    "timestamp": "2026-03-22T13:37:27.984034+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.255674,
+    "change_24h": -3.21,
+    "ema_short": 0.256039,
+    "ema_long": 0.256161,
+    "reason": "Fast EMA (0.2560) crossed below Slow EMA (0.2562) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.255674,
+      "stop_loss": 0.2633,
+      "take_profit": 0.2429
+    },
+    "timestamp": "2026-03-22T13:52:28.425272+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255768,
+    "change_24h": -3.16,
+    "ema_short": 0.255949,
+    "ema_long": 0.256123,
+    "reason": "No crossover \u2014 Fast EMA (0.2559) below Slow EMA (0.2561).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T14:07:28.757501+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256112,
+    "change_24h": -3.22,
+    "ema_short": 0.256003,
+    "ema_long": 0.256122,
+    "reason": "No crossover \u2014 Fast EMA (0.2560) below Slow EMA (0.2561).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T14:22:29.083170+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256208,
+    "change_24h": -3.31,
+    "ema_short": 0.256071,
+    "ema_long": 0.25613,
+    "reason": "No crossover \u2014 Fast EMA (0.2561) below Slow EMA (0.2561).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T14:37:29.507609+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255908,
+    "change_24h": -3.22,
+    "ema_short": 0.256017,
+    "ema_long": 0.256109,
+    "reason": "No crossover \u2014 Fast EMA (0.2560) below Slow EMA (0.2561).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T14:52:29.895533+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.256098,
+    "change_24h": -2.73,
+    "ema_short": 0.256044,
+    "ema_long": 0.256108,
+    "reason": "No crossover \u2014 Fast EMA (0.2560) below Slow EMA (0.2561).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T15:07:30.369979+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.256309,
+    "change_24h": -2.64,
+    "ema_short": 0.256132,
+    "ema_long": 0.256127,
+    "reason": "Fast EMA (0.2561) crossed above Slow EMA (0.2561) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.256309,
+      "stop_loss": 0.2486,
+      "take_profit": 0.2691
+    },
+    "timestamp": "2026-03-22T15:22:30.800049+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.255862,
+    "change_24h": -3.0,
+    "ema_short": 0.256042,
+    "ema_long": 0.256102,
+    "reason": "Fast EMA (0.2560) crossed below Slow EMA (0.2561) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.255862,
+      "stop_loss": 0.2635,
+      "take_profit": 0.2431
+    },
+    "timestamp": "2026-03-22T15:37:31.240016+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255397,
+    "change_24h": -3.29,
+    "ema_short": 0.255827,
+    "ema_long": 0.256035,
+    "reason": "No crossover \u2014 Fast EMA (0.2558) below Slow EMA (0.2560).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T15:52:31.661853+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255551,
+    "change_24h": -3.48,
+    "ema_short": 0.255735,
+    "ema_long": 0.255989,
+    "reason": "No crossover \u2014 Fast EMA (0.2557) below Slow EMA (0.2560).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T16:07:32.132242+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.255535,
+    "change_24h": -3.33,
+    "ema_short": 0.255668,
+    "ema_long": 0.255945,
+    "reason": "No crossover \u2014 Fast EMA (0.2557) below Slow EMA (0.2559).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T16:22:32.584891+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.254979,
+    "change_24h": -3.48,
+    "ema_short": 0.255439,
+    "ema_long": 0.255853,
+    "reason": "No crossover \u2014 Fast EMA (0.2554) below Slow EMA (0.2559).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T16:37:32.961886+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.254637,
+    "change_24h": -3.65,
+    "ema_short": 0.255171,
+    "ema_long": 0.255738,
+    "reason": "No crossover \u2014 Fast EMA (0.2552) below Slow EMA (0.2557).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T16:52:33.381185+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.254439,
+    "change_24h": -3.6,
+    "ema_short": 0.254927,
+    "ema_long": 0.255614,
+    "reason": "No crossover \u2014 Fast EMA (0.2549) below Slow EMA (0.2556).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T17:07:33.839029+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.254599,
+    "change_24h": -3.55,
+    "ema_short": 0.254818,
+    "ema_long": 0.255517,
+    "reason": "No crossover \u2014 Fast EMA (0.2548) below Slow EMA (0.2555).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T17:22:34.285355+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.254521,
+    "change_24h": -3.62,
+    "ema_short": 0.254719,
+    "ema_long": 0.255422,
+    "reason": "No crossover \u2014 Fast EMA (0.2547) below Slow EMA (0.2554).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T17:37:34.738027+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.254189,
+    "change_24h": -3.72,
+    "ema_short": 0.254542,
+    "ema_long": 0.255305,
+    "reason": "No crossover \u2014 Fast EMA (0.2545) below Slow EMA (0.2553).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T17:52:35.140467+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.253976,
+    "change_24h": -3.86,
+    "ema_short": 0.254354,
+    "ema_long": 0.255178,
+    "reason": "No crossover \u2014 Fast EMA (0.2544) below Slow EMA (0.2552).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T18:07:35.585560+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.254213,
+    "change_24h": -3.8,
+    "ema_short": 0.254307,
+    "ema_long": 0.255086,
+    "reason": "No crossover \u2014 Fast EMA (0.2543) below Slow EMA (0.2551).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T18:22:36.015052+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.253616,
+    "change_24h": -4.12,
+    "ema_short": 0.254076,
+    "ema_long": 0.254946,
+    "reason": "No crossover \u2014 Fast EMA (0.2541) below Slow EMA (0.2549).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T18:37:36.479692+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25314,
+    "change_24h": -4.28,
+    "ema_short": 0.253764,
+    "ema_long": 0.254774,
+    "reason": "No crossover \u2014 Fast EMA (0.2538) below Slow EMA (0.2548).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T18:52:36.903281+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252733,
+    "change_24h": -4.39,
+    "ema_short": 0.253421,
+    "ema_long": 0.25458,
+    "reason": "No crossover \u2014 Fast EMA (0.2534) below Slow EMA (0.2546).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T19:07:37.332351+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251761,
+    "change_24h": -4.74,
+    "ema_short": 0.252867,
+    "ema_long": 0.254311,
+    "reason": "No crossover \u2014 Fast EMA (0.2529) below Slow EMA (0.2543).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T19:22:37.772774+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251312,
+    "change_24h": -4.91,
+    "ema_short": 0.252349,
+    "ema_long": 0.254026,
+    "reason": "No crossover \u2014 Fast EMA (0.2523) below Slow EMA (0.2540).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T19:37:38.227963+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25152,
+    "change_24h": -4.86,
+    "ema_short": 0.252073,
+    "ema_long": 0.253787,
+    "reason": "No crossover \u2014 Fast EMA (0.2521) below Slow EMA (0.2538).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T19:52:38.626189+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252018,
+    "change_24h": -4.85,
+    "ema_short": 0.252054,
+    "ema_long": 0.253619,
+    "reason": "No crossover \u2014 Fast EMA (0.2521) below Slow EMA (0.2536).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T20:07:39.034316+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251974,
+    "change_24h": -5.11,
+    "ema_short": 0.252028,
+    "ema_long": 0.253462,
+    "reason": "No crossover \u2014 Fast EMA (0.2520) below Slow EMA (0.2535).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T20:31:17.572115+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25156,
+    "change_24h": -5.42,
+    "ema_short": 0.251872,
+    "ema_long": 0.253281,
+    "reason": "No crossover \u2014 Fast EMA (0.2519) below Slow EMA (0.2533).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T20:46:17.887189+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251351,
+    "change_24h": -5.52,
+    "ema_short": 0.251698,
+    "ema_long": 0.253097,
+    "reason": "No crossover \u2014 Fast EMA (0.2517) below Slow EMA (0.2531).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T21:01:18.209793+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250002,
+    "change_24h": -5.96,
+    "ema_short": 0.251133,
+    "ema_long": 0.252802,
+    "reason": "No crossover \u2014 Fast EMA (0.2511) below Slow EMA (0.2528).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T21:16:18.557297+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.249545,
+    "change_24h": -6.08,
+    "ema_short": 0.250604,
+    "ema_long": 0.252492,
+    "reason": "No crossover \u2014 Fast EMA (0.2506) below Slow EMA (0.2525).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T21:31:18.866269+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250343,
+    "change_24h": -5.76,
+    "ema_short": 0.250517,
+    "ema_long": 0.252287,
+    "reason": "No crossover \u2014 Fast EMA (0.2505) below Slow EMA (0.2523).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T21:46:19.180421+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250174,
+    "change_24h": -5.74,
+    "ema_short": 0.250402,
+    "ema_long": 0.252086,
+    "reason": "No crossover \u2014 Fast EMA (0.2504) below Slow EMA (0.2521).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T22:01:19.496178+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250047,
+    "change_24h": -5.59,
+    "ema_short": 0.250284,
+    "ema_long": 0.251892,
+    "reason": "No crossover \u2014 Fast EMA (0.2503) below Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T22:16:19.814227+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251608,
+    "change_24h": -5.08,
+    "ema_short": 0.250725,
+    "ema_long": 0.251865,
+    "reason": "No crossover \u2014 Fast EMA (0.2507) below Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T22:31:20.149558+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251349,
+    "change_24h": -5.21,
+    "ema_short": 0.250933,
+    "ema_long": 0.251816,
+    "reason": "No crossover \u2014 Fast EMA (0.2509) below Slow EMA (0.2518).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T22:46:20.462958+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251939,
+    "change_24h": -4.85,
+    "ema_short": 0.251268,
+    "ema_long": 0.251828,
+    "reason": "No crossover \u2014 Fast EMA (0.2513) below Slow EMA (0.2518).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T23:01:20.885581+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252222,
+    "change_24h": -4.56,
+    "ema_short": 0.251586,
+    "ema_long": 0.251865,
+    "reason": "No crossover \u2014 Fast EMA (0.2516) below Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T23:16:21.202875+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251811,
+    "change_24h": -4.78,
+    "ema_short": 0.251661,
+    "ema_long": 0.25186,
+    "reason": "No crossover \u2014 Fast EMA (0.2517) below Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T23:31:21.509700+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251411,
+    "change_24h": -4.95,
+    "ema_short": 0.251578,
+    "ema_long": 0.251817,
+    "reason": "No crossover \u2014 Fast EMA (0.2516) below Slow EMA (0.2518).",
+    "would_trade": null,
+    "timestamp": "2026-03-22T23:46:21.875997+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250605,
+    "change_24h": -2.98,
+    "ema_short": 0.251254,
+    "ema_long": 0.251702,
+    "reason": "No crossover \u2014 Fast EMA (0.2513) below Slow EMA (0.2517).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T00:01:22.185438+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251208,
+    "change_24h": -1.82,
+    "ema_short": 0.251238,
+    "ema_long": 0.251655,
+    "reason": "No crossover \u2014 Fast EMA (0.2512) below Slow EMA (0.2517).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T00:16:22.442078+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25127,
+    "change_24h": -2.28,
+    "ema_short": 0.251249,
+    "ema_long": 0.251618,
+    "reason": "No crossover \u2014 Fast EMA (0.2512) below Slow EMA (0.2516).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T00:31:22.863603+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250566,
+    "change_24h": -2.86,
+    "ema_short": 0.251021,
+    "ema_long": 0.251518,
+    "reason": "No crossover \u2014 Fast EMA (0.2510) below Slow EMA (0.2515).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T00:46:23.169841+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251248,
+    "change_24h": -2.38,
+    "ema_short": 0.251097,
+    "ema_long": 0.251492,
+    "reason": "No crossover \u2014 Fast EMA (0.2511) below Slow EMA (0.2515).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T01:01:23.457266+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251876,
+    "change_24h": -1.98,
+    "ema_short": 0.251357,
+    "ema_long": 0.251528,
+    "reason": "No crossover \u2014 Fast EMA (0.2514) below Slow EMA (0.2515).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T01:16:23.736736+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252278,
+    "change_24h": -1.75,
+    "ema_short": 0.251664,
+    "ema_long": 0.2516,
+    "reason": "No crossover \u2014 Fast EMA (0.2517) above Slow EMA (0.2516).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T01:31:24.162218+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252119,
+    "change_24h": -1.55,
+    "ema_short": 0.251815,
+    "ema_long": 0.251649,
+    "reason": "No crossover \u2014 Fast EMA (0.2518) above Slow EMA (0.2516).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T01:46:24.493011+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251606,
+    "change_24h": -1.96,
+    "ema_short": 0.251746,
+    "ema_long": 0.251645,
+    "reason": "No crossover \u2014 Fast EMA (0.2517) above Slow EMA (0.2516).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T02:01:24.821899+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251232,
+    "change_24h": -2.25,
+    "ema_short": 0.251574,
+    "ema_long": 0.251606,
+    "reason": "No crossover \u2014 Fast EMA (0.2516) below Slow EMA (0.2516).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T02:16:25.155526+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25244,
+    "change_24h": -2.17,
+    "ema_short": 0.251863,
+    "ema_long": 0.251685,
+    "reason": "No crossover \u2014 Fast EMA (0.2519) above Slow EMA (0.2517).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T02:31:25.479141+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252906,
+    "change_24h": -1.86,
+    "ema_short": 0.252211,
+    "ema_long": 0.251801,
+    "reason": "No crossover \u2014 Fast EMA (0.2522) above Slow EMA (0.2518).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T02:46:25.922456+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252589,
+    "change_24h": -2.09,
+    "ema_short": 0.252337,
+    "ema_long": 0.251876,
+    "reason": "No crossover \u2014 Fast EMA (0.2523) above Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T03:01:26.340942+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252544,
+    "change_24h": -1.93,
+    "ema_short": 0.252406,
+    "ema_long": 0.25194,
+    "reason": "No crossover \u2014 Fast EMA (0.2524) above Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T03:16:26.737309+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251991,
+    "change_24h": -2.33,
+    "ema_short": 0.252268,
+    "ema_long": 0.251945,
+    "reason": "No crossover \u2014 Fast EMA (0.2523) above Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T03:31:27.204142+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251453,
+    "change_24h": -2.93,
+    "ema_short": 0.251996,
+    "ema_long": 0.251898,
+    "reason": "No crossover \u2014 Fast EMA (0.2520) above Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T03:46:27.642848+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251223,
+    "change_24h": -2.73,
+    "ema_short": 0.251738,
+    "ema_long": 0.251834,
+    "reason": "No crossover \u2014 Fast EMA (0.2517) below Slow EMA (0.2518).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T04:01:28.074698+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251586,
+    "change_24h": -2.65,
+    "ema_short": 0.251688,
+    "ema_long": 0.25181,
+    "reason": "No crossover \u2014 Fast EMA (0.2517) below Slow EMA (0.2518).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T04:16:28.526543+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251684,
+    "change_24h": -2.37,
+    "ema_short": 0.251686,
+    "ema_long": 0.251798,
+    "reason": "No crossover \u2014 Fast EMA (0.2517) below Slow EMA (0.2518).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T04:31:28.992312+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.25197,
+    "change_24h": -2.47,
+    "ema_short": 0.251781,
+    "ema_long": 0.251815,
+    "reason": "No crossover \u2014 Fast EMA (0.2518) below Slow EMA (0.2518).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T04:46:29.399430+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252378,
+    "change_24h": -2.39,
+    "ema_short": 0.25198,
+    "ema_long": 0.251868,
+    "reason": "No crossover \u2014 Fast EMA (0.2520) above Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T05:01:29.841969+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252562,
+    "change_24h": -2.21,
+    "ema_short": 0.252174,
+    "ema_long": 0.251934,
+    "reason": "No crossover \u2014 Fast EMA (0.2522) above Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T05:16:30.285140+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252303,
+    "change_24h": -2.18,
+    "ema_short": 0.252217,
+    "ema_long": 0.251969,
+    "reason": "No crossover \u2014 Fast EMA (0.2522) above Slow EMA (0.2520).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T05:31:30.613396+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251891,
+    "change_24h": -2.22,
+    "ema_short": 0.252108,
+    "ema_long": 0.251962,
+    "reason": "No crossover \u2014 Fast EMA (0.2521) above Slow EMA (0.2520).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T05:46:30.907844+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.252208,
+    "change_24h": -2.07,
+    "ema_short": 0.252142,
+    "ema_long": 0.251985,
+    "reason": "No crossover \u2014 Fast EMA (0.2521) above Slow EMA (0.2520).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T06:01:31.344470+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250869,
+    "change_24h": -2.45,
+    "ema_short": 0.251717,
+    "ema_long": 0.251879,
+    "reason": "No crossover \u2014 Fast EMA (0.2517) below Slow EMA (0.2519).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T06:16:31.658072+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250866,
+    "change_24h": -2.48,
+    "ema_short": 0.251434,
+    "ema_long": 0.251783,
+    "reason": "No crossover \u2014 Fast EMA (0.2514) below Slow EMA (0.2518).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T06:31:32.113398+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.24913,
+    "change_24h": -3.15,
+    "ema_short": 0.250666,
+    "ema_long": 0.25153,
+    "reason": "No crossover \u2014 Fast EMA (0.2507) below Slow EMA (0.2515).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T06:46:32.460913+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.249268,
+    "change_24h": -3.23,
+    "ema_short": 0.2502,
+    "ema_long": 0.251314,
+    "reason": "No crossover \u2014 Fast EMA (0.2502) below Slow EMA (0.2513).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T07:01:32.893061+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.249482,
+    "change_24h": -3.47,
+    "ema_short": 0.249961,
+    "ema_long": 0.25114,
+    "reason": "No crossover \u2014 Fast EMA (0.2500) below Slow EMA (0.2511).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T07:16:33.209753+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.248366,
+    "change_24h": -3.9,
+    "ema_short": 0.249429,
+    "ema_long": 0.250876,
+    "reason": "No crossover \u2014 Fast EMA (0.2494) below Slow EMA (0.2509).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T07:31:33.650282+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.24988,
+    "change_24h": -3.22,
+    "ema_short": 0.249579,
+    "ema_long": 0.250781,
+    "reason": "No crossover \u2014 Fast EMA (0.2496) below Slow EMA (0.2508).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T07:46:33.977355+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250101,
+    "change_24h": -2.73,
+    "ema_short": 0.249753,
+    "ema_long": 0.250716,
+    "reason": "No crossover \u2014 Fast EMA (0.2498) below Slow EMA (0.2507).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T08:01:34.419842+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250636,
+    "change_24h": -2.17,
+    "ema_short": 0.250047,
+    "ema_long": 0.250709,
+    "reason": "No crossover \u2014 Fast EMA (0.2500) below Slow EMA (0.2507).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T08:16:34.860139+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250587,
+    "change_24h": -1.94,
+    "ema_short": 0.250227,
+    "ema_long": 0.250697,
+    "reason": "No crossover \u2014 Fast EMA (0.2502) below Slow EMA (0.2507).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T08:31:35.285793+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250164,
+    "change_24h": -2.41,
+    "ema_short": 0.250206,
+    "ema_long": 0.250646,
+    "reason": "No crossover \u2014 Fast EMA (0.2502) below Slow EMA (0.2506).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T08:46:35.722440+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.249454,
+    "change_24h": -2.76,
+    "ema_short": 0.249955,
+    "ema_long": 0.250533,
+    "reason": "No crossover \u2014 Fast EMA (0.2500) below Slow EMA (0.2505).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T09:01:36.119725+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.248983,
+    "change_24h": -3.07,
+    "ema_short": 0.249631,
+    "ema_long": 0.250385,
+    "reason": "No crossover \u2014 Fast EMA (0.2496) below Slow EMA (0.2504).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T09:16:36.516450+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.249239,
+    "change_24h": -2.84,
+    "ema_short": 0.249501,
+    "ema_long": 0.250276,
+    "reason": "No crossover \u2014 Fast EMA (0.2495) below Slow EMA (0.2503).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T09:31:36.918409+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.248427,
+    "change_24h": -3.04,
+    "ema_short": 0.249143,
+    "ema_long": 0.2501,
+    "reason": "No crossover \u2014 Fast EMA (0.2491) below Slow EMA (0.2501).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T09:46:37.358434+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.249736,
+    "change_24h": -2.49,
+    "ema_short": 0.24934,
+    "ema_long": 0.250065,
+    "reason": "No crossover \u2014 Fast EMA (0.2493) below Slow EMA (0.2501).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T10:01:37.806726+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.251287,
+    "change_24h": -1.73,
+    "ema_short": 0.249989,
+    "ema_long": 0.250182,
+    "reason": "No crossover \u2014 Fast EMA (0.2500) below Slow EMA (0.2502).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T10:16:38.123035+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250263,
+    "change_24h": -2.14,
+    "ema_short": 0.250081,
+    "ema_long": 0.250189,
+    "reason": "No crossover \u2014 Fast EMA (0.2501) below Slow EMA (0.2502).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T10:31:38.472298+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.249942,
+    "change_24h": -2.1,
+    "ema_short": 0.250034,
+    "ema_long": 0.250166,
+    "reason": "No crossover \u2014 Fast EMA (0.2500) below Slow EMA (0.2502).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T10:46:38.908893+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.250332,
+    "change_24h": -1.95,
+    "ema_short": 0.250134,
+    "ema_long": 0.250182,
+    "reason": "No crossover \u2014 Fast EMA (0.2501) below Slow EMA (0.2502).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T11:01:39.225212+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.261973,
+    "change_24h": 2.48,
+    "ema_short": 0.25408,
+    "ema_long": 0.251305,
+    "reason": "Fast EMA (0.2541) crossed above Slow EMA (0.2513) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.261973,
+      "stop_loss": 0.2541,
+      "take_profit": 0.2751
+    },
+    "timestamp": "2026-03-23T11:16:39.626520+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.260482,
+    "change_24h": 2.01,
+    "ema_short": 0.256214,
+    "ema_long": 0.252179,
+    "reason": "No crossover \u2014 Fast EMA (0.2562) above Slow EMA (0.2522).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T11:31:40.099122+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.260759,
+    "change_24h": 2.09,
+    "ema_short": 0.257729,
+    "ema_long": 0.252996,
+    "reason": "No crossover \u2014 Fast EMA (0.2577) above Slow EMA (0.2530).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T11:46:40.546292+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.259235,
+    "change_24h": 1.59,
+    "ema_short": 0.258231,
+    "ema_long": 0.25359,
+    "reason": "No crossover \u2014 Fast EMA (0.2582) above Slow EMA (0.2536).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T12:01:40.994950+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.258818,
+    "change_24h": 1.25,
+    "ema_short": 0.258427,
+    "ema_long": 0.254088,
+    "reason": "No crossover \u2014 Fast EMA (0.2584) above Slow EMA (0.2541).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T12:16:41.335638+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.259621,
+    "change_24h": 1.28,
+    "ema_short": 0.258825,
+    "ema_long": 0.254615,
+    "reason": "No crossover \u2014 Fast EMA (0.2588) above Slow EMA (0.2546).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T12:31:41.778675+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.260159,
+    "change_24h": 1.7,
+    "ema_short": 0.25927,
+    "ema_long": 0.255143,
+    "reason": "No crossover \u2014 Fast EMA (0.2593) above Slow EMA (0.2551).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T12:46:42.243791+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.260281,
+    "change_24h": 1.73,
+    "ema_short": 0.259607,
+    "ema_long": 0.255632,
+    "reason": "No crossover \u2014 Fast EMA (0.2596) above Slow EMA (0.2556).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T13:01:42.715799+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.260067,
+    "change_24h": 1.37,
+    "ema_short": 0.25976,
+    "ema_long": 0.256055,
+    "reason": "No crossover \u2014 Fast EMA (0.2598) above Slow EMA (0.2561).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T13:16:43.134485+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.260111,
+    "change_24h": 1.45,
+    "ema_short": 0.259877,
+    "ema_long": 0.256441,
+    "reason": "No crossover \u2014 Fast EMA (0.2599) above Slow EMA (0.2564).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T13:31:43.618945+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.261455,
+    "change_24h": 2.25,
+    "ema_short": 0.260403,
+    "ema_long": 0.256918,
+    "reason": "No crossover \u2014 Fast EMA (0.2604) above Slow EMA (0.2569).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T13:46:44.023676+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.263005,
+    "change_24h": 2.79,
+    "ema_short": 0.26127,
+    "ema_long": 0.257498,
+    "reason": "No crossover \u2014 Fast EMA (0.2613) above Slow EMA (0.2575).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T14:01:44.330646+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.264181,
+    "change_24h": 3.14,
+    "ema_short": 0.262241,
+    "ema_long": 0.258135,
+    "reason": "No crossover \u2014 Fast EMA (0.2622) above Slow EMA (0.2581).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T14:16:44.732324+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.263654,
+    "change_24h": 2.85,
+    "ema_short": 0.262712,
+    "ema_long": 0.25866,
+    "reason": "No crossover \u2014 Fast EMA (0.2627) above Slow EMA (0.2587).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T14:31:45.180944+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.265073,
+    "change_24h": 3.45,
+    "ema_short": 0.263499,
+    "ema_long": 0.259271,
+    "reason": "No crossover \u2014 Fast EMA (0.2635) above Slow EMA (0.2593).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T15:06:51.935488+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.265486,
+    "change_24h": 3.57,
+    "ema_short": 0.264161,
+    "ema_long": 0.259863,
+    "reason": "No crossover \u2014 Fast EMA (0.2642) above Slow EMA (0.2599).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T15:21:52.298329+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.263647,
+    "change_24h": 3.03,
+    "ema_short": 0.26399,
+    "ema_long": 0.260223,
+    "reason": "No crossover \u2014 Fast EMA (0.2640) above Slow EMA (0.2602).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T15:36:52.574780+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.262613,
+    "change_24h": 2.85,
+    "ema_short": 0.263531,
+    "ema_long": 0.260451,
+    "reason": "No crossover \u2014 Fast EMA (0.2635) above Slow EMA (0.2605).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T15:51:52.861999+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.261423,
+    "change_24h": 2.31,
+    "ema_short": 0.262828,
+    "ema_long": 0.260543,
+    "reason": "No crossover \u2014 Fast EMA (0.2628) above Slow EMA (0.2605).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T16:06:53.142005+00:00"
+  }
+]

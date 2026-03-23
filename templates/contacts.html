@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+    <title>Jarvis Contacts</title>
+    <style>
+        /* Futuristic High-Tech Styling */
+        :root {
+            --primary-color: #00bfff; /* Electric blue/cyan */
+            --secondary-color: #1e2736; /* Deeper dark background */
+            --text-color-primary: #e0e0e0; /* Light gray text */
+            --text-color-secondary: #999; /* Medium gray text */
+            --border-color: #384459; /* Darker border */
+            --accent-gradient: linear-gradient(90deg, var(--primary-color) 0%, #6dd5ed 50%, var(--primary-color) 100%);
+            --animation-speed: 0.3s ease-in-out;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--secondary-color);
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 0;
+        }
+        .hero {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(120deg, #30384d, var(--secondary-color));
+            border-bottom: 2px solid var(--primary-color);
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+        .actions {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(30, 39, 52, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            overflow: hidden; /* Prevents content from spilling out */
+            box-sizing: border-box; /* Ensures padding doesn't increase width */
+        }
+        .actions h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 600px; /* Prevents search bar from extending past the box */
+            margin: 0 auto 20px auto;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: var(--secondary-color);
+            color: var(--text-color-primary);
+            width: 100%; /* Ensures input stays inside the box */
+            max-width: 300px;
+        }
+        .search-bar button {
+            padding: 10px 15px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            background: transparent;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .search-bar button:hover {
+            background: var(--accent-gradient);
+            color: var(--secondary-color);
+            border-color: transparent;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+        /* Fix search results cutoff */
+        .results-container {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    overflow-y: auto; /* Enables vertical scrolling if needed */
+    max-height: 300px; /* Limits table height */
+    padding: 10px;
+    display: flex;
+    justify-content: center; /* Centers the table */
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color-primary);
+    font-size: 0.9rem; /* Reduce font size for compact display */
+}
+
+th, td {
+    padding: 8px; /* Reduce padding to fit more content */
+    border: 1px solid var(--border-color);
+    text-align: center;
+    word-wrap: break-word; /* Prevents text from overflowing */
+}
+
+th {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+
+        .add-contact-form {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(30, 39, 52, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column; /* Stack fields vertically */
+            align-items: center; /* Center fields horizontally */
+        }
+        .add-contact-form h3 {
+            color: var(--primary-color);
+            text-align: center;
+        }
+        .add-contact-form label {
+            display: block;
+            margin-top: 10px;
+            color: var(--text-color-primary);
+            font-size: 1rem;
+            text-align: left; /* Ensure text aligns left */
+            width: 100%; /* Makes labels take full width */
+        }
+        .add-contact-form input, .add-contact-form select {
+            width: 100%;
+            max-width: 600px; /* Set a max width */
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 0.9rem; /* Slightly smaller text */
+            background: var(--secondary-color);
+            color: var(--text-color-primary);
+        }
+        .add-contact-form button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            color: var(--primary-color);
+            background: transparent;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+            width: 100%;
+        }
+        .add-contact-form button:hover {
+            background: var(--accent-gradient);
+            color: var(--secondary-color);
+            border-color: transparent;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--secondary-color);
+            border-top: 2px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>Jarvis Contacts Center</h1>
+        <p>Manage all your contacts with ease and efficiency.</p>
+        <img src="{{ url_for('static', filename='images/JarvisLogo.png') }}" alt="Jarvis AI" width="96" height="96">
+        <nav>
+            <a href="{{ url_for('jarvis_bp.index') }}" class="nav-link" target="_self">Home</a>           
+        </nav>
+    </header>
+
+    <main>
+        <section class="actions">
+            <h2>All Contacts</h2>
+
+            {% if message %}
+                <div class="message {% if 'successfully' in message %}success{% else %}error{% endif %}">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            <div class="search-bar">
+                <form method="GET" action="{{ url_for('contacts_bp.search_contacts_route') }}">
+                    <input type="text" name="search_term" placeholder="Search contacts..." required>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            {% if search_results %}
+                <h3>Search Results for "{{ search_term }}"</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Business Name</th>
+                            <th>Group</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contact in search_results %}
+                            <tr>
+                                <td>{{ contact['first_name'] }}</td>
+                                <td>{{ contact['last_name'] }}</td>
+                                <td>{{ contact['email'] }}</td>
+                                <td>{{ contact['phone'] }}</td>
+                                <td>{{ contact['address'] }}</td>
+                                <td>{{ contact['business_name'] }}</td>
+                                <td>{{ contact['group'] }}</td>
+                                <td>
+                                    <form method="POST" action="/delete_contact">
+                                        <input type="hidden" name="contact_id" value="{{ contact['id'] }}">
+                                        <button type="submit" class="delete-btn">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No contacts found for "{{ search_term }}".</p>
+            {% endif %}
+        </section>
+
+        <form class="add-contact-form" method="POST" action="/add_contact">
+            <h3>Add Contact</h3>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone">
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address">
+
+            <label for="business_name">Business Name:</label>
+            <input type="text" id="business_name" name="business_name">
+ 
+            <button type="submit">Add Contact</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Jarvis AI - Engineered by Ekimtech.com</p>
+    </footer>
+</body>
+</html>
+

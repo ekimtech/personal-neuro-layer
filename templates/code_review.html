@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <title>Jarvis — Code Review Panel</title>
+    <style>
+        :root {
+            --primary: #00bfff;
+            --bg: #1e2736;
+            --bg2: #252f42;
+            --bg3: #2d3a52;
+            --text: #e0e0e0;
+            --text2: #999;
+            --border: #384459;
+            --green: #00e676;
+            --red: #ff5252;
+            --yellow: #ffd740;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ---- Header ---- */
+        .hero {
+            text-align: center;
+            padding: 30px 20px 20px;
+            background: linear-gradient(120deg, #30384d, var(--bg));
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px var(--primary);
+        }
+        .hero p { color: var(--text2); margin-top: 8px; font-size: 1rem; }
+
+        /* ---- Nav ---- */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .nav-bar a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .nav-bar a:hover { background: var(--bg3); }
+
+        /* ---- Trigger panel ---- */
+        .trigger-panel {
+            max-width: 960px;
+            margin: 24px auto 0;
+            padding: 20px 24px;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .trigger-panel h2 { color: var(--primary); font-size: 1.1rem; margin-bottom: 14px; }
+        .trigger-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .trigger-row select, .trigger-row input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 14px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        .trigger-row select option { background: var(--bg3); }
+        .btn {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.85; }
+        .btn-primary  { background: var(--primary); color: #000; }
+        .btn-approve  { background: var(--green);   color: #000; }
+        .btn-reject   { background: var(--red);     color: #fff; }
+        .btn-clear    { background: #555;            color: #fff; }
+
+        /* ---- Status bar ---- */
+        #status-bar {
+            max-width: 960px;
+            margin: 12px auto 0;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        #status-bar.info    { background: #1a3a5c; border: 1px solid var(--primary); }
+        #status-bar.success { background: #0a3a1a; border: 1px solid var(--green); color: var(--green); }
+        #status-bar.error   { background: #3a0a0a; border: 1px solid var(--red);   color: var(--red);   }
+
+        /* ---- Reviews list ---- */
+        .reviews-section {
+            max-width: 960px;
+            margin: 24px auto 40px;
+            padding: 0 0 40px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .section-header h2 { color: var(--primary); font-size: 1.2rem; }
+        .badge {
+            background: var(--primary);
+            color: #000;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text2);
+            font-size: 1rem;
+        }
+        .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+
+        /* ---- Review Card ---- */
+        .review-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .review-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            background: var(--bg3);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .review-card-header .file-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .review-card-header .meta {
+            font-size: 0.8rem;
+            color: var(--text2);
+        }
+        .review-card-header .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+        .review-body { padding: 18px 20px; }
+
+        .explanation {
+            background: #1a2a40;
+            border-left: 3px solid var(--primary);
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .issues-list { margin-bottom: 14px; }
+        .issues-list h3 { font-size: 0.85rem; color: var(--yellow); margin-bottom: 8px; }
+        .issues-list ul { list-style: none; padding: 0; }
+        .issues-list li {
+            padding: 4px 0 4px 16px;
+            position: relative;
+            font-size: 0.85rem;
+            color: var(--text2);
+        }
+        .issues-list li::before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            color: var(--yellow);
+            font-size: 0.75rem;
+        }
+
+        /* ---- Code Tabs ---- */
+        .code-tabs { margin-top: 10px; }
+        .tab-buttons { display: flex; gap: 0; margin-bottom: 0; }
+        .tab-btn {
+            padding: 7px 18px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-bottom: none;
+            color: var(--text2);
+            cursor: pointer;
+            font-size: 0.85rem;
+            border-radius: 6px 6px 0 0;
+            transition: background 0.2s;
+        }
+        .tab-btn.active { background: var(--bg); color: var(--primary); border-color: var(--primary); }
+
+        .tab-content {
+            display: none;
+            border: 1px solid var(--border);
+            border-radius: 0 6px 6px 6px;
+            overflow: auto;
+            max-height: 480px;
+        }
+        .tab-content.active { display: block; }
+
+        /* ---- Editable textarea ---- */
+        .code-editor {
+            width: 100%;
+            min-height: 320px;
+            max-height: 480px;
+            font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            background: #0d1117;
+            color: #c9d1d9;
+            border: none;
+            padding: 16px;
+            resize: vertical;
+            outline: none;
+            tab-size: 4;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .code-editor { font-size: 1rem; }
+        }
+        .edit-hint {
+            font-size: 0.75rem;
+            color: var(--text2);
+            padding: 6px 16px 8px;
+            background: #0d1117;
+            border-top: 1px solid #1a2233;
+            font-style: italic;
+        }
+
+        /* ---- Diff view ---- */
+        .diff-view {
+            font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            background: #0d1117;
+            padding: 12px 0;
+        }
+        .diff-line {
+            padding: 1px 16px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .diff-added   { background: rgba(0, 230, 118, 0.13); color: #afffce; }
+        .diff-removed { background: rgba(255, 82,  82,  0.13); color: #ffaaaa; }
+        .diff-same    { color: #c9d1d9; }
+        .diff-legend {
+            display: flex;
+            gap: 18px;
+            padding: 8px 16px;
+            background: #0d1117;
+            border-bottom: 1px solid #1a2233;
+            font-size: 0.78rem;
+            color: var(--text2);
+        }
+        .diff-legend span { display: flex; align-items: center; gap: 6px; }
+        .dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+        .dot-green { background: rgba(0,230,118,0.5); }
+        .dot-red   { background: rgba(255,82,82,0.5); }
+
+        /* ---- Read-only pre ---- */
+        pre {
+            margin: 0;
+            padding: 16px;
+            font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: #c9d1d9;
+            background: #0d1117;
+        }
+
+        /* ---- Spinner ---- */
+        .spinner {
+            display: inline-block;
+            width: 14px; height: 14px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+    <h1>Code Review Panel</h1>
+    <p>Jarvis reviews his own code &mdash; you can edit, then approve or reject the changes</p>
+</div>
+
+<!-- Nav -->
+<div class="nav-bar">
+    <a href="/">Home</a>
+    <a href="/controlpanel">Control Panel</a>
+    <a href="/jan/memory_manager">Memory Manager</a>
+    <a href="/documents/">Documents</a>
+</div>
+
+<!-- Trigger a review -->
+<div class="trigger-panel">
+    <h2>Request a Code Review</h2>
+    <div class="trigger-row">
+        <select id="file-select">
+            <option value="">— Pick a file —</option>
+            <optgroup label="Core">
+                <option value="app">app.py</option>
+                <option value="cognition">cognition.py</option>
+                <option value="jarvis routes">jarvis_routes.py</option>
+                <option value="mcp router">mcp_router_hub.py</option>
+            </optgroup>
+            <optgroup label="Organs">
+                <option value="home assistant server">home_assistant_server.py</option>
+                <option value="email server">email_server.py</option>
+                <option value="documents server">documents_server.py</option>
+                <option value="documents routes">documents_routes.py</option>
+                <option value="weather server">weather_server.py</option>
+                <option value="internet server">internet_server.py</option>
+                <option value="memory server">jsonl_memory_server.py</option>
+                <option value="qnap server">qnap_server.py</option>
+                <option value="mikrotik server">mikrotik_server.py</option>
+                <option value="tts server">tts_server.py</option>
+                <option value="stt server">stt_server.py</option>
+                <option value="wake word">wake_word_listener.py</option>
+                <option value="games server">games_server.py</option>
+                <option value="script runner">script_runner_server.py</option>
+                <option value="self writing server">self_writing_server.py</option>
+                <option value="security server">security.py</option>
+                <option value="crypto wallet server">crypto_wallet_server.py</option>
+                <option value="trading brain">trading_brain.py</option>
+            </optgroup>
+        </select>
+        <input type="text" id="file-custom" placeholder="Or type a custom file name…" />
+        <button class="btn btn-primary" onclick="triggerReview()">Review</button>
+    </div>
+</div>
+
+<!-- Status bar -->
+<div id="status-bar"></div>
+
+<!-- Reviews list -->
+<div class="reviews-section">
+    <div class="section-header">
+        <h2>Pending Reviews <span class="badge" id="review-count">{{ reviews|length }}</span></h2>
+        {% if reviews %}
+        <button class="btn btn-clear" onclick="clearAll()">Clear All</button>
+        {% endif %}
+    </div>
+
+    <div id="reviews-container">
+        {% if reviews %}
+            {% for review in reviews %}
+
+            <!-- Embed original code as JSON for diff engine -->
+            <script>
+            window.reviewOriginals = window.reviewOriginals || {};
+            window.reviewOriginals["{{ review.id }}"] = {{ review.original | tojson }};
+            </script>
+
+            <div class="review-card" id="card-{{ review.id }}">
+                <div class="review-card-header">
+                    <div>
+                        <div class="file-name">{{ review.file_name }}</div>
+                        <div class="meta">{{ review.rel_path }} &bull; {{ review.timestamp }} &bull; {{ review.issues|length }} suggestion(s)</div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-approve" onclick="approveReview('{{ review.id }}')">✅ Approve &amp; Write</button>
+                        <button class="btn btn-reject"  onclick="rejectReview('{{ review.id }}')">✖ Reject</button>
+                    </div>
+                </div>
+
+                <div class="review-body">
+                    <!-- Explanation -->
+                    <div class="explanation">{{ review.explanation }}</div>
+
+                    <!-- Issues -->
+                    {% if review.issues %}
+                    <div class="issues-list">
+                        <h3>Suggested Improvements</h3>
+                        <ul>
+                            {% for issue in review.issues %}
+                            <li>{{ issue }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    <!-- Code Tabs -->
+                    <div class="code-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" onclick="showTab('{{ review.id }}', 'suggested', this)">✏ Suggested (Editable)</button>
+                            <button class="tab-btn" onclick="showTab('{{ review.id }}', 'diff', this)">≠ Diff View</button>
+                            <button class="tab-btn" onclick="showTab('{{ review.id }}', 'original', this)">Original</button>
+                        </div>
+
+                        <!-- Suggested — editable textarea -->
+                        <div class="tab-content active" id="tab-{{ review.id }}-suggested">
+                            <textarea class="code-editor" id="editor-{{ review.id }}" spellcheck="false">{{ review.suggested }}</textarea>
+                            <div class="edit-hint">💡 You can edit the code above before approving — changes will be written to disk exactly as shown.</div>
+                        </div>
+
+                        <!-- Diff View — rendered by JS -->
+                        <div class="tab-content" id="tab-{{ review.id }}-diff">
+                            <div class="diff-legend">
+                                <span><span class="dot dot-green"></span> Added / changed in suggested</span>
+                                <span><span class="dot dot-red"></span> Removed from original</span>
+                            </div>
+                            <div class="diff-view" id="diff-{{ review.id }}">
+                                <div style="padding:16px;color:var(--text2)">Click this tab to compute diff…</div>
+                            </div>
+                        </div>
+
+                        <!-- Original — read-only -->
+                        <div class="tab-content" id="tab-{{ review.id }}-original">
+                            <pre>{{ review.original }}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state" id="empty-state">
+                <div class="icon">🔍</div>
+                <p>No pending reviews. Request one above or say "review [server name]" to Jarvis.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+// ================================================================
+// TAB SWITCHER
+// ================================================================
+function showTab(reviewId, tab, btn) {
+    const card = document.getElementById('card-' + reviewId);
+    card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    card.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + reviewId + '-' + tab).classList.add('active');
+
+    // Compute and render diff when that tab is selected
+    if (tab === 'diff') {
+        const original  = (window.reviewOriginals || {})[reviewId] || '';
+        const textarea  = document.getElementById('editor-' + reviewId);
+        const suggested = textarea ? textarea.value : '';
+        renderDiff(reviewId, original, suggested);
+    }
+}
+
+// ================================================================
+// STATUS BAR
+// ================================================================
+function showStatus(msg, type='info') {
+    const bar = document.getElementById('status-bar');
+    bar.textContent = msg;
+    bar.className = type;
+    bar.style.display = 'block';
+}
+function hideStatus() {
+    document.getElementById('status-bar').style.display = 'none';
+}
+
+// ================================================================
+// TRIGGER A REVIEW — async with polling
+// ================================================================
+let _reviewPollTimer = null;
+let _reviewStartTime = 0;
+
+async function triggerReview() {
+    const sel    = document.getElementById('file-select').value;
+    const custom = document.getElementById('file-custom').value.trim();
+    const target = custom || sel;
+
+    if (!target) {
+        showStatus('Please pick a file or type a name.', 'error');
+        return;
+    }
+
+    // Start the job
+    try {
+        const resp = await fetch('/code_review/api/review', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ file_name: target })
+        });
+        const data = await resp.json();
+
+        if (data.error) {
+            showStatus('Error: ' + data.error, 'error');
+            return;
+        }
+
+        _reviewStartTime = Date.now();
+        showStatus('⏳ Jarvis is reviewing ' + target + '… (0s)', 'info');
+        _pollReviewJob(data.job_id);
+
+    } catch (err) {
+        showStatus('Request failed: ' + err.message, 'error');
+    }
+}
+
+function _pollReviewJob(jobId) {
+    if (_reviewPollTimer) clearInterval(_reviewPollTimer);
+
+    _reviewPollTimer = setInterval(async () => {
+        try {
+            const resp = await fetch('/code_review/api/review/status/' + jobId);
+            const job  = await resp.json();
+            const elapsed = Math.round((Date.now() - _reviewStartTime) / 1000);
+
+            if (job.status === 'running') {
+                showStatus('⏳ Jarvis is reviewing… (' + elapsed + 's elapsed)', 'info');
+
+            } else if (job.status === 'done') {
+                clearInterval(_reviewPollTimer);
+                const r = job.result || {};
+                showStatus(
+                    '✅ Review ready — ' + (r.issue_count || 0) +
+                    ' suggestion(s) found. Reloading…', 'success'
+                );
+                setTimeout(() => location.reload(), 1800);
+
+            } else if (job.status === 'error') {
+                clearInterval(_reviewPollTimer);
+                showStatus('❌ Error: ' + job.error, 'error');
+
+            } else {
+                clearInterval(_reviewPollTimer);
+                showStatus('❌ Unknown job status.', 'error');
+            }
+        } catch (err) {
+            clearInterval(_reviewPollTimer);
+            showStatus('Polling error: ' + err.message, 'error');
+        }
+    }, 4000); // poll every 4 seconds
+}
+
+// ================================================================
+// APPROVE — sends current textarea content to backend
+// ================================================================
+async function approveReview(reviewId) {
+    const textarea   = document.getElementById('editor-' + reviewId);
+    const customCode = textarea ? textarea.value : null;
+
+    if (!confirm('Apply this code to disk? This will overwrite the original file.')) return;
+
+    showStatus('Writing approved changes to disk…', 'info');
+
+    try {
+        const resp = await fetch('/code_review/api/approve/' + reviewId, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ custom_code: customCode })
+        });
+        const data = await resp.json();
+
+        if (data.error) {
+            showStatus('Error: ' + data.error, 'error');
+            return;
+        }
+
+        showStatus('✅ Changes applied to ' + data.file + '. Restart Flask to load the updated code.', 'success');
+        document.getElementById('card-' + reviewId).remove();
+        updateCount(-1);
+    } catch (err) {
+        showStatus('Request failed: ' + err.message, 'error');
+    }
+}
+
+// ================================================================
+// REJECT
+// ================================================================
+async function rejectReview(reviewId) {
+    const resp = await fetch('/code_review/api/reject/' + reviewId, { method: 'POST' });
+    const data = await resp.json();
+    if (data.error) { showStatus('Error: ' + data.error, 'error'); return; }
+    document.getElementById('card-' + reviewId).remove();
+    showStatus('Review rejected and discarded.', 'info');
+    updateCount(-1);
+}
+
+// ================================================================
+// CLEAR ALL
+// ================================================================
+async function clearAll() {
+    if (!confirm('Clear all pending reviews?')) return;
+    await fetch('/code_review/api/clear', { method: 'POST' });
+    document.getElementById('reviews-container').innerHTML =
+        '<div class="empty-state"><div class="icon">🔍</div><p>No pending reviews.</p></div>';
+    document.getElementById('review-count').textContent = '0';
+    hideStatus();
+}
+
+// ================================================================
+// BADGE COUNTER
+// ================================================================
+function updateCount(delta) {
+    const badge = document.getElementById('review-count');
+    const n = Math.max(0, parseInt(badge.textContent || '0') + delta);
+    badge.textContent = n;
+    if (n === 0) {
+        document.getElementById('reviews-container').innerHTML =
+            '<div class="empty-state"><div class="icon">🔍</div><p>No pending reviews. Request one above or say "review [server name]" to Jarvis.</p></div>';
+    }
+}
+
+// ================================================================
+// DIFF ENGINE — LCS-based line diff
+// ================================================================
+function escapeHtml(text) {
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function computeLCS(a, b) {
+    const m = a.length, n = b.length;
+    // Safety cap — fall back to naive diff for huge files
+    if (m > 700 || n > 700) return null;
+
+    const dp = [];
+    for (let i = 0; i <= m; i++) dp[i] = new Array(n + 1).fill(0);
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            dp[i][j] = a[i-1] === b[j-1]
+                ? dp[i-1][j-1] + 1
+                : Math.max(dp[i-1][j], dp[i][j-1]);
+        }
+    }
+
+    // Backtrack to build diff
+    const result = [];
+    let i = m, j = n;
+    while (i > 0 || j > 0) {
+        if (i > 0 && j > 0 && a[i-1] === b[j-1]) {
+            result.unshift({ type: 'same',    line: a[i-1] });
+            i--; j--;
+        } else if (j > 0 && (i === 0 || dp[i][j-1] >= dp[i-1][j])) {
+            result.unshift({ type: 'added',   line: b[j-1] });
+            j--;
+        } else {
+            result.unshift({ type: 'removed', line: a[i-1] });
+            i--;
+        }
+    }
+    return result;
+}
+
+function renderDiff(reviewId, original, suggested) {
+    const container = document.getElementById('diff-' + reviewId);
+    const origLines = original.split('\n');
+    const sugLines  = suggested.split('\n');
+
+    const diff = computeLCS(origLines, sugLines);
+
+    // Fall back for very large files
+    if (!diff) {
+        let html = '<div class="diff-view">';
+        origLines.forEach(l => html += `<div class="diff-line diff-removed">- ${escapeHtml(l)}</div>`);
+        sugLines.forEach( l => html += `<div class="diff-line diff-added">+ ${escapeHtml(l)}</div>`);
+        html += '</div>';
+        container.innerHTML = html;
+        return;
+    }
+
+    // Check if there are any changes
+    const hasChanges = diff.some(d => d.type !== 'same');
+    if (!hasChanges) {
+        container.innerHTML = '<div style="padding:20px;color:var(--text2);font-family:monospace;font-size:0.85rem">✓ Suggested code is identical to the original — no changes detected.</div>';
+        return;
+    }
+
+    let html = '';
+    diff.forEach(({ type, line }) => {
+        const esc = escapeHtml(line);
+        if (type === 'added')   html += `<div class="diff-line diff-added">+ ${esc}</div>`;
+        else if (type === 'removed') html += `<div class="diff-line diff-removed">- ${esc}</div>`;
+        else                    html += `<div class="diff-line diff-same">  ${esc}</div>`;
+    });
+    container.innerHTML = html;
+}
+
+// ================================================================
+// TAB KEY SUPPORT IN EDITOR
+// ================================================================
+document.addEventListener('keydown', function(e) {
+    if (e.target.classList.contains('code-editor') && e.key === 'Tab') {
+        e.preventDefault();
+        const ta    = e.target;
+        const start = ta.selectionStart;
+        const end   = ta.selectionEnd;
+        ta.value = ta.value.substring(0, start) + '    ' + ta.value.substring(end);
+        ta.selectionStart = ta.selectionEnd = start + 4;
+    }
+});
+</script>
+<footer style="text-align:center;padding:18px 0 12px;color:#777;font-size:0.82rem;border-top:1px solid #2d3a52;margin-top:30px;">
+    &copy; 2026 Jarvis AI - Engineered by Ekimtech.com
+</footer>
+</body>
+</html>

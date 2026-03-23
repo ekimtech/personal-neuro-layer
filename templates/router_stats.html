@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis AI Dashboard - Router Statistics</title>
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+    <style>
+        /* Futuristic High-Tech Styling */
+        :root {
+            --primary-color: #00bfff; /* Electric blue/cyan */
+            --secondary-color: #1e2736; /* Deeper dark background */
+            --text-color-primary: #e0e0e0; /* Light gray text */
+            --text-color-secondary: #999; /* Medium gray text */
+            --border-color: #384459; /* Darker border */
+            --accent-gradient: linear-gradient(90deg, var(--primary-color) 0%, #6dd5ed 50%, var(--primary-color) 100%);
+            --animation-speed: 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
+            background: var(--secondary-color);
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 0 8px;
+        }
+
+        .hero {
+            position: relative; /* Added for consistency with other pages */
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(120deg, #30384d, var(--secondary-color));
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Added shadow for consistency */
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0; /* Ensures no extra margin */
+            letter-spacing: 1.5px; /* Consistent letter spacing */
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-color-secondary);
+            margin: 15px 0 0 0; /* Adjusted margin for consistency */
+            font-weight: 300; /* Lighter font weight for description */
+        }
+
+        /* Nav styling from Jarvis dashboard buttons */
+        nav {
+            margin-top: 25px; /* Spacing below the hero text */
+            text-align: center;
+            display: flex; /* Use flexbox for button-like layout */
+            justify-content: center;
+            gap: 20px; /* Space between nav links */
+        }
+
+        nav a {
+            display: inline-block; /* Makes anchors behave like blocks for padding/borders */
+            padding: 10px 25px; /* More padding for button feel */
+            text-decoration: none;
+            font-size: 1.1rem; /* Slightly larger font */
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            color: var(--primary-color);
+            background: transparent;
+            cursor: pointer;
+            transition: background-color var(--animation-speed), color var(--animation-speed), box-shadow var(--animation-speed);
+        }
+
+        nav a:hover {
+            background: var(--accent-gradient);
+            color: var(--secondary-color);
+            border-color: transparent;
+            box-shadow: 0 0 8px var(--primary-color);
+            text-decoration: none; /* Remove underline on hover when it's a button */
+        }
+
+        main {
+            max-width: 1000px; /* Wider for a more spacious feel */
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(30, 39, 52, 0.8); /* Semi-transparent background */
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax for slightly larger blocks */
+            gap: 30px; /* Increased gap for more breathing room */
+        }
+
+        .stat-block {
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            padding: 25px; /* Increased padding */
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Consistent shadow */
+            transition: transform var(--animation-speed), box-shadow var(--animation-speed); /* Add transition for hover */
+        }
+
+        .stat-block:hover {
+            transform: translateY(-5px); /* Lift on hover */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6); /* Enhanced shadow on hover */
+        }
+
+        .stat-block h3 {
+            color: var(--primary-color);
+            font-size: 1.6rem; /* Larger heading */
+            margin-bottom: 15px; /* Spacing below heading */
+            border-bottom: 1px solid var(--border-color); /* Separator */
+            padding-bottom: 10px;
+            letter-spacing: 0.8px;
+        }
+
+        .stat-block p {
+            font-size: 1.2rem; /* Larger text for stats */
+            color: var(--text-color-primary); /* Ensure stats are easily readable */
+            font-weight: bold;
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: var(--text-color-secondary);
+            text-align: center;
+            padding: 30px 10px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Shadow for footer */
+        }
+
+        /* Subtle background animation (optional, from Jarvis dashboard) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+            animation: pulseBackground 10s infinite alternate;
+        }
+
+        @keyframes pulseBackground {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 0.3; transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Router Statistics</h1>
+        <p>Live metrics pulled from your MikroTik router.</p>
+        <nav>
+            <a href="/mt_router/vpn-control" class="nav-link" target="_blank">Vpn Control</a>
+            <a href="/mt_router/security" class="nav-link" target="_blank">Router Security</a>
+            <a href="/teach" class="nav-link" target="_blank">Train Jarvis</a>
+        </nav>
+    </div>
+    <main>
+        <div class="stats-container">
+            <div class="stat-block">
+                <h3>System Uptime</h3>
+                <p>Uptime: {{ stats.uptime or 'Loading...' }}</p>
+            </div>
+
+            <div class="stat-block">
+                <h3>Active Connections</h3>
+                <p>Active Connections: {{ stats.connections or 'Loading...' }}</p>
+            </div>
+
+            <div class="stat-block">
+                <h3>CPU Usage</h3>
+                <p>CPU Usage: {{ stats.cpu_usage or 'Loading...' }}</p>
+            </div>
+
+            <div class="stat-block">
+                <h3>RAM Usage</h3>
+                <p>RAM Usage: {{ stats.ram_usage or 'Loading...' }}</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 Jarvis AI - Engineered by Ekimtech.com</p>
+    </footer>
+</body>
+</html>

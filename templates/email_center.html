@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+  <title>Jarvis Email Center</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/email.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <h1>Jarvis Email Center</h1>
+    <p>Your futuristic AI companion brings you the latest email functions.</p>
+    <img src="{{ url_for('static', filename='images/JarvisLogo.png') }}" alt="Jarvis AI" width="128" height="128">
+  </header>
+
+  <main>
+    <section class="actions">
+      <h2>Recent Emails</h2>
+      <p>Debug: {{ emails|length }} emails loaded</p>
+
+      {% if emails %}
+        <div style="overflow-x:auto;">
+        <table class="jarvis-navigation">
+          <thead>
+            <tr>
+              <th>Sender</th>
+              <th>Subject</th>
+              <th>Body Preview</th>
+              <th>Attachments</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for email in emails %}
+              <tr>
+                <td>{{ email.sender }}</td>
+                <td>{{ email.subject }}</td>
+                <td>{{ email.body[:100] }}...</td>
+                <td>
+                  {% if email.attachments %}
+                    {% for attachment in email.attachments %}
+                      {{ attachment }}<br>
+                    {% endfor %}
+                  {% else %}
+                    None
+                  {% endif %}
+                </td>
+                <td>
+                  <!-- <a href="{{ url_for('email_bp.view_email', email_id=email.id) }}" class="btn">View</a> -->
+                  <form method="POST" action="{{ url_for('email_bp.move_email_to_saved_route') }}" style="display:inline;">
+                    <input type="hidden" name="email_id" value="{{ email.id }}">
+                    <button type="submit" class="btn">Save</button>
+                  </form>
+                  <form method="POST" action="{{ url_for('email_bp.delete_email_route') }}" style="display:inline;">
+                    <input type="hidden" name="email_id" value="{{ email.id }}">
+                    <button type="submit" class="btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        </div>
+      {% else %}
+        <p>No emails found.</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Jarvis AI - Engineered by Ekimtech.com</p>
+  </footer>
+
+  <script type="module" src="{{ url_for('static', filename='js/email.js') }}"></script>
+</body>
+</html>

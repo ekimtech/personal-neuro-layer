@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="apple-touch-icon" href="/static/images/JarvisLogo.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Jarvis">
+    <meta name="theme-color" content="#3bbcff">
+    <link rel="stylesheet" href="/static/css/face.css">
+    <title>Jarvis</title>
+</head>
+<body>
+
+    <!-- Face area — scales to fit any screen -->
+    <div id="face-wrapper">
+        <div id="face-container">
+            <div id="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <canvas id="mouth-canvas" width="260" height="40"></canvas>
+        </div>
+    </div>
+
+    <!-- Controls — always visible at bottom, outside face container -->
+    <div id="face-bottom">
+
+        <!-- Row 1: Text input -->
+        <div id="input-area">
+            <input id="userInput" placeholder="Talk to Jarvis..." autocomplete="off" />
+            <button onclick="sendToJarvis()">Send</button>
+        </div>
+
+        <!-- Row 2: Voice status -->
+        <div id="face-status">
+            <span id="faceStatusDot" class="status-dot green"></span>
+            <span id="faceStatusText">Listening for Jarvis...</span>
+        </div>
+
+        <!-- Row 3: Voice toggle -->
+        <div id="face-controls">
+            <button id="faceMicToggle">🎤 Voice On</button>
+            <button id="mobileMicBtn">🎙️ Tap to Talk</button>
+        </div>
+
+    </div>
+
+    <!-- Scale face to fit screen without breaking JS pixel-based eye/mouth positioning -->
+    <script>
+    function scaleFace() {
+        var container = document.getElementById('face-container');
+        var wrapper   = document.getElementById('face-wrapper');
+        var scale     = Math.min(1, (window.innerWidth * 0.96) / 400);
+        container.style.transform       = 'scale(' + scale + ')';
+        container.style.transformOrigin = 'top center';
+        // Shrink wrapper height to match scaled container so bottom controls stay visible
+        wrapper.style.height = Math.round(560 * scale) + 'px';
+    }
+    scaleFace();
+    window.addEventListener('resize', scaleFace);
+    </script>
+
+    <script src="/static/js/face.js"></script>
+
+    <footer style="text-align:center;padding:10px 0 6px;color:#333;font-size:0.78rem;border-top:1px solid #111;background:#000;">
+        &copy; 2026 Jarvis AI - Engineered by Ekimtech.com
+    </footer>
+</body>
+</html>

@@ -1,0 +1,223 @@
+/* ============================================================
+   Jarvis Face — Responsive CSS
+   Works on desktop, tablet, and phone.
+   Face scales via JS transform (preserves all pixel-based eye/mouth alignment)
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* ---------------------------------------------------------
+   Face Wrapper — contains the scaled face container
+--------------------------------------------------------- */
+#face-wrapper {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    /* Height is set dynamically by JS to match scaled container */
+}
+
+/* ---------------------------------------------------------
+   Face Container — fixed 400x560 design, scaled by JS transform
+   All eye/mouth pixel positions stay exactly as originally tuned
+--------------------------------------------------------- */
+#face-container {
+    width: 400px;
+    height: 560px;
+    position: relative;
+    flex-shrink: 0;
+    background-image: url("/static/images/jarvis_face.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+/* ---------------------------------------------------------
+   EYES — pixel positions preserved (JS scales via transform)
+--------------------------------------------------------- */
+#eyes {
+    position: absolute;
+    top: 204px;
+    left: 52%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+.eye {
+    width: 40px;
+    height: 20px;
+    background: #3bbcff;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.eye::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: black;
+    border-radius: 50%;
+    top: var(--py, 4px);
+    left: var(--px, 14px);
+    transition: top 0.08s ease, left 0.08s ease;
+}
+
+.eye.blink::after {
+    transform: scaleY(0.1);
+}
+
+/* ---------------------------------------------------------
+   MOUTH CANVAS — pixel position preserved
+--------------------------------------------------------- */
+#mouth-canvas {
+    position: absolute;
+    left: 51%;
+    top: 62%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: 40px;
+    pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   BOTTOM CONTROLS — outside face container, always visible
+--------------------------------------------------------- */
+#face-bottom {
+    padding: 14px 16px 10px;
+    background: #0a0a0a;
+    border-top: 1px solid #1a2233;
+}
+
+/* Input row */
+#input-area {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+#userInput {
+    flex: 1;
+    padding: 12px 14px;
+    font-size: 16px;   /* 16px prevents iOS Safari auto-zoom */
+    background: #111;
+    color: white;
+    border: 1px solid #3bbcff;
+    border-radius: 8px;
+    outline: none;
+}
+
+#userInput::placeholder { color: #555; }
+
+#input-area button {
+    padding: 12px 20px;
+    font-size: 15px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    min-width: 64px;
+}
+
+#input-area button:hover  { background: #1d4ed8; }
+#input-area button:active { background: #1e40af; }
+
+/* Voice status bar — row 2 */
+#face-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(45, 55, 72, 0.8);
+    border: 1px solid #4a5568;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+}
+
+#faceStatusText {
+    font-size: 13px;
+    color: #d1d5db;
+}
+
+/* Voice toggle + Tap to Talk row — row 3 */
+#face-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#faceMicToggle {
+    flex: 1;
+    padding: 12px 14px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+#faceMicToggle.mic-on,
+#faceMicToggle:not(.mic-off) { background: #16a34a; }
+#faceMicToggle.mic-on:hover  { background: #15803d; }
+#faceMicToggle.mic-off       { background: #dc2626; }
+#faceMicToggle.mic-off:hover { background: #b91c1c; }
+
+/* Tap to Talk button */
+#mobileMicBtn {
+    flex: 1;
+    padding: 12px 14px;
+    font-size: 15px;
+    background: #1a3a5c;
+    color: white;
+    border: 1px solid #3bbcff;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+#mobileMicBtn:hover     { background: #1e4976; }
+#mobileMicBtn.recording { background: #7f1d1d; border-color: #f87171; }
+
+/* ---------------------------------------------------------
+   STATUS DOT
+--------------------------------------------------------- */
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+.status-dot.green  { background: #4ade80; }
+.status-dot.yellow { background: #facc15; }
+.status-dot.blue   { background: #60a5fa; }
+.status-dot.purple { background: #c084fc; }
+.status-dot.red    { background: #f87171; animation: none; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+}

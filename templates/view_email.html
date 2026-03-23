@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ email.subject }} - Jarvis Email Viewer</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+  <style>
+    /* Reuse your futuristic styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1e2736;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 0;
+      background: linear-gradient(120deg, #30384d, #1e2736);
+      border-bottom: 2px solid #00bfff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #00bfff;
+      margin: 0;
+      text-shadow: 0 0 10px #00bfff;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #999;
+      margin-top: 10px;
+    }
+
+    .hero img {
+      margin-top: 20px;
+      filter: drop-shadow(0 0 5px #00bfff);
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(30, 39, 52, 0.85);
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .email-details h2 {
+      color: #00bfff;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #384459;
+      padding-bottom: 5px;
+    }
+
+    .email-details p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .attachments ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .attachments li {
+      margin-bottom: 10px;
+    }
+
+    .attachments a {
+      color: #00ff00;
+      text-decoration: none;
+    }
+
+    .attachments a:hover {
+      color: #ff4500;
+      text-decoration: underline;
+    }
+
+    .footer {
+      background: #1e2736;
+      color: #999;
+      text-align: center;
+      padding: 30px 10px;
+      border-top: 1px solid #384459;
+      font-size: 0.9rem;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid #00bfff;
+      color: #00bfff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .back-button:hover {
+      background: #00bfff;
+      color: #1e2736;
+      box-shadow: 0 0 8px #00bfff;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Jarvis Email Viewer</h1>
+    <p>Review your message below</p>
+    <img src="{{ url_for('static', filename='images/JarvisLogo.png') }}" alt="Jarvis AI" width="128" height="128">
+  </div>
+
+  <main>
+    <div class="email-details">
+      <h2>{{ email.subject }}</h2>
+      <p><strong>From:</strong> {{ email.sender }}</p>
+      <hr>
+      <p>{{ email.body }}</p>
+    </div>
+
+    {% if email.attachments %}
+      <div class="attachments">
+        <h3>Attachments</h3>
+        <ul>
+          {% for file in email.attachments %}
+            <li>
+              <a href="{{ url_for('email_bp.download_attachment', email_id=email.id, filename=file) }}" download>{{ file }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <a href="{{ url_for('email_bp.render_email') }}" class="back-button">← Back to Inbox</a>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Jarvis AI - Engineered by Ekimtech.com</p>
+  </footer>
+</body>
+</html>
+

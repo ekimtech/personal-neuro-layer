@@ -1,0 +1,73 @@
+[
+  {
+    "ip": "2a06:98c0:3600::103",
+    "reason": "3.0 legacy: wp-admin scanner",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "2a02:c206:2084:1838::1",
+    "reason": "3.0 legacy: ipv6 blacklist",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "45.130.164.71",
+    "reason": "3.0 legacy: wp-admin scanner",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "2405:201:4047:1e:15d8:654a:3333:59f4",
+    "reason": "3.0 legacy: xmlrpc probe",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "45.148.10.243",
+    "reason": "3.0 legacy: .env probe",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "104.236.233.231",
+    "reason": "3.0 legacy: .git/config probe",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "69.167.12.37",
+    "reason": "3.0 legacy: wp-admin scanner",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "45.148.10.238",
+    "reason": "3.0 legacy: .git/config probe",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "103.77.106.233",
+    "reason": "3.0 legacy: sftp-config.json probe",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "188.166.229.166",
+    "reason": "3.0 legacy: wp-admin scanner",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "191.96.227.200",
+    "reason": "3.0 legacy: wp-admin/xmlrpc probe",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "196.251.87.84",
+    "reason": "3.0 legacy: wlwmanifest/xmlrpc scan",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "167.71.253.243",
+    "reason": "3.0 legacy: suspicious JS scanner",
+    "source": "jarvis_3.0"
+  },
+  {
+    "ip": "185.177.72.30",
+    "reason": "Jarvis Scanner: Burst probe detected (14 hits)",
+    "source": "jarvis_4.0",
+    "timestamp": "2026-03-21T21:50:06.234601+00:00"
+  }
+]

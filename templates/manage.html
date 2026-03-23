@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Entries</title>
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+    <style>
+    /* Embedded CSS */
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(120deg, #2e3b4e, #1c1f26);
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* Apply box-sizing to the body */
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit; /* Inherit box-sizing for all elements */
+    }
+
+    .hero {
+        background-color: #1c1f26;
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 2px solid #007bff;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        color: #888; /* Dark gray title */
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        color: #aaa;
+    }
+
+    nav {
+        margin-top: 10px;
+        text-align: center; /* Center navigation links */
+    }
+
+    nav a {
+        color: #007bff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1.2rem;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    main {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Search and Add Buttons Container */
+    .controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        align-items: center; /* Vertically align search and add button */
+        flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    }
+
+    #search-box {
+        flex-grow: 1; /* Allow search box to take available width */
+        padding: 10px;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        background-color: #1c1f26;
+        color: #fff;
+        min-width: 200px; /* Prevent it from becoming too narrow */
+    }
+
+    /* Style for both "Add New Entry" and the "Search" button */
+    #add-entry,
+    .controls button,
+    main > button { /* Added selector for the "Search" button */
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        flex-shrink: 0; /* Prevent buttons from shrinking */
+    }
+
+    #add-entry:hover, /* Added hover for the "Add New Entry" button */
+    .controls button:hover,
+    main > button:hover { /* Added hover style for the "Search" button */
+        background-color: #0056b3;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table thead {
+        background-color: #007bff;
+    }
+
+    table thead th {
+        color: #fff;
+        text-align: left;
+        padding: 10px;
+    }
+
+    table tbody td {
+        background-color: #1c1f26;
+        padding: 10px;
+        border: 1px solid #444;
+        color: #fff;
+    }
+
+    table tbody tr:nth-child(even) {
+        background-color: #2e3b4e;
+    }
+
+    table a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    table a:hover {
+        text-decoration: underline;
+    }
+
+    .edit-form-question,
+    .edit-form-answer {
+        margin-top: 5px;
+    }
+
+    .edit-question-textarea,
+    .edit-answer-textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 5px;
+        border: 1px solid #666;
+        border-radius: 3px;
+        background-color: #333;
+        color: #fff;
+        box-sizing: border-box;
+    }
+
+    .save-question-btn,
+    .cancel-edit-question-btn,
+    .save-answer-btn,
+    .cancel-edit-btn,
+    .edit-answer-btn,
+    .edit-question-btn,
+    .delete-btn {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    .save-question-btn,
+    .save-answer-btn {
+        background-color: #28a745;
+    }
+
+    .cancel-edit-question-btn,
+    .cancel-edit-btn {
+        background-color: #dc3545;
+    }
+
+    .edit-answer-btn,
+    .edit-question-btn {
+        background-color: #ffc107;
+        color: #212529;
+    }
+
+    .delete-btn {
+        background-color: #d9534f;
+    }
+
+    footer {
+        background-color: #1c1f26;
+        color: #007bff;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+
+    /* Responsive Table Handling */
+    @media (max-width: 768px) {
+        table {
+            display: block;
+            overflow-x: auto;
+        }
+
+        table thead tr {
+            display: flex;
+        }
+
+        table tbody tr {
+            display: block;
+        }
+
+        table th, table td {
+            min-width: 200px; /* Adjust based on content */
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #555;
+        }
+
+        /* Style for stacked rows */
+        table tbody tr {
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #555;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .controls {
+            flex-direction: column; /* Stack search and add button */
+            align-items: stretch; /* Make them full width */
+        }
+
+        #search-box {
+            min-width: auto;
+        }
+
+        #add-entry,
+        .controls button,
+        main > button { /* Apply full width to Search button too */
+            width: 100%;
+            margin-right: 0; /* Remove right margin when stacked */
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Manage Entries</h1>
+        <p>Easily add, edit, or delete knowledge entries for Jarvis.</p>
+        <nav>
+            <a href="{{ url_for('jan_bp.talk_to_jarvis_page') }}" class="nav-link" target="_blank">Talk To Jarvis</a>
+             </nav>
+    </div>
+
+    <main>
+        <input type="text" id="search-box" placeholder="Enter a question to search..." />
+        <button onclick="searchEntries()">Search</button>
+        <button id="add-entry">Add New Entry</button>
+        <button id="view-all-button">View All Entries</button>
+
+        <p>DEBUG: Search returned {{ entries | length }} results</p>
+        <table id="entries-table">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="entries-table-body">
+                {% if search_query and entries %}
+                    {% for entry in entries %}
+                    <tr class="entry-row">
+                        <td>
+                            <span class="question-text">{{ entry[0] }}</span>
+                            <div class="edit-form-question" style="display: none;">
+                                <textarea class="edit-question-textarea">{{ entry[0] }}</textarea>
+                                <button class="save-question-btn" data-original-question="{{ entry[0] }}">Save Question</button>
+                                <button class="cancel-edit-question-btn">Cancel</button>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="answer-text">{{ entry[1] }}</span>
+                            <div class="edit-form-answer" style="display: none;">
+                                <textarea class="edit-answer-textarea">{{ entry[1] }}</textarea>
+                                <button class="save-answer-btn" data-original-question="{{ entry[0] }}">Save Answer</button>
+                                <button class="cancel-edit-btn">Cancel</button>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="edit-answer-btn" data-question="{{ entry[0] }}">Edit Answer</button>
+                            <button class="edit-question-btn" data-question="{{ entry[0] }}">Edit Question</button>
+                            <button class="delete-btn" data-question="{{ entry[0] }}">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" style="text-align: center;">No entries found.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Jarvis AI - Engineered by Ekimtech.com</p>
+    </footer>
+
+    <script src="/static/js/manage.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis Vector DB Manager</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <!-- Removed Tailwind CSS link as custom CSS will now handle styling -->
+    <!-- Removed main.css link as custom CSS will now handle styling -->
+    <style>
+        /* Futuristic High-Tech Styling from Jarvis Dashboard */
+        :root {
+            --primary-color: #00bfff; /* Electric blue/cyan */
+            --secondary-color: #1e2736; /* Deeper dark background */
+            --text-color-primary: #e0e0e0; /* Light gray text */
+            --text-color-secondary: #999; /* Medium gray text */
+            --border-color: #384459; /* Darker border */
+            --accent-gradient: linear-gradient(90deg, var(--primary-color) 0%, #6dd5ed 50%, var(--primary-color) 100%);
+            --animation-speed: 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
+            background: var(--secondary-color);
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 0;
+            /* overflow: hidden; Removed to allow scrolling */
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(120deg, #30384d, var(--secondary-color));
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-color-secondary);
+            margin: 15px 0 0 0;
+            font-weight: 300;
+        }
+
+        .hero img {
+            margin-top: 25px;
+            filter: drop-shadow(0 0 5px var(--primary-color));
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .main-content-area { /* Renamed from 'main' to avoid conflict with HTML tag, styled as the main container */
+            max-width: 1000px; /* Wider for a more spacious feel */
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(30, 39, 52, 0.8); /* Semi-transparent background */
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Controls/Search section styling - adapted from .nav-block */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px; /* Increased gap for better spacing */
+            margin-bottom: 30px; /* More space below controls */
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .controls input[type="text"],
+        .controls select { /* Added select for filter dropdown */
+            flex-grow: 1;
+            padding: 12px; /* Larger padding */
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            background: #1c1f26; /* Darker input background */
+            color: var(--text-color-primary);
+            font-size: 1.1rem;
+            transition: border-color var(--animation-speed);
+        }
+
+        .controls input[type="text"]:focus,
+        .controls select:focus {
+            outline: none;
+            border-color: #6dd5ed; /* Lighter border on focus */
+            box-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .controls button {
+            padding: 10px 25px; /* More padding for buttons */
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            color: var(--primary-color);
+            background: transparent;
+            cursor: pointer;
+            transition: background-color var(--animation-speed), color var(--animation-speed);
+            font-size: 1.1rem;
+            flex-shrink: 0; /* Prevent buttons from shrinking */
+        }
+
+        .controls button:hover {
+            background: var(--accent-gradient);
+            color: var(--secondary-color);
+            border-color: transparent;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+
+        /* Table Styling - aligned with futuristic theme */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px; /* Rounded corners for the table */
+            overflow: hidden; /* Ensures rounded corners apply to content */
+        }
+
+        th, td {
+            padding: 15px; /* More padding */
+            border: 1px solid var(--border-color); /* Darker borders */
+            text-align: left;
+        }
+
+        thead {
+            background: var(--primary-color); /* Primary color header */
+            color: var(--secondary-color); /* Dark text on primary color */
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        tbody tr {
+            background: var(--secondary-color);
+            transition: background-color var(--animation-speed);
+        }
+
+        tbody tr:nth-child(even) {
+            background: #1a222e; /* Slightly different shade for even rows */
+        }
+
+        tbody tr:hover {
+            background: rgba(0, 191, 255, 0.1); /* Light blue highlight on hover */
+        }
+
+        td code {
+            color: var(--primary-color); /* Highlight code-like IDs */
+            font-weight: bold;
+        }
+
+        .action-buttons button { /* Specific styling for action buttons in table */
+            background: #007bff; /* Blue for edit/view */
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color var(--animation-speed);
+            margin-right: 5px; /* Space between buttons */
+        }
+
+        .action-buttons button:hover {
+            background: #0056b3; /* Darker blue on hover */
+        }
+
+        .action-buttons button.delete-btn { /* Red for delete button */
+            background: #d9534f;
+        }
+
+        .action-buttons button.delete-btn:hover {
+            background: #c9302c;
+        }
+
+        .pagination {
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            margin-top: 30px;
+            padding: 15px;
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .pagination a, .pagination span { /* Apply styles to both links and current page span */
+            color: var(--primary-color); /* Primary color for pagination links */
+            margin: 0 15px; /* More spacing */
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 12px; /* Add padding for clickable area */
+            border-radius: 5px;
+            transition: color var(--animation-speed), text-shadow var(--animation-speed), background-color var(--animation-speed);
+        }
+
+        .pagination a:hover {
+            text-decoration: underline;
+            color: #6dd5ed; /* Lighter blue on hover */
+            text-shadow: 0 0 5px var(--primary-color);
+            background-color: rgba(0, 191, 255, 0.1); /* Subtle background on hover */
+        }
+
+        .pagination span.current {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            font-weight: bold;
+            cursor: default;
+        }
+        .pagination span.opacity-50 { /* Style for disabled "Previous/Next" */
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+
+        footer {
+            background: var(--secondary-color);
+            color: var(--text-color-secondary);
+            text-align: center;
+            padding: 30px 10px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Shadow for footer */
+        }
+
+        /* Subtle background animation (optional, from Jarvis page) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+            animation: pulseBackground 10s infinite alternate;
+            z-index: -1; /* Ensure it's behind content */
+        }
+
+        @keyframes pulseBackground {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 0.3; transform: scale(1.1); }
+        }
+
+        /* Flash messages */
+        .flash-message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .flash-message.success {
+            background-color: #28a745; /* Green */
+            color: #e6fffa;
+        }
+        .flash-message.danger {
+            background-color: #dc3545; /* Red */
+            color: #fed7d7;
+        }
+        .flash-message.info {
+            background-color: #007bff; /* Blue */
+            color: #e0e0e0;
+        }
+
+        /* Modal for Full Content View */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: var(--secondary-color);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+            position: relative;
+            border: 2px solid var(--primary-color);
+        }
+        .close-button {
+            color: var(--primary-color);
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color var(--animation-speed);
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #6dd5ed;
+            text-decoration: none;
+        }
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-wrap: break-word; /* Break long words */
+            background-color: #1a222e; /* Darker background for content */
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid var(--border-color);
+            color: var(--text-color-primary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .modal-content h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .modal-content p {
+            color: var(--text-color-secondary);
+            font-size: 0.9rem;
+        }
+
+
+        /* Responsive Table Handling */
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            table thead tr {
+                display: flex;
+            }
+
+            table tbody tr {
+                display: block;
+            }
+
+            table th, table td {
+                min-width: 200px; /* Adjust based on content */
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            /* Style for stacked rows */
+            table tbody tr {
+                margin-bottom: 10px;
+                border-radius: 5px;
+                border: 1px solid var(--border-color);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .controls {
+                flex-direction: column; /* Stack search and add button */
+                align-items: stretch; /* Make them full width */
+            }
+
+            .controls input[type="text"],
+            .controls select,
+            .controls button {
+                width: 100%;
+                margin-right: 0; /* Remove right margin when stacked */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Jarvis Vector DB Manager</h1>
+        <p>Review, filter, and manage Jarvis's document knowledge</p>
+        <img src="{{ url_for('static', filename='images/JarvisLogo.png') }}" alt="Jarvis AI" width="128" height="128">
+    </div>
+
+    <div class="main-content-area">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="mb-4">
+                    {% for category, message in messages %}
+                        <li class="flash-message {{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <div class="controls">
+            <input type="text" id="search_input" placeholder="Search content..." value="{{ search_query }}">
+            <select id="file_type_filter">
+                <option value="">All Types</option>
+                {% for ft in file_types %}
+                    <option value="{{ ft }}" {% if filter_file_type == ft %}selected{% endif %}>.{{ ft }}</option>
+                {% endfor %}
+            </select>
+            <button onclick="applyFilters()">Apply Filters</button>
+            <button onclick="clearFilters()">Clear Filters</button>
+            <button onclick="confirmClearAll()" class="delete-btn">Clear All DB Entries</button>
+        </div>
+
+        <p class="text-gray-400 mb-4">Total Documents in Vector DB: {{ total_documents }}</p>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID (Snippet)</th>
+                        <th>Filename</th>
+                        <th>Type</th>
+                        <th>Chunk Index</th>
+                        <th>Content Preview</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for doc in documents %}
+                    <tr>
+                        <td><code>{{ doc.id[:8] }}...</code></td>
+                        <td>{{ doc.filename }}</td>
+                        <td>{{ doc.file_type }}</td>
+                        <td>{{ doc.chunk_index }}</td>
+                        <td>{{ doc.content_preview }}</td>
+                        <td class="action-buttons whitespace-nowrap">
+                            <button onclick="viewFullContent('{{ doc.id }}', `{{ doc.full_content | escape | safe }}`)">View</button>
+                            <button onclick="deleteEntry('{{ doc.id }}')" class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center py-4 text-gray-400">No documents found in the vector database matching your criteria.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="{{ url_for('documents_bp.vector_db_manager', page=page-1, search=search_query, file_type=filter_file_type) }}">Previous</a>
+            {% else %}
+                <span class="opacity-50 cursor-not-allowed">Previous</span>
+            {% endif %}
+
+            {% for p in range(1, total_pages + 1) %}
+                {% if p == page %}
+                    <span class="current">{{ p }}</span>
+                {% else %}
+                    <a href="{{ url_for('documents_bp.vector_db_manager', page=p, search=search_query, file_type=filter_file_type) }}">{{ p }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page < total_pages %}
+                <a href="{{ url_for('documents_bp.vector_db_manager', page=page+1, search=search_query, file_type=filter_file_type) }}">Next</a>
+            {% else %}
+                <span class="opacity-50 cursor-not-allowed">Next</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- The Modal for Full Content View -->
+    <div id="contentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 class="text-xl font-bold mb-2">Full Document Chunk Content</h3>
+            <p class="text-gray-400 text-sm mb-2">ID: <span id="modalChunkId"></span></p>
+            <div id="modalContentBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Jarvis AI - Engineered by Ekimtech.com</p>
+    </footer>
+
+    <script>
+        // Function to view full content in a modal
+        function viewFullContent(id, content) {
+            document.getElementById('modalChunkId').textContent = id;
+            document.getElementById('modalContentBody').textContent = content;
+            document.getElementById('contentModal').style.display = 'flex'; // Use flex to center
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('contentModal').style.display = 'none';
+        }
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('contentModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to apply search and filter
+        function applyFilters() {
+            const search = document.getElementById('search_input').value;
+            const fileType = document.getElementById('file_type_filter').value;
+            window.location.href = `{{ url_for('jarvis_bp.vector_db_manager') }}?page=1&search=${encodeURIComponent(search)}&file_type=${encodeURIComponent(fileType)}`;
+        }
+
+        // Function to clear filters
+        function clearFilters() {
+            window.location.href = `{{ url_for('jarvis_bp.vector_db_manager') }}?page=1`;
+        }
+
+        // Function to delete an entry
+        function deleteEntry(chunkId) {
+            if (confirm(`Are you sure you want to delete the document chunk with ID: ${chunkId}? This action cannot be undone.`)) {
+                fetch(`/documents/delete_vector_db_entry/${chunkId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                        location.reload(); // Reload the page to reflect changes
+                    } else {
+                        alert(`Error: ${data.error}`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while deleting the entry.');
+                });
+            }
+        }
+
+        // Function to confirm clearing all entries
+        function confirmClearAll() {
+            if (confirm("WARNING: This will delete ALL documents from your vector database. This action cannot be undone. Are you absolutely sure?")) {
+                if (confirm("Seriously, this will erase everything. Confirm one last time to proceed.")) {
+                    fetch('/documents/clear_vector_db', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            alert(data.message);
+                            location.reload(); // Reload the page to reflect changes
+                        } else {
+                            alert(`Error: ${data.error}`);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while clearing the database.');
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis NAS Control Panel</title>
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+    <style>
+        /* Using your existing futuristic theme */
+        :root {
+            --primary-color: #00bfff;
+            --secondary-color: #1e2736;
+            --text-color-primary: #e0e0e0;
+            --border-color: #384459;
+            --accent-gradient: linear-gradient(90deg, var(--primary-color) 0%, #6dd5ed 50%, var(--primary-color) 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--secondary-color);
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 0 8px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(120deg, #30384d, var(--secondary-color));
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .nas-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(30, 39, 52, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .nas-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .nas-stats {
+            font-size: 1.2rem;
+            padding: 20px;
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            min-height: 150px;
+        }
+
+        .refresh-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            color: var(--primary-color);
+            background: transparent;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .refresh-btn:hover {
+            background: var(--accent-gradient);
+            color: var(--secondary-color);
+            border-color: transparent;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+    </style>
+    <script>
+        function fetchNasStats() {
+            fetch('/sys/nas_stats')
+                .then(response => response.text())
+                .then(data => document.getElementById('nas-stats').innerHTML = data)
+                .catch(error => console.error('Error fetching NAS stats:', error));
+        }
+
+        // Auto-refresh stats every 5 seconds
+        setInterval(fetchNasStats, 5000);
+    </script>
+</head>
+<body>
+    <header class="hero">
+        <h1>Jarvis NAS Control Panel</h1>
+        <p>Live system statistics and monitoring</p>
+    </header>
+
+    <main>
+        <div class="nas-container">
+            <h2>NAS System Stats</h2>
+            <div id="nas-stats" class="nas-stats">
+                <p>Loading NAS statistics...</p>
+            </div>
+            <button class="refresh-btn" onclick="fetchNasStats()">Refresh Stats</button>
+        </div>
+    </main>
+<footer style="text-align:center;padding:18px 0 12px;color:#777;font-size:0.82rem;border-top:1px solid #2d3a52;margin-top:30px;">
+    &copy; 2026 Jarvis AI - Engineered by Ekimtech.com
+</footer>
+</body>
+</html>
+

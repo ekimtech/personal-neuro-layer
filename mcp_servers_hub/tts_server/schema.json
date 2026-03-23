@@ -1,0 +1,21 @@
+{
+  "tools": {
+    "tts": {
+      "description": "Generate speech audio using Piper",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text to synthesize into speech"
+          },
+          "voice": {
+            "type": "string",
+            "description": "Voice model name (without .onnx extension)"
+          }
+        },
+        "required": ["text"]
+      }
+    }
+  }
+}

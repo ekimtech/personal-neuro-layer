@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jarvis — Create Invoice</title>
+  <style>
+    :root {
+      --primary: #00bfff;
+      --bg: #1e2736;
+      --card: rgba(30,39,52,0.9);
+      --border: #384459;
+      --text: #e0e0e0;
+      --muted: #999;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
+    .hero {
+      text-align: center; padding: 30px 0;
+      background: linear-gradient(120deg, #30384d, var(--bg));
+      border-bottom: 2px solid var(--primary);
+    }
+    .hero h1 { font-size: 2.2rem; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+    .hero p  { color: var(--muted); margin-top: 8px; }
+    main { max-width: 860px; margin: 30px auto; padding: 0 20px 40px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 28px; margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+    .card h2 { color: var(--primary); font-size: 1.2rem; margin-bottom: 18px;
+               border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) {
+        .grid-2 { grid-template-columns: 1fr; }
+    }
+    label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 5px; }
+    input, textarea, select {
+      width: 100%; padding: 9px 12px; background: #131a24;
+      border: 1px solid var(--border); border-radius: 5px;
+      color: var(--text); font-size: 0.95rem;
+    }
+    input:focus, textarea:focus { border-color: var(--primary); outline: none;
+      box-shadow: 0 0 6px rgba(0,191,255,0.3); }
+    textarea { resize: vertical; min-height: 70px; }
+    /* Line items table */
+    .items-table { width: 100%; border-collapse: collapse; }
+    .items-table th {
+      background: #253040; color: var(--primary); text-align: left;
+      padding: 10px 8px; font-size: 0.85rem; border-bottom: 1px solid var(--border);
+    }
+    .items-table td { padding: 6px 4px; vertical-align: middle; }
+    .items-table td input { padding: 7px 8px; }
+    .items-table .line-total { color: var(--primary); font-weight: bold;
+      text-align: right; padding-right: 10px; white-space: nowrap; }
+    .btn-add { margin-top: 12px; padding: 8px 18px; background: transparent;
+      border: 1px solid var(--primary); color: var(--primary); border-radius: 5px;
+      cursor: pointer; font-size: 0.9rem; transition: all .2s; }
+    .btn-add:hover { background: var(--primary); color: var(--bg); }
+    .btn-remove { padding: 5px 10px; background: transparent; border: 1px solid #c0392b;
+      color: #e74c3c; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+    .btn-remove:hover { background: #c0392b; color: #fff; }
+    .total-row { text-align: right; font-size: 1.3rem; font-weight: bold;
+      color: var(--primary); padding: 14px 0; }
+    .btn-submit {
+      width: 100%; padding: 14px; background: transparent;
+      border: 2px solid var(--primary); color: var(--primary);
+      border-radius: 8px; font-size: 1.1rem; cursor: pointer;
+      transition: all .25s; letter-spacing: 1px;
+    }
+    .btn-submit:hover { background: var(--primary); color: var(--bg);
+      box-shadow: 0 0 16px rgba(0,191,255,0.5); }
+    footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 20px; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Create Invoice</h1>
+    <p>Ekillib Services, LLC — Powered by Jarvis</p>
+  </div>
+
+  <main>
+    <form method="POST" action="/documents/invoice/generate" target="_blank">
+
+      <!-- Customer Info -->
+      <div class="card">
+        <h2>Customer Information</h2>
+        <div class="grid-2">
+          <div>
+            <label>Customer Name *</label>
+            <input type="text" name="recipient_name" required placeholder="Full name">
+          </div>
+          <div>
+            <label>Invoice Date *</label>
+            <input type="date" name="invoice_date" value="{{ today }}" required>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <label>Customer Address</label>
+          <textarea name="recipient_address" rows="2" placeholder="Street, City, State ZIP"></textarea>
+        </div>
+      </div>
+
+      <!-- Line Items -->
+      <div class="card">
+        <h2>Services / Items</h2>
+        <div style="overflow-x:auto;">
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th style="width:45%">Description</th>
+              <th style="width:12%">Qty</th>
+              <th style="width:16%">Unit Price</th>
+              <th style="width:14%">Line Total</th>
+              <th style="width:13%"></th>
+            </tr>
+          </thead>
+          <tbody id="items-body">
+            <tr>
+              <td><input type="text" name="description[]" required placeholder="Service description"></td>
+              <td><input type="number" name="quantity[]" min="0.01" step="0.01" value="1" oninput="calcTotal()" required></td>
+              <td><input type="number" name="unit_price[]" min="0.01" step="0.01" placeholder="0.00" oninput="calcTotal()" required></td>
+              <td class="line-total">$0.00</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <button type="button" class="btn-add" onclick="addRow()">+ Add Item</button>
+        <div class="total-row">Total: <span id="grand-total">$0.00</span></div>
+      </div>
+
+      <!-- Notes & Signature -->
+      <div class="card">
+        <h2>Additional Details</h2>
+        <div class="grid-2">
+          <div>
+            <label>Notes (optional)</label>
+            <textarea name="notes" placeholder="Payment terms, thank you note..."></textarea>
+          </div>
+          <div>
+            <label>Authorized Signature</label>
+            <input type="text" name="signature" value="Your Name">
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Generate Invoice →</button>
+    </form>
+  </main>
+
+  <footer>&copy; 2026 Jarvis AI - Engineered by Ekimtech.com</footer>
+
+  <script>
+    function addRow() {
+      const tbody = document.getElementById('items-body');
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td><input type="text" name="description[]" required placeholder="Service description"></td>
+        <td><input type="number" name="quantity[]" min="0.01" step="0.01" value="1" oninput="calcTotal()" required></td>
+        <td><input type="number" name="unit_price[]" min="0.01" step="0.01" placeholder="0.00" oninput="calcTotal()" required></td>
+        <td class="line-total">$0.00</td>
+        <td><button type="button" class="btn-remove" onclick="removeRow(this)">Remove</button></td>
+      `;
+      tbody.appendChild(row);
+    }
+
+    function removeRow(btn) {
+      btn.closest('tr').remove();
+      calcTotal();
+    }
+
+    function calcTotal() {
+      let grand = 0;
+      document.querySelectorAll('#items-body tr').forEach(row => {
+        const qty   = parseFloat(row.querySelector('[name="quantity[]"]')?.value) || 0;
+        const price = parseFloat(row.querySelector('[name="unit_price[]"]')?.value) || 0;
+        const line  = qty * price;
+        grand += line;
+        row.querySelector('.line-total').textContent = '$' + line.toFixed(2);
+      });
+      document.getElementById('grand-total').textContent = '$' + grand.toFixed(2);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Letter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+            color: #333;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo img {
+            width: 200px;
+        }
+        .letter-content {
+            max-width: 800px;
+            margin: auto;
+        }
+        .subject {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .signature {
+            margin-top: 40px;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #eee;
+            margin: 20px 0;
+        }
+           @media print {
+        button {
+            display: none;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div style="text-align: right; margin-bottom: 20px;">
+    <button onclick="window.print()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">🖨️ Print Letter</button>
+</div>
+     <div class="logo">
+        <img src="{{ logo_base64 }}" alt="Ekillib Servces, llc Logo">
+    </div>
+
+    <div class="letter-content">
+        <h2>{{ recipient_name }}</h2>
+        <p>{{ recipient_address }}</p>
+
+        <div class="subject">
+            Subject: {{ subject }}
+        </div>
+
+        <p>Dear {{ salutation }},</p>
+
+        <div>
+            {% for paragraph in body_paragraphs %}
+                <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+
+        <p class="signature">
+            {{ closing }}<br>
+            {{ signature }}
+        </p>
+    </div>
+
+    <div class="footer">
+        Your Business Name | Your Address | Your Phone | your@email.com
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set the document title based on the letter details
+        const recipientName = "{{ recipient_name | default('Letter') }}"; // fallback if blank
+        document.title = recipientName + ' - Letter';
+    });
+</script>
+</body>
+</html>
+

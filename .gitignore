@@ -1,0 +1,58 @@
+# === Jarvis Personal Neuro Layer — .gitignore ===
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Credentials — NEVER commit these
+mcp_servers_hub/home_assistant_server/ha_config.py
+mcp_servers_hub/crypto_wallet_server/wallet_config.py
+mcp_servers_hub/crypto_wallet_server/wallet.seed
+mcp_servers_hub/login_security/auth_config.py
+mcp_servers_hub/mikrotik_server/mikrotik_config.py
+mcp_servers_hub/qnap_server/qnap_config.py
+mcp_servers_hub/email_server/.env
+
+# SSL certificates
+certs/
+
+# Personal memory data
+mcp_servers_hub/memory_servers/jsonl_server/storage/memory_core.jsonl
+mcp_servers_hub/memory_servers/vector_db/
+
+# Runtime / generated files
+output.wav
+miss_log.json
+signal_log.json
+trade_tracking.json
+price_history.json
+ip_blacklist.json
+*.log
+
+# Uploaded documents (user's personal files)
+uploads/
+documents/
+templates/documents/
+static/attachments/
+static/output.wav
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Claude Code settings (machine-specific)
+.claude/

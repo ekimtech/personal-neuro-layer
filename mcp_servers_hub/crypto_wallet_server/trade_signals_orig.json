@@ -1,0 +1,3034 @@
+[
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265953,
+    "change_24h": -2.07,
+    "ema_short": 0.26563,
+    "ema_long": null,
+    "reason": "Building price history. Have 19/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-19T14:57:49.807495+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266069,
+    "change_24h": -2.02,
+    "ema_short": 0.265776,
+    "ema_long": 0.265561,
+    "reason": "Fast EMA (0.2658) crossed above Slow EMA (0.2656) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.266069,
+      "stop_loss": 0.2581,
+      "take_profit": 0.2794
+    },
+    "timestamp": "2026-03-19T14:59:49.866901+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266171,
+    "change_24h": -1.92,
+    "ema_short": 0.265908,
+    "ema_long": 0.265619,
+    "reason": "Fast EMA (0.2659) crossed above Slow EMA (0.2656) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.266171,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-19T15:01:49.869604+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265967,
+    "change_24h": -1.99,
+    "ema_short": 0.265928,
+    "ema_long": 0.265653,
+    "reason": "Fast EMA (0.2659) crossed above Slow EMA (0.2657) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.265967,
+      "stop_loss": 0.258,
+      "take_profit": 0.2793
+    },
+    "timestamp": "2026-03-19T15:03:49.802914+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266093,
+    "change_24h": -1.85,
+    "ema_short": 0.265983,
+    "ema_long": 0.265694,
+    "reason": "Fast EMA (0.2660) crossed above Slow EMA (0.2657) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.266093,
+      "stop_loss": 0.2581,
+      "take_profit": 0.2794
+    },
+    "timestamp": "2026-03-19T15:05:49.855319+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266345,
+    "change_24h": -1.75,
+    "ema_short": 0.266104,
+    "ema_long": 0.265756,
+    "reason": "Fast EMA (0.2661) crossed above Slow EMA (0.2658) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.266345,
+      "stop_loss": 0.2584,
+      "take_profit": 0.2797
+    },
+    "timestamp": "2026-03-19T15:07:49.881854+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266359,
+    "change_24h": -1.75,
+    "ema_short": 0.266189,
+    "ema_long": 0.265814,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2658) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.266359,
+      "stop_loss": 0.2584,
+      "take_profit": 0.2797
+    },
+    "timestamp": "2026-03-19T15:09:49.845150+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266188,
+    "change_24h": -2.01,
+    "ema_short": 0.266188,
+    "ema_long": 0.265849,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2658) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.266188,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-19T15:11:49.834684+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266192,
+    "change_24h": -2.01,
+    "ema_short": 0.26619,
+    "ema_long": 0.265882,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2659) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.266192,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-19T15:13:49.872513+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266145,
+    "change_24h": -2.03,
+    "ema_short": 0.266175,
+    "ema_long": 0.265907,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2659) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.266145,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-19T15:15:49.557611+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265988,
+    "change_24h": -2.0,
+    "ema_short": 0.266113,
+    "ema_long": 0.265915,
+    "reason": "Fast EMA (0.2661) crossed above Slow EMA (0.2659) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.265988,
+      "stop_loss": 0.258,
+      "take_profit": 0.2793
+    },
+    "timestamp": "2026-03-19T15:17:49.557079+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265892,
+    "change_24h": -2.03,
+    "ema_short": 0.266039,
+    "ema_long": 0.265913,
+    "reason": "Fast EMA (0.2660) crossed above Slow EMA (0.2659) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.265892,
+      "stop_loss": 0.2579,
+      "take_profit": 0.2792
+    },
+    "timestamp": "2026-03-19T15:19:49.732897+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.265172,
+    "change_24h": -2.3,
+    "ema_short": 0.26575,
+    "ema_long": 0.265842,
+    "reason": "Fast EMA (0.2657) crossed below Slow EMA (0.2658) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.265172,
+      "stop_loss": 0.2731,
+      "take_profit": 0.2519
+    },
+    "timestamp": "2026-03-19T15:21:49.571948+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264846,
+    "change_24h": -2.42,
+    "ema_short": 0.265449,
+    "ema_long": 0.265747,
+    "reason": "Fast EMA (0.2654) crossed below Slow EMA (0.2657) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264846,
+      "stop_loss": 0.2728,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-19T15:23:49.666993+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.26435,
+    "change_24h": -2.61,
+    "ema_short": 0.265082,
+    "ema_long": 0.265614,
+    "reason": "Fast EMA (0.2651) crossed below Slow EMA (0.2656) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.26435,
+      "stop_loss": 0.2723,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-19T15:25:49.470887+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264062,
+    "change_24h": -2.72,
+    "ema_short": 0.264742,
+    "ema_long": 0.265466,
+    "reason": "Fast EMA (0.2647) crossed below Slow EMA (0.2655) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264062,
+      "stop_loss": 0.272,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-19T15:27:49.584162+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263878,
+    "change_24h": -2.79,
+    "ema_short": 0.264454,
+    "ema_long": 0.265315,
+    "reason": "Fast EMA (0.2645) crossed below Slow EMA (0.2653) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263878,
+      "stop_loss": 0.2718,
+      "take_profit": 0.2507
+    },
+    "timestamp": "2026-03-19T15:29:49.513959+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263727,
+    "change_24h": -2.97,
+    "ema_short": 0.264212,
+    "ema_long": 0.265164,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2652) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263727,
+      "stop_loss": 0.2716,
+      "take_profit": 0.2505
+    },
+    "timestamp": "2026-03-19T15:31:49.532929+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263715,
+    "change_24h": -2.97,
+    "ema_short": 0.264046,
+    "ema_long": 0.265026,
+    "reason": "Fast EMA (0.2640) crossed below Slow EMA (0.2650) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263715,
+      "stop_loss": 0.2716,
+      "take_profit": 0.2505
+    },
+    "timestamp": "2026-03-19T15:33:49.540750+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263712,
+    "change_24h": -2.97,
+    "ema_short": 0.263935,
+    "ema_long": 0.264901,
+    "reason": "Fast EMA (0.2639) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263712,
+      "stop_loss": 0.2716,
+      "take_profit": 0.2505
+    },
+    "timestamp": "2026-03-19T15:35:49.548982+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263718,
+    "change_24h": -2.97,
+    "ema_short": 0.263863,
+    "ema_long": 0.264788,
+    "reason": "Fast EMA (0.2639) crossed below Slow EMA (0.2648) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263718,
+      "stop_loss": 0.2716,
+      "take_profit": 0.2505
+    },
+    "timestamp": "2026-03-19T15:37:49.532119+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263739,
+    "change_24h": -2.96,
+    "ema_short": 0.263821,
+    "ema_long": 0.264688,
+    "reason": "Fast EMA (0.2638) crossed below Slow EMA (0.2647) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263739,
+      "stop_loss": 0.2717,
+      "take_profit": 0.2506
+    },
+    "timestamp": "2026-03-19T15:39:49.523154+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263908,
+    "change_24h": -2.84,
+    "ema_short": 0.26385,
+    "ema_long": 0.264614,
+    "reason": "Fast EMA (0.2638) crossed below Slow EMA (0.2646) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263908,
+      "stop_loss": 0.2718,
+      "take_profit": 0.2507
+    },
+    "timestamp": "2026-03-19T15:41:49.572208+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.26386,
+    "change_24h": -2.86,
+    "ema_short": 0.263853,
+    "ema_long": 0.264542,
+    "reason": "Fast EMA (0.2639) crossed below Slow EMA (0.2645) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.26386,
+      "stop_loss": 0.2718,
+      "take_profit": 0.2507
+    },
+    "timestamp": "2026-03-19T15:43:49.513057+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263802,
+    "change_24h": -2.88,
+    "ema_short": 0.263836,
+    "ema_long": 0.264472,
+    "reason": "Fast EMA (0.2638) crossed below Slow EMA (0.2645) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263802,
+      "stop_loss": 0.2717,
+      "take_profit": 0.2506
+    },
+    "timestamp": "2026-03-19T15:45:49.573755+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263783,
+    "change_24h": -2.87,
+    "ema_short": 0.263819,
+    "ema_long": 0.264406,
+    "reason": "Fast EMA (0.2638) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263783,
+      "stop_loss": 0.2717,
+      "take_profit": 0.2506
+    },
+    "timestamp": "2026-03-19T15:47:49.509802+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263916,
+    "change_24h": -2.82,
+    "ema_short": 0.263851,
+    "ema_long": 0.264359,
+    "reason": "Fast EMA (0.2639) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.263916,
+      "stop_loss": 0.2718,
+      "take_profit": 0.2507
+    },
+    "timestamp": "2026-03-19T15:49:49.591364+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264116,
+    "change_24h": -2.74,
+    "ema_short": 0.263939,
+    "ema_long": 0.264336,
+    "reason": "Fast EMA (0.2639) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264116,
+      "stop_loss": 0.272,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-19T15:51:49.537629+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.26452,
+    "change_24h": -2.66,
+    "ema_short": 0.264133,
+    "ema_long": 0.264354,
+    "reason": "Fast EMA (0.2641) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.26452,
+      "stop_loss": 0.2725,
+      "take_profit": 0.2513
+    },
+    "timestamp": "2026-03-19T15:53:49.561036+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264832,
+    "change_24h": -2.54,
+    "ema_short": 0.264366,
+    "ema_long": 0.264399,
+    "reason": "Fast EMA (0.2644) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264832,
+      "stop_loss": 0.2728,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-19T15:55:49.530602+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265262,
+    "change_24h": -2.38,
+    "ema_short": 0.264665,
+    "ema_long": 0.264481,
+    "reason": "Fast EMA (0.2647) crossed above Slow EMA (0.2645) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.265262,
+      "stop_loss": 0.2573,
+      "take_profit": 0.2785
+    },
+    "timestamp": "2026-03-19T15:57:49.556111+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265455,
+    "change_24h": -2.31,
+    "ema_short": 0.264928,
+    "ema_long": 0.264574,
+    "reason": "Fast EMA (0.2649) crossed above Slow EMA (0.2646) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.265455,
+      "stop_loss": 0.2575,
+      "take_profit": 0.2787
+    },
+    "timestamp": "2026-03-19T15:59:49.560068+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265549,
+    "change_24h": -2.14,
+    "ema_short": 0.265135,
+    "ema_long": 0.264668,
+    "reason": "Fast EMA (0.2651) crossed above Slow EMA (0.2647) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.265549,
+      "stop_loss": 0.2576,
+      "take_profit": 0.2788
+    },
+    "timestamp": "2026-03-19T16:01:49.527315+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.26531,
+    "change_24h": -2.23,
+    "ema_short": 0.265193,
+    "ema_long": 0.264729,
+    "reason": "Fast EMA (0.2652) crossed above Slow EMA (0.2647) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.26531,
+      "stop_loss": 0.2574,
+      "take_profit": 0.2786
+    },
+    "timestamp": "2026-03-19T16:03:49.835405+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265219,
+    "change_24h": -2.27,
+    "ema_short": 0.265202,
+    "ema_long": 0.264774,
+    "reason": "Fast EMA (0.2652) crossed above Slow EMA (0.2648) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.265219,
+      "stop_loss": 0.2573,
+      "take_profit": 0.2785
+    },
+    "timestamp": "2026-03-19T16:05:49.823459+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265012,
+    "change_24h": -2.23,
+    "ema_short": 0.265139,
+    "ema_long": 0.264795,
+    "reason": "Fast EMA (0.2651) crossed above Slow EMA (0.2648) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.265012,
+      "stop_loss": 0.2571,
+      "take_profit": 0.2783
+    },
+    "timestamp": "2026-03-19T16:07:49.942373+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.264782,
+    "change_24h": -2.31,
+    "ema_short": 0.26502,
+    "ema_long": 0.264792,
+    "reason": "Fast EMA (0.2650) crossed above Slow EMA (0.2648) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.264782,
+      "stop_loss": 0.2568,
+      "take_profit": 0.278
+    },
+    "timestamp": "2026-03-19T16:09:49.852230+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.264707,
+    "change_24h": -2.29,
+    "ema_short": 0.264915,
+    "ema_long": 0.264784,
+    "reason": "Fast EMA (0.2649) crossed above Slow EMA (0.2648) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.264707,
+      "stop_loss": 0.2568,
+      "take_profit": 0.2779
+    },
+    "timestamp": "2026-03-19T16:11:49.813285+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.264551,
+    "change_24h": -2.34,
+    "ema_short": 0.264794,
+    "ema_long": 0.264759,
+    "reason": "Fast EMA (0.2648) crossed above Slow EMA (0.2648) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.264551,
+      "stop_loss": 0.2566,
+      "take_profit": 0.2778
+    },
+    "timestamp": "2026-03-19T16:13:49.794404+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264348,
+    "change_24h": -2.42,
+    "ema_short": 0.264645,
+    "ema_long": 0.26472,
+    "reason": "Fast EMA (0.2646) crossed below Slow EMA (0.2647) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264348,
+      "stop_loss": 0.2723,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-19T16:15:49.858235+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.2643,
+    "change_24h": -2.37,
+    "ema_short": 0.26453,
+    "ema_long": 0.26468,
+    "reason": "Fast EMA (0.2645) crossed below Slow EMA (0.2647) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.2643,
+      "stop_loss": 0.2722,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-19T16:17:49.825373+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264204,
+    "change_24h": -2.4,
+    "ema_short": 0.264421,
+    "ema_long": 0.264631,
+    "reason": "Fast EMA (0.2644) crossed below Slow EMA (0.2646) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264204,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-19T16:19:49.816587+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264093,
+    "change_24h": -2.39,
+    "ema_short": 0.264312,
+    "ema_long": 0.26458,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2646) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264093,
+      "stop_loss": 0.272,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-19T16:21:49.811704+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264166,
+    "change_24h": -2.36,
+    "ema_short": 0.264263,
+    "ema_long": 0.26454,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2645) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264166,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-19T16:23:49.845595+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264144,
+    "change_24h": -2.37,
+    "ema_short": 0.264224,
+    "ema_long": 0.264502,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2645) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264144,
+      "stop_loss": 0.2721,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-19T16:25:49.901111+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264241,
+    "change_24h": -2.31,
+    "ema_short": 0.264229,
+    "ema_long": 0.264481,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2645) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264241,
+      "stop_loss": 0.2722,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-19T16:27:49.841453+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264276,
+    "change_24h": -2.3,
+    "ema_short": 0.264245,
+    "ema_long": 0.264463,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2645) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264276,
+      "stop_loss": 0.2722,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-19T16:29:49.861014+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264215,
+    "change_24h": -2.32,
+    "ema_short": 0.264235,
+    "ema_long": 0.264441,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264215,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-19T16:31:49.797118+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264175,
+    "change_24h": -2.34,
+    "ema_short": 0.264215,
+    "ema_long": 0.264418,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264175,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-19T16:33:49.887987+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264107,
+    "change_24h": -2.36,
+    "ema_short": 0.264179,
+    "ema_long": 0.264389,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264107,
+      "stop_loss": 0.272,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-19T16:35:49.822287+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264034,
+    "change_24h": -2.47,
+    "ema_short": 0.264131,
+    "ema_long": 0.264356,
+    "reason": "Fast EMA (0.2641) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264034,
+      "stop_loss": 0.272,
+      "take_profit": 0.2508
+    },
+    "timestamp": "2026-03-19T16:37:49.989610+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264029,
+    "change_24h": -2.47,
+    "ema_short": 0.264097,
+    "ema_long": 0.264325,
+    "reason": "Fast EMA (0.2641) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264029,
+      "stop_loss": 0.2719,
+      "take_profit": 0.2508
+    },
+    "timestamp": "2026-03-19T16:39:49.869136+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264206,
+    "change_24h": -2.41,
+    "ema_short": 0.264133,
+    "ema_long": 0.264312,
+    "reason": "Fast EMA (0.2641) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264206,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-19T16:41:49.865160+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264461,
+    "change_24h": -2.38,
+    "ema_short": 0.264242,
+    "ema_long": 0.264327,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264461,
+      "stop_loss": 0.2724,
+      "take_profit": 0.2512
+    },
+    "timestamp": "2026-03-19T16:43:49.792540+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264482,
+    "change_24h": -2.37,
+    "ema_short": 0.264322,
+    "ema_long": 0.264344,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264482,
+      "stop_loss": 0.2724,
+      "take_profit": 0.2513
+    },
+    "timestamp": "2026-03-19T16:45:49.820559+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.264539,
+    "change_24h": -2.35,
+    "ema_short": 0.264395,
+    "ema_long": 0.264362,
+    "reason": "Fast EMA (0.2644) crossed above Slow EMA (0.2644) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.264539,
+      "stop_loss": 0.2566,
+      "take_profit": 0.2778
+    },
+    "timestamp": "2026-03-19T16:47:49.812116+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.26455,
+    "change_24h": -2.34,
+    "ema_short": 0.264446,
+    "ema_long": 0.264379,
+    "reason": "Fast EMA (0.2644) crossed above Slow EMA (0.2644) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.26455,
+      "stop_loss": 0.2566,
+      "take_profit": 0.2778
+    },
+    "timestamp": "2026-03-19T16:49:49.847735+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.264419,
+    "change_24h": -2.37,
+    "ema_short": 0.264437,
+    "ema_long": 0.264383,
+    "reason": "Fast EMA (0.2644) crossed above Slow EMA (0.2644) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.264419,
+      "stop_loss": 0.2565,
+      "take_profit": 0.2776
+    },
+    "timestamp": "2026-03-19T16:51:49.797779+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.26419,
+    "change_24h": -2.46,
+    "ema_short": 0.264355,
+    "ema_long": 0.264364,
+    "reason": "Fast EMA (0.2644) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.26419,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-19T16:53:50.009947+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264167,
+    "change_24h": -2.47,
+    "ema_short": 0.264292,
+    "ema_long": 0.264344,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264167,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-19T16:55:49.815265+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264232,
+    "change_24h": -2.52,
+    "ema_short": 0.264272,
+    "ema_long": 0.264333,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264232,
+      "stop_loss": 0.2722,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-19T16:57:49.860048+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264322,
+    "change_24h": -2.49,
+    "ema_short": 0.264289,
+    "ema_long": 0.264327,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264322,
+      "stop_loss": 0.2723,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-19T16:59:49.845680+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264268,
+    "change_24h": -2.4,
+    "ema_short": 0.264282,
+    "ema_long": 0.264319,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264268,
+      "stop_loss": 0.2722,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-19T17:01:49.484744+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264301,
+    "change_24h": -2.39,
+    "ema_short": 0.264288,
+    "ema_long": 0.264314,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264301,
+      "stop_loss": 0.2722,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-19T17:03:49.548561+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264279,
+    "change_24h": -2.4,
+    "ema_short": 0.264285,
+    "ema_long": 0.264309,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264279,
+      "stop_loss": 0.2722,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-19T17:05:49.531038+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264153,
+    "change_24h": -2.44,
+    "ema_short": 0.264241,
+    "ema_long": 0.264293,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2643) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 5.0,
+      "at_price": 0.264153,
+      "stop_loss": 0.2721,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-19T17:07:49.563880+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.267743,
+    "change_24h": -1.95,
+    "ema_short": 0.265408,
+    "ema_long": 0.26462,
+    "reason": "Fast EMA (0.2654) crossed above Slow EMA (0.2646) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.267743,
+      "stop_loss": 0.2597,
+      "take_profit": 0.2811
+    },
+    "timestamp": "2026-03-19T19:15:46.418944+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.267861,
+    "change_24h": -1.9,
+    "ema_short": 0.266226,
+    "ema_long": 0.264929,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2649) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.267861,
+      "stop_loss": 0.2598,
+      "take_profit": 0.2813
+    },
+    "timestamp": "2026-03-19T19:17:46.384641+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.268031,
+    "change_24h": -1.84,
+    "ema_short": 0.266828,
+    "ema_long": 0.265224,
+    "reason": "Fast EMA (0.2668) crossed above Slow EMA (0.2652) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.268031,
+      "stop_loss": 0.26,
+      "take_profit": 0.2814
+    },
+    "timestamp": "2026-03-19T19:19:46.423450+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.268292,
+    "change_24h": -1.72,
+    "ema_short": 0.267316,
+    "ema_long": 0.265517,
+    "reason": "Fast EMA (0.2673) crossed above Slow EMA (0.2655) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.268292,
+      "stop_loss": 0.2602,
+      "take_profit": 0.2817
+    },
+    "timestamp": "2026-03-19T19:21:46.407174+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.268497,
+    "change_24h": -1.65,
+    "ema_short": 0.267709,
+    "ema_long": 0.265801,
+    "reason": "Fast EMA (0.2677) crossed above Slow EMA (0.2658) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.268497,
+      "stop_loss": 0.2604,
+      "take_profit": 0.2819
+    },
+    "timestamp": "2026-03-19T19:23:46.453024+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.268578,
+    "change_24h": -1.62,
+    "ema_short": 0.267999,
+    "ema_long": 0.266066,
+    "reason": "Fast EMA (0.2680) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.268578,
+      "stop_loss": 0.2605,
+      "take_profit": 0.282
+    },
+    "timestamp": "2026-03-19T19:25:46.475558+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.268496,
+    "change_24h": -1.65,
+    "ema_short": 0.268165,
+    "ema_long": 0.266297,
+    "reason": "Fast EMA (0.2682) crossed above Slow EMA (0.2663) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.268496,
+      "stop_loss": 0.2604,
+      "take_profit": 0.2819
+    },
+    "timestamp": "2026-03-19T19:27:46.465212+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.268304,
+    "change_24h": -1.72,
+    "ema_short": 0.268211,
+    "ema_long": 0.266488,
+    "reason": "Fast EMA (0.2682) crossed above Slow EMA (0.2665) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.268304,
+      "stop_loss": 0.2603,
+      "take_profit": 0.2817
+    },
+    "timestamp": "2026-03-19T19:29:46.432076+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.268055,
+    "change_24h": -1.75,
+    "ema_short": 0.268159,
+    "ema_long": 0.266637,
+    "reason": "Fast EMA (0.2682) crossed above Slow EMA (0.2666) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.268055,
+      "stop_loss": 0.26,
+      "take_profit": 0.2815
+    },
+    "timestamp": "2026-03-19T19:31:46.440200+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.267881,
+    "change_24h": -1.82,
+    "ema_short": 0.268066,
+    "ema_long": 0.266757,
+    "reason": "Fast EMA (0.2681) crossed above Slow EMA (0.2668) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.267881,
+      "stop_loss": 0.2598,
+      "take_profit": 0.2813
+    },
+    "timestamp": "2026-03-19T19:33:46.471756+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.267765,
+    "change_24h": -1.86,
+    "ema_short": 0.267966,
+    "ema_long": 0.266854,
+    "reason": "Fast EMA (0.2680) crossed above Slow EMA (0.2669) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.267765,
+      "stop_loss": 0.2597,
+      "take_profit": 0.2812
+    },
+    "timestamp": "2026-03-19T19:35:46.483542+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.267535,
+    "change_24h": -1.92,
+    "ema_short": 0.267822,
+    "ema_long": 0.266921,
+    "reason": "Fast EMA (0.2678) crossed above Slow EMA (0.2669) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.267535,
+      "stop_loss": 0.2595,
+      "take_profit": 0.2809
+    },
+    "timestamp": "2026-03-19T19:37:46.451475+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.267341,
+    "change_24h": -1.99,
+    "ema_short": 0.267662,
+    "ema_long": 0.266964,
+    "reason": "Fast EMA (0.2677) crossed above Slow EMA (0.2670) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.267341,
+      "stop_loss": 0.2593,
+      "take_profit": 0.2807
+    },
+    "timestamp": "2026-03-19T19:39:46.458975+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.267341,
+    "change_24h": -1.99,
+    "ema_short": 0.267555,
+    "ema_long": 0.267002,
+    "reason": "Fast EMA (0.2676) crossed above Slow EMA (0.2670) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.267341,
+      "stop_loss": 0.2593,
+      "take_profit": 0.2807
+    },
+    "timestamp": "2026-03-19T19:40:08.749054+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.267444,
+    "change_24h": -1.91,
+    "ema_short": 0.267518,
+    "ema_long": 0.267046,
+    "reason": "Fast EMA (0.2675) crossed above Slow EMA (0.2670) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.267444,
+      "stop_loss": 0.2594,
+      "take_profit": 0.2808
+    },
+    "timestamp": "2026-03-19T19:42:08.713726+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.270634,
+    "change_24h": -1.13,
+    "ema_short": 0.268557,
+    "ema_long": 0.267388,
+    "reason": "Fast EMA (0.2686) crossed above Slow EMA (0.2674) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.270634,
+      "stop_loss": 0.2625,
+      "take_profit": 0.2842
+    },
+    "timestamp": "2026-03-20T01:47:38.047065+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.270652,
+    "change_24h": -1.12,
+    "ema_short": 0.269255,
+    "ema_long": 0.267697,
+    "reason": "Fast EMA (0.2693) crossed above Slow EMA (0.2677) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.270652,
+      "stop_loss": 0.2625,
+      "take_profit": 0.2842
+    },
+    "timestamp": "2026-03-20T01:48:58.862525+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.269149,
+    "change_24h": -0.24,
+    "ema_short": 0.26922,
+    "ema_long": 0.267835,
+    "reason": "Fast EMA (0.2692) crossed above Slow EMA (0.2678) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.269149,
+      "stop_loss": 0.2611,
+      "take_profit": 0.2826
+    },
+    "timestamp": "2026-03-20T11:01:46.763562+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.268171,
+    "change_24h": -0.54,
+    "ema_short": 0.26887,
+    "ema_long": 0.267866,
+    "reason": "Fast EMA (0.2689) crossed above Slow EMA (0.2679) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 5.0,
+      "at_price": 0.268171,
+      "stop_loss": 0.2601,
+      "take_profit": 0.2816
+    },
+    "timestamp": "2026-03-20T11:40:16.366088+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265451,
+    "change_24h": 0.11,
+    "ema_short": null,
+    "ema_long": null,
+    "reason": "Building price history. Have 1/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T14:21:47.186314+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265451,
+    "change_24h": 0.11,
+    "ema_short": null,
+    "ema_long": null,
+    "reason": "Building price history. Have 1/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T14:21:59.532610+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265238,
+    "change_24h": -0.36,
+    "ema_short": null,
+    "ema_long": null,
+    "reason": "Building price history. Have 2/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T15:15:39.469078+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.264833,
+    "change_24h": 0.16,
+    "ema_short": null,
+    "ema_long": null,
+    "reason": "Building price history. Have 3/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T16:40:53.164426+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265187,
+    "change_24h": 0.27,
+    "ema_short": null,
+    "ema_long": null,
+    "reason": "Building price history. Have 3/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T16:53:56.792449+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.26404,
+    "change_24h": -0.25,
+    "ema_short": null,
+    "ema_long": null,
+    "reason": "Building price history. Have 4/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T18:48:00.101359+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.264161,
+    "change_24h": -0.2,
+    "ema_short": null,
+    "ema_long": null,
+    "reason": "Building price history. Have 4/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T18:48:38.315728+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.263315,
+    "change_24h": -1.83,
+    "ema_short": 0.264313,
+    "ema_long": null,
+    "reason": "Building price history. Have 5/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T19:19:55.215434+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.262928,
+    "change_24h": -1.96,
+    "ema_short": 0.264313,
+    "ema_long": null,
+    "reason": "Building price history. Have 5/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T19:29:51.925632+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.264578,
+    "change_24h": -1.37,
+    "ema_short": 0.264401,
+    "ema_long": null,
+    "reason": "Building price history. Have 6/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T21:21:27.911429+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265926,
+    "change_24h": -0.68,
+    "ema_short": 0.264909,
+    "ema_long": null,
+    "reason": "Building price history. Have 7/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T21:38:53.315056+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265739,
+    "change_24h": -0.73,
+    "ema_short": 0.264909,
+    "ema_long": null,
+    "reason": "Building price history. Have 7/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T21:43:28.626631+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265304,
+    "change_24h": -0.86,
+    "ema_short": 0.264909,
+    "ema_long": null,
+    "reason": "Building price history. Have 7/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T21:52:58.068957+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265545,
+    "change_24h": -0.76,
+    "ema_short": 0.265121,
+    "ema_long": null,
+    "reason": "Building price history. Have 8/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T21:57:49.580456+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265806,
+    "change_24h": -0.58,
+    "ema_short": 0.265121,
+    "ema_long": null,
+    "reason": "Building price history. Have 8/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T22:02:20.720297+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.267241,
+    "change_24h": 0.02,
+    "ema_short": 0.265828,
+    "ema_long": null,
+    "reason": "Building price history. Have 9/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T22:12:49.853894+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.267014,
+    "change_24h": -0.15,
+    "ema_short": 0.266223,
+    "ema_long": null,
+    "reason": "Building price history. Have 10/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T22:27:50.126017+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.266677,
+    "change_24h": 0.25,
+    "ema_short": 0.266375,
+    "ema_long": null,
+    "reason": "Building price history. Have 11/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T22:42:50.447108+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.266871,
+    "change_24h": 0.17,
+    "ema_short": 0.26654,
+    "ema_long": null,
+    "reason": "Building price history. Have 12/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T22:57:50.829225+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265774,
+    "change_24h": -0.71,
+    "ema_short": 0.266285,
+    "ema_long": null,
+    "reason": "Building price history. Have 13/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T23:12:51.154509+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265647,
+    "change_24h": -0.62,
+    "ema_short": 0.266072,
+    "ema_long": null,
+    "reason": "Building price history. Have 14/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T23:27:51.460259+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.265984,
+    "change_24h": -0.27,
+    "ema_short": 0.266043,
+    "ema_long": null,
+    "reason": "Building price history. Have 15/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T23:42:51.813574+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.266084,
+    "change_24h": -0.27,
+    "ema_short": 0.266043,
+    "ema_long": null,
+    "reason": "Building price history. Have 15/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T23:48:59.224239+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.266144,
+    "change_24h": -0.45,
+    "ema_short": 0.266076,
+    "ema_long": null,
+    "reason": "Building price history. Have 16/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-20T23:57:52.245947+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.26611,
+    "change_24h": -0.9,
+    "ema_short": 0.266088,
+    "ema_long": null,
+    "reason": "Building price history. Have 17/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-21T00:12:52.695745+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.266293,
+    "change_24h": -0.89,
+    "ema_short": 0.266156,
+    "ema_long": null,
+    "reason": "Building price history. Have 18/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-21T00:27:53.158696+00:00"
+  },
+  {
+    "signal": "ACCUMULATING",
+    "price": 0.2662,
+    "change_24h": -1.08,
+    "ema_short": 0.266171,
+    "ema_long": null,
+    "reason": "Building price history. Have 19/20 data points needed.",
+    "would_trade": null,
+    "timestamp": "2026-03-21T00:42:53.603708+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266176,
+    "change_24h": -1.22,
+    "ema_short": 0.266172,
+    "ema_long": 0.265925,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2659) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266176,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-21T00:57:54.057937+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266424,
+    "change_24h": -1.42,
+    "ema_short": 0.266172,
+    "ema_long": 0.265925,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2659) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266424,
+      "stop_loss": 0.2584,
+      "take_profit": 0.2797
+    },
+    "timestamp": "2026-03-21T01:07:54.115835+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266773,
+    "change_24h": -1.29,
+    "ema_short": 0.266373,
+    "ema_long": 0.266006,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2660) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266773,
+      "stop_loss": 0.2588,
+      "take_profit": 0.2801
+    },
+    "timestamp": "2026-03-21T01:12:54.499825+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266656,
+    "change_24h": -1.18,
+    "ema_short": 0.266373,
+    "ema_long": 0.266006,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2660) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266656,
+      "stop_loss": 0.2587,
+      "take_profit": 0.28
+    },
+    "timestamp": "2026-03-21T01:22:54.142464+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266619,
+    "change_24h": -1.13,
+    "ema_short": 0.266455,
+    "ema_long": 0.266064,
+    "reason": "Fast EMA (0.2665) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266619,
+      "stop_loss": 0.2586,
+      "take_profit": 0.2799
+    },
+    "timestamp": "2026-03-21T01:27:54.898383+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266455,
+    "change_24h": -1.25,
+    "ema_short": 0.266455,
+    "ema_long": 0.266064,
+    "reason": "Fast EMA (0.2665) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266455,
+      "stop_loss": 0.2585,
+      "take_profit": 0.2798
+    },
+    "timestamp": "2026-03-21T01:37:54.228981+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266383,
+    "change_24h": -1.44,
+    "ema_short": 0.266431,
+    "ema_long": 0.266094,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266383,
+      "stop_loss": 0.2584,
+      "take_profit": 0.2797
+    },
+    "timestamp": "2026-03-21T01:42:55.343885+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265943,
+    "change_24h": -1.74,
+    "ema_short": 0.266431,
+    "ema_long": 0.266094,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.265943,
+      "stop_loss": 0.258,
+      "take_profit": 0.2792
+    },
+    "timestamp": "2026-03-21T01:52:54.213224+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265919,
+    "change_24h": -1.55,
+    "ema_short": 0.26626,
+    "ema_long": 0.266078,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.265919,
+      "stop_loss": 0.2579,
+      "take_profit": 0.2792
+    },
+    "timestamp": "2026-03-21T01:57:55.739135+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265816,
+    "change_24h": -1.45,
+    "ema_short": 0.26626,
+    "ema_long": 0.266078,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.265816,
+      "stop_loss": 0.2578,
+      "take_profit": 0.2791
+    },
+    "timestamp": "2026-03-21T02:07:54.204194+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265813,
+    "change_24h": -1.43,
+    "ema_short": 0.266111,
+    "ema_long": 0.266052,
+    "reason": "Fast EMA (0.2661) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.265813,
+      "stop_loss": 0.2578,
+      "take_profit": 0.2791
+    },
+    "timestamp": "2026-03-21T02:12:56.140474+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.26597,
+    "change_24h": -1.18,
+    "ema_short": 0.266111,
+    "ema_long": 0.266052,
+    "reason": "Fast EMA (0.2661) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.26597,
+      "stop_loss": 0.258,
+      "take_profit": 0.2793
+    },
+    "timestamp": "2026-03-21T02:22:54.157476+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266074,
+    "change_24h": -1.14,
+    "ema_short": 0.266099,
+    "ema_long": 0.266055,
+    "reason": "Fast EMA (0.2661) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266074,
+      "stop_loss": 0.2581,
+      "take_profit": 0.2794
+    },
+    "timestamp": "2026-03-21T02:27:56.588135+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266426,
+    "change_24h": -0.77,
+    "ema_short": 0.266099,
+    "ema_long": 0.266055,
+    "reason": "Fast EMA (0.2661) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266426,
+      "stop_loss": 0.2584,
+      "take_profit": 0.2797
+    },
+    "timestamp": "2026-03-21T02:37:54.222332+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266482,
+    "change_24h": -0.92,
+    "ema_short": 0.266227,
+    "ema_long": 0.266095,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266482,
+      "stop_loss": 0.2585,
+      "take_profit": 0.2798
+    },
+    "timestamp": "2026-03-21T02:42:57.019551+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266702,
+    "change_24h": -0.9,
+    "ema_short": 0.266227,
+    "ema_long": 0.266095,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2661) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266702,
+      "stop_loss": 0.2587,
+      "take_profit": 0.28
+    },
+    "timestamp": "2026-03-21T02:52:54.194163+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266821,
+    "change_24h": -1.01,
+    "ema_short": 0.266425,
+    "ema_long": 0.266164,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266821,
+      "stop_loss": 0.2588,
+      "take_profit": 0.2802
+    },
+    "timestamp": "2026-03-21T02:57:57.474176+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266547,
+    "change_24h": -1.01,
+    "ema_short": 0.266425,
+    "ema_long": 0.266164,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266547,
+      "stop_loss": 0.2586,
+      "take_profit": 0.2799
+    },
+    "timestamp": "2026-03-21T03:08:00.961520+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266524,
+    "change_24h": -1.02,
+    "ema_short": 0.266458,
+    "ema_long": 0.266199,
+    "reason": "Fast EMA (0.2665) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266524,
+      "stop_loss": 0.2585,
+      "take_profit": 0.2799
+    },
+    "timestamp": "2026-03-21T03:12:57.911966+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266209,
+    "change_24h": -1.3,
+    "ema_short": 0.266458,
+    "ema_long": 0.266199,
+    "reason": "Fast EMA (0.2665) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266209,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-21T03:22:54.173714+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266209,
+    "change_24h": -1.3,
+    "ema_short": 0.266458,
+    "ema_long": 0.266199,
+    "reason": "Fast EMA (0.2665) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266209,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-21T03:23:17.353485+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266027,
+    "change_24h": -1.58,
+    "ema_short": 0.266314,
+    "ema_long": 0.266182,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266027,
+      "stop_loss": 0.258,
+      "take_profit": 0.2793
+    },
+    "timestamp": "2026-03-21T03:37:54.186574+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266027,
+    "change_24h": -1.58,
+    "ema_short": 0.266314,
+    "ema_long": 0.266182,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266027,
+      "stop_loss": 0.258,
+      "take_profit": 0.2793
+    },
+    "timestamp": "2026-03-21T03:38:17.738156+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266024,
+    "change_24h": -1.58,
+    "ema_short": 0.266314,
+    "ema_long": 0.266182,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266024,
+      "stop_loss": 0.258,
+      "take_profit": 0.2793
+    },
+    "timestamp": "2026-03-21T03:40:57.463484+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266003,
+    "change_24h": -1.53,
+    "ema_short": 0.266314,
+    "ema_long": 0.266182,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266003,
+      "stop_loss": 0.258,
+      "take_profit": 0.2793
+    },
+    "timestamp": "2026-03-21T03:41:09.270173+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.265927,
+    "change_24h": -1.51,
+    "ema_short": 0.266185,
+    "ema_long": 0.266158,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.265927,
+      "stop_loss": 0.2579,
+      "take_profit": 0.2792
+    },
+    "timestamp": "2026-03-21T03:55:57.857009+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266207,
+    "change_24h": -1.43,
+    "ema_short": 0.266192,
+    "ema_long": 0.266163,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266207,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-21T04:10:58.142055+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.26611,
+    "change_24h": -1.53,
+    "ema_short": 0.266192,
+    "ema_long": 0.266163,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.26611,
+      "stop_loss": 0.2581,
+      "take_profit": 0.2794
+    },
+    "timestamp": "2026-03-21T04:15:55.103359+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266182,
+    "change_24h": -1.5,
+    "ema_short": 0.266189,
+    "ema_long": 0.266164,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266182,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-21T04:30:55.415592+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266011,
+    "change_24h": -1.57,
+    "ema_short": 0.266189,
+    "ema_long": 0.266164,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266011,
+      "stop_loss": 0.258,
+      "take_profit": 0.2793
+    },
+    "timestamp": "2026-03-21T04:34:44.764644+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.266004,
+    "change_24h": -1.14,
+    "ema_short": 0.266127,
+    "ema_long": 0.266149,
+    "reason": "Fast EMA (0.2661) crossed below Slow EMA (0.2661) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.266004,
+      "stop_loss": 0.274,
+      "take_profit": 0.2527
+    },
+    "timestamp": "2026-03-21T04:49:45.078062+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266396,
+    "change_24h": -1.96,
+    "ema_short": 0.266217,
+    "ema_long": 0.266173,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266396,
+      "stop_loss": 0.2584,
+      "take_profit": 0.2797
+    },
+    "timestamp": "2026-03-21T05:14:35.859490+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266603,
+    "change_24h": -2.09,
+    "ema_short": 0.266217,
+    "ema_long": 0.266173,
+    "reason": "Fast EMA (0.2662) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266603,
+      "stop_loss": 0.2586,
+      "take_profit": 0.2799
+    },
+    "timestamp": "2026-03-21T05:25:42.771322+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266523,
+    "change_24h": -2.12,
+    "ema_short": 0.266319,
+    "ema_long": 0.266206,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266523,
+      "stop_loss": 0.2585,
+      "take_profit": 0.2798
+    },
+    "timestamp": "2026-03-21T05:29:36.230892+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.26647,
+    "change_24h": -2.04,
+    "ema_short": 0.266369,
+    "ema_long": 0.266231,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.26647,
+      "stop_loss": 0.2585,
+      "take_profit": 0.2798
+    },
+    "timestamp": "2026-03-21T05:44:36.665857+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266058,
+    "change_24h": -2.1,
+    "ema_short": 0.266266,
+    "ema_long": 0.266215,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266058,
+      "stop_loss": 0.2581,
+      "take_profit": 0.2794
+    },
+    "timestamp": "2026-03-21T05:59:37.067857+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266225,
+    "change_24h": -2.0,
+    "ema_short": 0.266252,
+    "ema_long": 0.266216,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266225,
+      "stop_loss": 0.2582,
+      "take_profit": 0.2795
+    },
+    "timestamp": "2026-03-21T06:14:37.485137+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.26635,
+    "change_24h": -1.87,
+    "ema_short": 0.266285,
+    "ema_long": 0.266228,
+    "reason": "Fast EMA (0.2663) crossed above Slow EMA (0.2662) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.26635,
+      "stop_loss": 0.2584,
+      "take_profit": 0.2797
+    },
+    "timestamp": "2026-03-21T06:29:37.879705+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266649,
+    "change_24h": -1.55,
+    "ema_short": 0.266406,
+    "ema_long": 0.266269,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2663) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266649,
+      "stop_loss": 0.2586,
+      "take_profit": 0.28
+    },
+    "timestamp": "2026-03-21T06:44:38.292601+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.266547,
+    "change_24h": -1.41,
+    "ema_short": 0.266453,
+    "ema_long": 0.266295,
+    "reason": "Fast EMA (0.2665) crossed above Slow EMA (0.2663) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.266547,
+      "stop_loss": 0.2586,
+      "take_profit": 0.2799
+    },
+    "timestamp": "2026-03-21T06:59:38.678457+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.26637,
+    "change_24h": -0.95,
+    "ema_short": 0.266425,
+    "ema_long": 0.266302,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2663) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.26637,
+      "stop_loss": 0.2584,
+      "take_profit": 0.2797
+    },
+    "timestamp": "2026-03-21T07:14:39.063012+00:00"
+  },
+  {
+    "signal": "BUY",
+    "price": 0.26647,
+    "change_24h": -0.81,
+    "ema_short": 0.26644,
+    "ema_long": 0.266318,
+    "reason": "Fast EMA (0.2664) crossed above Slow EMA (0.2663) \u2014 bullish momentum.",
+    "would_trade": {
+      "action": "BUY",
+      "ada_amount": 20.0,
+      "at_price": 0.26647,
+      "stop_loss": 0.2585,
+      "take_profit": 0.2798
+    },
+    "timestamp": "2026-03-21T07:29:39.446348+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.265704,
+    "change_24h": -1.57,
+    "ema_short": 0.266195,
+    "ema_long": 0.26626,
+    "reason": "Fast EMA (0.2662) crossed below Slow EMA (0.2663) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.265704,
+      "stop_loss": 0.2737,
+      "take_profit": 0.2524
+    },
+    "timestamp": "2026-03-21T07:44:39.859467+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264912,
+    "change_24h": -1.85,
+    "ema_short": 0.265767,
+    "ema_long": 0.266131,
+    "reason": "Fast EMA (0.2658) crossed below Slow EMA (0.2661) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264912,
+      "stop_loss": 0.2729,
+      "take_profit": 0.2517
+    },
+    "timestamp": "2026-03-21T07:59:40.232281+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264927,
+    "change_24h": -1.95,
+    "ema_short": 0.265487,
+    "ema_long": 0.266017,
+    "reason": "Fast EMA (0.2655) crossed below Slow EMA (0.2660) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264927,
+      "stop_loss": 0.2729,
+      "take_profit": 0.2517
+    },
+    "timestamp": "2026-03-21T08:14:40.613862+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264838,
+    "change_24h": -2.48,
+    "ema_short": 0.265271,
+    "ema_long": 0.265904,
+    "reason": "Fast EMA (0.2653) crossed below Slow EMA (0.2659) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264838,
+      "stop_loss": 0.2728,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-21T08:29:41.012413+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264741,
+    "change_24h": -2.32,
+    "ema_short": 0.265094,
+    "ema_long": 0.265794,
+    "reason": "Fast EMA (0.2651) crossed below Slow EMA (0.2658) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264741,
+      "stop_loss": 0.2727,
+      "take_profit": 0.2515
+    },
+    "timestamp": "2026-03-21T08:44:41.404010+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264791,
+    "change_24h": -2.3,
+    "ema_short": 0.265094,
+    "ema_long": 0.265794,
+    "reason": "Fast EMA (0.2651) crossed below Slow EMA (0.2658) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264791,
+      "stop_loss": 0.2727,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-21T08:47:01.555006+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.265091,
+    "change_24h": -2.06,
+    "ema_short": 0.265093,
+    "ema_long": 0.265727,
+    "reason": "Fast EMA (0.2651) crossed below Slow EMA (0.2657) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.265091,
+      "stop_loss": 0.273,
+      "take_profit": 0.2518
+    },
+    "timestamp": "2026-03-21T08:59:41.798778+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.265383,
+    "change_24h": -1.63,
+    "ema_short": 0.26519,
+    "ema_long": 0.265694,
+    "reason": "Fast EMA (0.2652) crossed below Slow EMA (0.2657) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.265383,
+      "stop_loss": 0.2733,
+      "take_profit": 0.2521
+    },
+    "timestamp": "2026-03-21T09:14:42.163882+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.2647,
+    "change_24h": -1.45,
+    "ema_short": 0.265026,
+    "ema_long": 0.265599,
+    "reason": "Fast EMA (0.2650) crossed below Slow EMA (0.2656) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.2647,
+      "stop_loss": 0.2726,
+      "take_profit": 0.2515
+    },
+    "timestamp": "2026-03-21T09:29:42.557170+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264224,
+    "change_24h": -1.83,
+    "ema_short": 0.265026,
+    "ema_long": 0.265599,
+    "reason": "Fast EMA (0.2650) crossed below Slow EMA (0.2656) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264224,
+      "stop_loss": 0.2722,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-21T09:40:32.169482+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264163,
+    "change_24h": -1.79,
+    "ema_short": 0.264739,
+    "ema_long": 0.265462,
+    "reason": "Fast EMA (0.2647) crossed below Slow EMA (0.2655) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264163,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-21T09:55:32.475691+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264525,
+    "change_24h": -1.39,
+    "ema_short": 0.264667,
+    "ema_long": 0.265373,
+    "reason": "Fast EMA (0.2647) crossed below Slow EMA (0.2654) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264525,
+      "stop_loss": 0.2725,
+      "take_profit": 0.2513
+    },
+    "timestamp": "2026-03-21T10:10:32.794813+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264138,
+    "change_24h": -1.42,
+    "ema_short": 0.264491,
+    "ema_long": 0.265256,
+    "reason": "Fast EMA (0.2645) crossed below Slow EMA (0.2653) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264138,
+      "stop_loss": 0.2721,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-21T10:25:33.114653+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264265,
+    "change_24h": -1.57,
+    "ema_short": 0.264416,
+    "ema_long": 0.265161,
+    "reason": "Fast EMA (0.2644) crossed below Slow EMA (0.2652) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264265,
+      "stop_loss": 0.2722,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-21T10:40:33.479272+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264265,
+    "change_24h": -1.57,
+    "ema_short": 0.264416,
+    "ema_long": 0.265161,
+    "reason": "Fast EMA (0.2644) crossed below Slow EMA (0.2652) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264265,
+      "stop_loss": 0.2722,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-21T10:41:09.208756+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264187,
+    "change_24h": -1.86,
+    "ema_short": 0.264339,
+    "ema_long": 0.265068,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2651) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264187,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-21T10:56:09.628472+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.26431,
+    "change_24h": -1.85,
+    "ema_short": 0.264339,
+    "ema_long": 0.265068,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2651) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.26431,
+      "stop_loss": 0.2722,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-21T11:05:33.264511+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264279,
+    "change_24h": -2.01,
+    "ema_short": 0.264319,
+    "ema_long": 0.264993,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2650) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264279,
+      "stop_loss": 0.2722,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-21T11:20:33.687425+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264358,
+    "change_24h": -1.7,
+    "ema_short": 0.264319,
+    "ema_long": 0.264993,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2650) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264358,
+      "stop_loss": 0.2723,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-21T11:29:11.173514+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264325,
+    "change_24h": -1.27,
+    "ema_short": 0.264321,
+    "ema_long": 0.26493,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264325,
+      "stop_loss": 0.2723,
+      "take_profit": 0.2511
+    },
+    "timestamp": "2026-03-21T11:44:11.607019+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264698,
+    "change_24h": -1.29,
+    "ema_short": 0.264447,
+    "ema_long": 0.264908,
+    "reason": "Fast EMA (0.2644) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264698,
+      "stop_loss": 0.2726,
+      "take_profit": 0.2515
+    },
+    "timestamp": "2026-03-21T12:06:56.008415+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264617,
+    "change_24h": -1.36,
+    "ema_short": 0.264504,
+    "ema_long": 0.26488,
+    "reason": "Fast EMA (0.2645) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264617,
+      "stop_loss": 0.2726,
+      "take_profit": 0.2514
+    },
+    "timestamp": "2026-03-21T12:21:56.452746+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264883,
+    "change_24h": -0.99,
+    "ema_short": 0.26463,
+    "ema_long": 0.26488,
+    "reason": "Fast EMA (0.2646) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264883,
+      "stop_loss": 0.2728,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-21T12:36:56.881530+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264883,
+    "change_24h": -0.99,
+    "ema_short": 0.26463,
+    "ema_long": 0.26488,
+    "reason": "Fast EMA (0.2646) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264883,
+      "stop_loss": 0.2728,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-21T12:37:39.474034+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.26483,
+    "change_24h": -0.9,
+    "ema_short": 0.264697,
+    "ema_long": 0.264875,
+    "reason": "Fast EMA (0.2647) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.26483,
+      "stop_loss": 0.2728,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-21T12:51:57.314529+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264672,
+    "change_24h": -1.01,
+    "ema_short": 0.264688,
+    "ema_long": 0.264856,
+    "reason": "Fast EMA (0.2647) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264672,
+      "stop_loss": 0.2726,
+      "take_profit": 0.2514
+    },
+    "timestamp": "2026-03-21T13:06:57.781086+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264852,
+    "change_24h": -0.91,
+    "ema_short": 0.264743,
+    "ema_long": 0.264856,
+    "reason": "Fast EMA (0.2647) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264852,
+      "stop_loss": 0.2728,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-21T13:21:58.066614+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264636,
+    "change_24h": -1.25,
+    "ema_short": 0.264743,
+    "ema_long": 0.264856,
+    "reason": "Fast EMA (0.2647) crossed below Slow EMA (0.2649) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264636,
+      "stop_loss": 0.2726,
+      "take_profit": 0.2514
+    },
+    "timestamp": "2026-03-21T13:32:32.804025+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264114,
+    "change_24h": -1.15,
+    "ema_short": 0.264533,
+    "ema_long": 0.264785,
+    "reason": "Fast EMA (0.2645) crossed below Slow EMA (0.2648) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264114,
+      "stop_loss": 0.272,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-21T13:47:09.161059+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264178,
+    "change_24h": -0.93,
+    "ema_short": 0.264533,
+    "ema_long": 0.264785,
+    "reason": "Fast EMA (0.2645) crossed below Slow EMA (0.2648) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264178,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-21T13:57:40.644520+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264193,
+    "change_24h": -0.72,
+    "ema_short": 0.26442,
+    "ema_long": 0.264729,
+    "reason": "Fast EMA (0.2644) crossed below Slow EMA (0.2647) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264193,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-21T14:06:17.528878+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264143,
+    "change_24h": -0.74,
+    "ema_short": 0.26442,
+    "ema_long": 0.264729,
+    "reason": "Fast EMA (0.2644) crossed below Slow EMA (0.2647) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264143,
+      "stop_loss": 0.2721,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-21T14:11:14.743758+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.26465,
+    "change_24h": -0.31,
+    "ema_short": 0.264497,
+    "ema_long": 0.264721,
+    "reason": "Fast EMA (0.2645) crossed below Slow EMA (0.2647) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.26465,
+      "stop_loss": 0.2726,
+      "take_profit": 0.2514
+    },
+    "timestamp": "2026-03-21T14:26:15.064893+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264825,
+    "change_24h": -0.46,
+    "ema_short": 0.264497,
+    "ema_long": 0.264721,
+    "reason": "Fast EMA (0.2645) crossed below Slow EMA (0.2647) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264825,
+      "stop_loss": 0.2728,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-21T14:34:02.096471+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264743,
+    "change_24h": -0.72,
+    "ema_short": 0.264579,
+    "ema_long": 0.264723,
+    "reason": "Fast EMA (0.2646) crossed below Slow EMA (0.2647) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264743,
+      "stop_loss": 0.2727,
+      "take_profit": 0.2515
+    },
+    "timestamp": "2026-03-21T14:49:02.497619+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264426,
+    "change_24h": -0.84,
+    "ema_short": 0.264579,
+    "ema_long": 0.264723,
+    "reason": "Fast EMA (0.2646) crossed below Slow EMA (0.2647) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264426,
+      "stop_loss": 0.2724,
+      "take_profit": 0.2512
+    },
+    "timestamp": "2026-03-21T14:50:51.488970+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263273,
+    "change_24h": -0.82,
+    "ema_short": 0.264143,
+    "ema_long": 0.264585,
+    "reason": "Fast EMA (0.2641) crossed below Slow EMA (0.2646) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.263273,
+      "stop_loss": 0.2712,
+      "take_profit": 0.2501
+    },
+    "timestamp": "2026-03-21T15:05:51.823490+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263474,
+    "change_24h": -0.72,
+    "ema_short": 0.264143,
+    "ema_long": 0.264585,
+    "reason": "Fast EMA (0.2641) crossed below Slow EMA (0.2646) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.263474,
+      "stop_loss": 0.2714,
+      "take_profit": 0.2503
+    },
+    "timestamp": "2026-03-21T15:14:43.795837+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263244,
+    "change_24h": -0.86,
+    "ema_short": 0.263844,
+    "ema_long": 0.264457,
+    "reason": "Fast EMA (0.2638) crossed below Slow EMA (0.2645) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.263244,
+      "stop_loss": 0.2711,
+      "take_profit": 0.2501
+    },
+    "timestamp": "2026-03-21T15:21:25.394226+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.263875,
+    "change_24h": -0.9,
+    "ema_short": 0.263854,
+    "ema_long": 0.264402,
+    "reason": "Fast EMA (0.2639) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.263875,
+      "stop_loss": 0.2718,
+      "take_profit": 0.2507
+    },
+    "timestamp": "2026-03-21T15:39:45.151249+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.26404,
+    "change_24h": -0.83,
+    "ema_short": 0.263916,
+    "ema_long": 0.264367,
+    "reason": "Fast EMA (0.2639) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.26404,
+      "stop_loss": 0.272,
+      "take_profit": 0.2508
+    },
+    "timestamp": "2026-03-21T15:54:45.468518+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264795,
+    "change_24h": -0.56,
+    "ema_short": 0.264209,
+    "ema_long": 0.264408,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264795,
+      "stop_loss": 0.2727,
+      "take_profit": 0.2516
+    },
+    "timestamp": "2026-03-21T16:09:45.819189+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264397,
+    "change_24h": -0.35,
+    "ema_short": 0.264272,
+    "ema_long": 0.264407,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264397,
+      "stop_loss": 0.2723,
+      "take_profit": 0.2512
+    },
+    "timestamp": "2026-03-21T16:24:46.138152+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264207,
+    "change_24h": -0.35,
+    "ema_short": 0.264272,
+    "ema_long": 0.264407,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264207,
+      "stop_loss": 0.2721,
+      "take_profit": 0.251
+    },
+    "timestamp": "2026-03-21T16:33:12.641358+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264068,
+    "change_24h": -0.29,
+    "ema_short": 0.264272,
+    "ema_long": 0.264407,
+    "reason": "Fast EMA (0.2643) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264068,
+      "stop_loss": 0.272,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-21T16:38:10.492167+00:00"
+  },
+  {
+    "signal": "SELL",
+    "price": 0.264121,
+    "change_24h": -0.27,
+    "ema_short": 0.264221,
+    "ema_long": 0.26438,
+    "reason": "Fast EMA (0.2642) crossed below Slow EMA (0.2644) \u2014 bearish momentum.",
+    "would_trade": {
+      "action": "SELL",
+      "ada_amount": 20.0,
+      "at_price": 0.264121,
+      "stop_loss": 0.272,
+      "take_profit": 0.2509
+    },
+    "timestamp": "2026-03-21T16:39:46.528226+00:00"
+  }
+]

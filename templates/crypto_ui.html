@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jarvis Crypto Reflex</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+  <style>
+    /* Reuse your futuristic styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1e2736;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 0;
+      background: linear-gradient(120deg, #30384d, #1e2736);
+      border-bottom: 2px solid #00bfff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #00bfff;
+      margin: 0;
+      text-shadow: 0 0 10px #00bfff;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #999;
+      margin-top: 10px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(30, 39, 52, 0.85);
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .price-panel {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .price-panel span {
+      display: inline-block;
+      margin: 10px 20px;
+      padding: 10px 20px;
+      background: #2c3e50;
+      border: 1px solid #00bfff;
+      border-radius: 8px;
+      color: #00ffcc;
+      box-shadow: 0 0 10px #00bfff;
+    }
+
+    .footer {
+      background: #1e2736;
+      color: #999;
+      text-align: center;
+      padding: 30px 10px;
+      border-top: 1px solid #384459;
+      font-size: 0.9rem;
+    }
+    
+    .panel {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #2c3e50;
+  border: 1px solid #00bfff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #00bfff;
+  border-bottom: 1px solid #00bfff;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.trigger-panel button {
+  background-color: #00bfff;
+  color: #1e2736;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00bfff;
+}
+
+.trigger-panel button:hover {
+  background-color: #00a3cc;
+}
+
+.trade-log ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.trade-log li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #00ffcc;
+}
+
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Jarvis Crypto Reflex</h1>
+    <p>Live BTC & ADA Price Feed</p>
+  </div>
+
+  <main>
+  <!-- Live Prices -->
+  <div class="panel price-panel">
+    <h2>Live Prices</h2>
+    <span id="btc-price">BTC: Loading...</span>
+    <span id="ada-price">ADA: Loading...</span>
+  </div>
+
+  <!-- Manual Trigger -->
+  <div class="panel trigger-panel">
+    <h2>Manual Trigger</h2>
+    <button onclick="triggerScout()">🔁 Refresh Prices</button>
+  </div>
+
+  <!-- Signal Performance -->
+  <div class="panel">
+    <h2>📊 Signal Performance</h2>
+    <div id="signal-perf" style="font-size:1rem; line-height:2;">Loading...</div>
+  </div>
+
+  <!-- Paper Trade Performance -->
+  <div class="panel">
+    <h2>🧪 Paper Trading Performance</h2>
+    <div id="paper-summary" style="margin-bottom:16px; font-size:1rem; line-height:2;">Loading...</div>
+
+    <!-- Open Trades -->
+    <h3 style="color:#00bfff; font-size:1rem; margin:10px 0 6px;">Open Trades</h3>
+    <div style="overflow-x:auto;">
+      <table id="open-trades-table" style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <thead>
+          <tr style="color:#00bfff; border-bottom:1px solid #00bfff;">
+            <th style="padding:6px 10px; text-align:left;">Direction</th>
+            <th style="padding:6px 10px; text-align:right;">Entry</th>
+            <th style="padding:6px 10px; text-align:right;">Take Profit</th>
+            <th style="padding:6px 10px; text-align:right;">Stop Loss</th>
+            <th style="padding:6px 10px; text-align:left;">Opened</th>
+          </tr>
+        </thead>
+        <tbody id="open-trades-body">
+          <tr><td colspan="5" style="padding:8px; color:#888;">No open trades</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Closed Trade History -->
+    <h3 style="color:#00bfff; font-size:1rem; margin:16px 0 6px;">Closed Trade History</h3>
+    <div style="overflow-x:auto;">
+      <table id="closed-trades-table" style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <thead>
+          <tr style="color:#00bfff; border-bottom:1px solid #00bfff;">
+            <th style="padding:6px 10px; text-align:left;">Result</th>
+            <th style="padding:6px 10px; text-align:left;">Direction</th>
+            <th style="padding:6px 10px; text-align:right;">Entry</th>
+            <th style="padding:6px 10px; text-align:right;">Exit</th>
+            <th style="padding:6px 10px; text-align:right;">P&L (USD)</th>
+            <th style="padding:6px 10px; text-align:left;">Closed</th>
+          </tr>
+        </thead>
+        <tbody id="closed-trades-body">
+          <tr><td colspan="6" style="padding:8px; color:#888;">No closed trades yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Recent Trades -->
+  <div class="panel trade-log">
+    <h2>Recent Trades</h2>
+    <ul id="trade-list">
+      <li>Loading trades...</li>
+    </ul>
+  </div>
+
+  <!-- Strategy Evaluation -->
+  <div class="panel strategy-panel">
+  <h2>Strategy Evaluation</h2>
+  <label for="strategy-select">Strategy:</label>
+  <select id="strategy-select">
+    <option value="SampleStrategy">SampleStrategy</option>
+    <!-- Add more strategies here -->
+  </select>
+
+  <label for="asset-select">Asset:</label>
+  <select id="asset-select">
+    <option value="BTC/USDT">BTC/USDT</option>
+    <option value="ADA/USDT">ADA/USDT</option>
+  </select>
+
+  <label for="timeframe-select">Timeframe:</label>
+  <select id="timeframe-select">
+    <option value="5m">5m</option>
+    <option value="15m">15m</option>
+    <option value="1h">1h</option>
+  </select>
+
+  <button onclick="runStrategyEval()">📊 Run Evaluation</button>
+
+  <div id="strategy-output" style="margin-top: 1rem; font-size: 0.95rem;"></div>
+</div>
+
+ <!-- Trade Execution -->
+<div class="panel execution-panel">
+  <h2>Trade Execution</h2>
+
+  <label for="trade-symbol">Symbol:</label>
+  <select id="trade-symbol">
+    <option value="BTCUSDT">BTC/USDT</option>
+    <option value="ADAUSDT">ADA/USDT</option>
+  </select>
+
+  <label for="trade-side">Side:</label>
+  <select id="trade-side">
+    <option value="BUY">Buy</option>
+    <option value="SELL">Sell</option>
+  </select>
+
+  <label for="trade-qty">Quantity:</label>
+  <input type="number" id="trade-qty" value="0.001" step="0.0001" min="0.0001" />
+
+  <button onclick="executeTrade()">🛒 Execute Trade</button>
+
+  <div id="trade-response" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+</div>
+
+</main>
+
+  <div class="footer">
+    &copy; 2026 Jarvis AI - Engineered by Ekimtech.com
+  </div>
+
+  <script>
+    async function fetchPrices() {
+      try {
+        const res = await fetch('/prices');
+        const data = await res.json();
+
+        document.getElementById('btc-price').textContent =
+          `BTC: $${data.BTC?.price_usd ?? '—'} (${data.BTC?.timestamp ?? ''})`;
+
+        document.getElementById('ada-price').textContent =
+          `ADA: $${data.ADA?.price_usd ?? '—'} (${data.ADA?.timestamp ?? ''})`;
+      } catch (err) {
+        console.error('Failed to fetch prices:', err);
+      }
+    }
+
+    async function fetchTrades() {
+      try {
+        const res = await fetch('/trades');
+        const trades = await res.json();
+        const list = document.getElementById('trade-list');
+        list.innerHTML = '';
+        trades.reverse().forEach(t => {
+          const li = document.createElement('li');
+          li.textContent = `${t.asset} @ $${t.data.price_usd} (${t.data.timestamp})`;
+          list.appendChild(li);
+        });
+      } catch (err) {
+        console.error('Failed to fetch trades:', err);
+      }
+    }
+
+    async function triggerScout() {
+      try {
+        const res = await fetch('/trigger_scout');
+        const data = await res.json();
+        alert(data.status);
+        fetchPrices();
+        fetchTrades();
+      } catch (err) {
+        console.error('Scout trigger failed:', err);
+      }
+    }
+    
+    async function runStrategyEval() {
+      const strategy = document.getElementById('strategy-select').value;
+      const asset = document.getElementById('asset-select').value;
+      const timeframe = document.getElementById('timeframe-select').value;
+
+      try {
+        const res = await fetch(`/strategy_eval?asset=${asset}&strategy=${strategy}&timeframe=${timeframe}`);
+        const data = await res.json();
+        const output = document.getElementById('strategy-output');
+
+        if (data.status === "ok") {
+          output.innerHTML = `<pre>${JSON.stringify(data.result, null, 2)}</pre>`;
+        } else {
+          output.textContent = `Error: ${data.message}`;
+        }
+      } catch (err) {
+        console.error('Strategy eval failed:', err);
+      }
+    }
+    
+      async function executeTrade() {
+  const symbol = document.getElementById('trade-symbol').value;
+  const side = document.getElementById('trade-side').value;
+  const quantity = parseFloat(document.getElementById('trade-qty').value);
+
+  try {
+    const res = await fetch('/execute_trade', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ symbol, side, quantity })
+    });
+
+    const data = await res.json();
+    const output = document.getElementById('trade-response');
+    output.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+  } catch (err) {
+    console.error('Trade execution failed:', err);
+    document.getElementById('trade-response').textContent = 'Trade failed. See console for details.';
+  }
+}
+
+    async function fetchSignalPerf() {
+      try {
+        const res  = await fetch('/crypto/api/performance');
+        const data = await res.json();
+        if (data.error) { document.getElementById('signal-perf').textContent = data.error; return; }
+        document.getElementById('signal-perf').innerHTML =
+          `<strong>Tracking Since:</strong> ${data.tracking_since} &nbsp;|&nbsp;
+           <strong>Total Signals:</strong> ${data.total_signals} &nbsp;|&nbsp;
+           <strong>Buy:</strong> <span style="color:#00ffcc">${data.buy_signals}</span> &nbsp;|&nbsp;
+           <strong>Sell:</strong> <span style="color:#ff6b6b">${data.sell_signals}</span> &nbsp;|&nbsp;
+           <strong>Hold:</strong> <span style="color:#aaa">${data.hold_signals}</span>`;
+      } catch(e) {
+        document.getElementById('signal-perf').textContent = 'Could not load signal performance.';
+      }
+    }
+
+    async function fetchPaperPerf() {
+      try {
+        const res  = await fetch('/crypto/api/paper-performance');
+        const data = await res.json();
+
+        if (data.message) {
+          document.getElementById('paper-summary').textContent = data.message;
+          return;
+        }
+
+        const pnlColor = data.total_pnl_usd >= 0 ? '#00ffcc' : '#ff6b6b';
+        const pnlSign  = data.total_pnl_usd >= 0 ? '+' : '';
+        document.getElementById('paper-summary').innerHTML =
+          `<strong>Open:</strong> ${data.open_trades} &nbsp;|&nbsp;
+           <strong>Closed:</strong> ${data.closed_trades} &nbsp;|&nbsp;
+           <strong>Wins:</strong> <span style="color:#00ffcc">${data.wins}</span> &nbsp;|&nbsp;
+           <strong>Losses:</strong> <span style="color:#ff6b6b">${data.losses}</span> &nbsp;|&nbsp;
+           <strong>Win Rate:</strong> ${data.win_rate_pct}% &nbsp;|&nbsp;
+           <strong>Total P&L:</strong> <span style="color:${pnlColor}">${pnlSign}$${data.total_pnl_usd}</span>`;
+
+        // Open trades
+        const openBody = document.getElementById('open-trades-body');
+        if (data.open && data.open.length > 0) {
+          openBody.innerHTML = data.open.map(t => `
+            <tr style="border-bottom:1px solid #384459;">
+              <td style="padding:6px 10px; color:${t.direction==='BUY'?'#00ffcc':'#ff6b6b'}">${t.direction}</td>
+              <td style="padding:6px 10px; text-align:right;">$${t.entry_price}</td>
+              <td style="padding:6px 10px; text-align:right; color:#00ffcc;">$${t.take_profit}</td>
+              <td style="padding:6px 10px; text-align:right; color:#ff6b6b;">$${t.stop_loss}</td>
+              <td style="padding:6px 10px; color:#aaa;">${t.opened_at.slice(0,16).replace('T',' ')}</td>
+            </tr>`).join('');
+        } else {
+          openBody.innerHTML = '<tr><td colspan="5" style="padding:8px; color:#888;">No open trades</td></tr>';
+        }
+
+        // Closed trades
+        const closedBody = document.getElementById('closed-trades-body');
+        if (data.closed && data.closed.length > 0) {
+          closedBody.innerHTML = data.closed.map(t => {
+            const icon     = t.outcome === 'WIN' ? '✅' : '❌';
+            const pnlClr   = t.pnl_usd >= 0 ? '#00ffcc' : '#ff6b6b';
+            const pnlFmt   = (t.pnl_usd >= 0 ? '+' : '') + '$' + t.pnl_usd.toFixed(4);
+            return `
+            <tr style="border-bottom:1px solid #384459;">
+              <td style="padding:6px 10px;">${icon} ${t.outcome}</td>
+              <td style="padding:6px 10px; color:${t.direction==='BUY'?'#00ffcc':'#ff6b6b'}">${t.direction}</td>
+              <td style="padding:6px 10px; text-align:right;">$${t.entry_price}</td>
+              <td style="padding:6px 10px; text-align:right;">$${t.exit_price}</td>
+              <td style="padding:6px 10px; text-align:right; color:${pnlClr};">${pnlFmt}</td>
+              <td style="padding:6px 10px; color:#aaa;">${t.closed_at.slice(0,16).replace('T',' ')}</td>
+            </tr>`;
+          }).join('');
+        } else {
+          closedBody.innerHTML = '<tr><td colspan="6" style="padding:8px; color:#888;">No closed trades yet</td></tr>';
+        }
+      } catch(e) {
+        document.getElementById('paper-summary').textContent = 'Could not load paper performance.';
+      }
+    }
+
+    fetchPrices();
+    fetchTrades();
+    fetchSignalPerf();
+    fetchPaperPerf();
+    setInterval(fetchPrices, 15000);
+    setInterval(fetchTrades, 30000);
+    setInterval(fetchSignalPerf, 60000);
+    setInterval(fetchPaperPerf, 60000);
+  </script>
+</body>
+</html>

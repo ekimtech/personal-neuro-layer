@@ -1,0 +1,15 @@
+{
+  "open": [
+    {
+      "id": "pt_1774264599",
+      "direction": "BUY",
+      "entry_price": 0.261973,
+      "stop_loss": 0.2541,
+      "take_profit": 0.2751,
+      "ada_amount": 20.0,
+      "opened_at": "2026-03-23T11:16:39.636463+00:00",
+      "status": "OPEN"
+    }
+  ],
+  "closed": []
+}

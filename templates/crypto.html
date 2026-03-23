@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <title>Jarvis — Crypto Wallet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #0f1117; color: #e2e8f0; font-family: 'Inter', sans-serif; padding: 2rem; }
+        h1 { color: #63b3ed; font-size: 1.6rem; margin-bottom: 0.25rem; }
+        .subtitle { color: #718096; font-size: 0.9rem; margin-bottom: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+        .card {
+            background: #1a1f2e; border: 1px solid #2d3748;
+            border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+        }
+        .card h3 { color: #90cdf4; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+        .big-number   { font-size: 2rem; font-weight: 700; color: #68d391; }
+        .price-number { font-size: 2rem; font-weight: 700; color: #f6ad55; }
+        .signal-BUY          { font-size: 1.8rem; font-weight: 700; color: #68d391; }
+        .signal-SELL         { font-size: 1.8rem; font-weight: 700; color: #fc8181; }
+        .signal-HOLD         { font-size: 1.8rem; font-weight: 700; color: #f6ad55; }
+        .signal-ACCUMULATING { font-size: 1.4rem; font-weight: 700; color: #90cdf4; }
+        .signal-ERROR        { font-size: 1.4rem; font-weight: 700; color: #fc8181; }
+        .meta   { color: #718096; font-size: 0.82rem; margin-top: 0.4rem; }
+        .reason { color: #a0aec0; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.5; }
+        .would-trade {
+            margin-top: 0.75rem; padding: 0.65rem;
+            background: #0f1117; border-radius: 6px;
+            font-size: 0.85rem; color: #90cdf4;
+        }
+        .would-trade span { color: #e2e8f0; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        th { color: #718096; text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #2d3748; font-weight: 500; }
+        td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #1a1f2e; }
+        .badge-BUY          { background: #276749; color: #9ae6b4; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; }
+        .badge-SELL         { background: #742a2a; color: #fed7d7; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; }
+        .badge-HOLD         { background: #744210; color: #fefcbf; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; }
+        .badge-ACCUMULATING { background: #1a365d; color: #bee3f8; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; }
+        .badge-approved  { background: #276749; color: #9ae6b4; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; }
+        .badge-rejected  { background: #742a2a; color: #fed7d7; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; }
+        .badge-expired   { background: #2d3748; color: #718096; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; }
+        .badge-pending   { background: #744210; color: #fefcbf; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; }
+        .badge-failed    { background: #742a2a; color: #fed7d7; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; }
+        .btn {
+            border: none; padding: 0.5rem 1.25rem; border-radius: 6px;
+            cursor: pointer; font-size: 0.9rem; font-weight: 600;
+            transition: opacity 0.2s; margin-right: 0.5rem;
+        }
+        .btn:hover { opacity: 0.85; }
+        .btn-blue   { background: #2b6cb0; color: white; }
+        .btn-green  { background: #276749; color: #9ae6b4; font-size: 1rem; padding: 0.65rem 1.5rem; }
+        .btn-red    { background: #742a2a; color: #fed7d7; font-size: 1rem; padding: 0.65rem 1.5rem; }
+        .btn-enable  { background: #276749; color: #9ae6b4; }
+        .btn-disable { background: #742a2a; color: #fed7d7; }
+        .stat-row { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: 0.9rem; }
+        .stat-label { color: #718096; }
+        .stat-val   { color: #e2e8f0; font-weight: 600; }
+        .change-pos { color: #68d391; }
+        .change-neg { color: #fc8181; }
+        .back-link { color: #63b3ed; text-decoration: none; font-size: 0.88rem; display: inline-block; margin-bottom: 1.5rem; }
+        .back-link:hover { text-decoration: underline; }
+        .loading { color: #718096; font-style: italic; font-size: 0.9rem; }
+
+        /* Phase 2 Toggle Bar */
+        .phase2-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #1a1f2e; border: 1px solid #2d3748;
+            border-radius: 10px; padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .phase2-bar .label { font-size: 0.95rem; color: #a0aec0; }
+        .phase2-bar .status { font-weight: 700; font-size: 1rem; }
+        .phase2-bar .status.on  { color: #68d391; }
+        .phase2-bar .status.off { color: #718096; }
+        .phase2-controls { display: flex; align-items: center; gap: 0.75rem; }
+        .candle-note { font-size: 0.78rem; color: #718096; margin-top: 0.25rem; }
+
+        /* Approval Panel */
+        .approval-panel {
+            background: #1a1f2e; border: 2px solid #d69e2e;
+            border-radius: 10px; padding: 1.5rem;
+            margin-bottom: 1.5rem; display: none;
+        }
+        .approval-panel.visible { display: block; }
+        .approval-panel h3 { color: #f6ad55; font-size: 1rem; margin-bottom: 1rem; }
+        .approval-details { margin-bottom: 1rem; }
+        .approval-details .ap-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; font-size: 0.92rem; }
+        .approval-details .ap-label { color: #718096; }
+        .approval-details .ap-val   { color: #e2e8f0; font-weight: 600; }
+        .approval-details .ap-val.buy  { color: #68d391; }
+        .approval-details .ap-val.sell { color: #fc8181; }
+        .countdown { font-size: 0.85rem; color: #f6ad55; margin-bottom: 1rem; }
+        .approval-btns { display: flex; gap: 1rem; }
+
+        /* Refresh timer */
+        .refresh-note { color: #4a5568; font-size: 0.78rem; margin-top: 0.5rem; text-align: right; }
+    </style>
+</head>
+<body>
+    <a href="/controlpanel" class="back-link">← Control Panel</a>
+    <h1>Jarvis Crypto Wallet</h1>
+    <p class="subtitle">Cardano Mainnet — Phase 2 | 15-Minute Candles | ADA ↔ DJED</p>
+
+    <!-- Phase 2 Live Trading Toggle -->
+    <div class="phase2-bar">
+        <div>
+            <div class="label">Live Trading (Phase 2)</div>
+            <div class="candle-note">Paper trading always runs. Real trades require your approval.</div>
+        </div>
+        <div class="phase2-controls">
+            <span class="status off" id="phase2-status">● DISABLED</span>
+            <button class="btn btn-enable" id="btn-phase2-enable"  onclick="enablePhase2()">Enable</button>
+            <button class="btn btn-disable" id="btn-phase2-disable" onclick="disablePhase2()" style="display:none;">Kill Switch</button>
+        </div>
+    </div>
+
+    <!-- Pending Trade Approval Panel -->
+    <div class="approval-panel" id="approval-panel">
+        <h3>⏳ Trade Approval Required</h3>
+        <div class="approval-details" id="approval-details"></div>
+        <div class="countdown" id="approval-countdown"></div>
+        <div class="approval-btns">
+            <button class="btn btn-green" id="btn-approve" onclick="approveTrade()">✅ Approve Trade</button>
+            <button class="btn btn-red"   id="btn-reject"  onclick="rejectTrade()">❌ Reject Trade</button>
+        </div>
+    </div>
+
+    <!-- Data Cards -->
+    <div class="grid">
+
+        <!-- Balance Card -->
+        <div class="card">
+            <h3>Wallet Balance</h3>
+            <div class="big-number" id="balance">Loading...</div>
+            <div class="meta" id="wallet-address">Fetching address...</div>
+            <button class="btn btn-blue" onclick="refreshAll()" style="margin-top:0.75rem;">Refresh</button>
+        </div>
+
+        <!-- ADA Price Card -->
+        <div class="card">
+            <h3>ADA Price</h3>
+            <div class="price-number" id="ada-price">Loading...</div>
+            <div class="meta" id="price-change"></div>
+        </div>
+
+        <!-- Signal Card -->
+        <div class="card">
+            <h3>Current Signal (15-Min)</h3>
+            <div id="signal-display" class="loading">Loading...</div>
+            <div class="reason" id="signal-reason"></div>
+            <div class="would-trade" id="would-trade" style="display:none;"></div>
+        </div>
+
+        <!-- Performance Card -->
+        <div class="card">
+            <h3>Signal Performance</h3>
+            <div id="perf-stats" class="loading">Loading...</div>
+        </div>
+
+    </div>
+
+    <!-- Signal History Table -->
+    <div class="card">
+        <h3>Paper Trade Signals</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Signal</th>
+                    <th>Price (USD)</th>
+                    <th>EMA Short</th>
+                    <th>EMA Long</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody id="signal-table">
+                <tr><td colspan="5" class="loading" style="padding:1rem;">Loading signals...</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- Trade Approval History -->
+    <div class="card">
+        <h3>Trade Approval History</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Action</th>
+                    <th>ADA</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>TX ID</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="approval-table">
+                <tr><td colspan="7" class="loading" style="padding:1rem;">No approval history yet.</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- Paper Trade Performance -->
+    <div class="card">
+        <h3>🧪 Paper Trading Performance</h3>
+        <div id="paper-summary" style="margin-bottom:1rem;">
+            <div class="loading">Loading paper trade stats...</div>
+        </div>
+        <div style="overflow-x:auto; margin-bottom:1.25rem;">
+            <div style="color:#90cdf4; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem;">Open Trades</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Direction</th>
+                        <th>Entry</th>
+                        <th>Take Profit</th>
+                        <th>Stop Loss</th>
+                        <th>Opened</th>
+                    </tr>
+                </thead>
+                <tbody id="paper-open-body">
+                    <tr><td colspan="5" style="color:#718096;padding:0.75rem;">No open trades</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="overflow-x:auto;">
+            <div style="color:#90cdf4; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem;">Closed Trade History</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Result</th>
+                        <th>Direction</th>
+                        <th>Entry</th>
+                        <th>Exit</th>
+                        <th>P&L (USD)</th>
+                        <th>Closed</th>
+                    </tr>
+                </thead>
+                <tbody id="paper-closed-body">
+                    <tr><td colspan="6" style="color:#718096;padding:0.75rem;">No closed trades yet — waiting for first crossover + TP/SL hit</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Real Executed Trades -->
+    <div class="card">
+        <h3>Real Executed Trades</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>ADA</th>
+                    <th>Price</th>
+                    <th>TX ID</th>
+                    <th>Executed</th>
+                </tr>
+            </thead>
+            <tbody id="real-trades-table">
+                <tr><td colspan="5" class="loading" style="padding:1rem;">No real trades executed yet.</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="refresh-note" id="refresh-note">Auto-refresh every 15 minutes</div>
+    </div>
+
+    <script>
+        let _pendingApprovalId = null;
+        let _countdownTimer    = null;
+
+        // ---------------------------------------------------------
+        // Phase 2 Toggle
+        // ---------------------------------------------------------
+        async function fetchPhase2Status() {
+            const r = await fetch('/crypto/api/phase2/status');
+            const d = await r.json();
+            updatePhase2UI(d.enabled);
+        }
+
+        function updatePhase2UI(enabled) {
+            const statusEl  = document.getElementById('phase2-status');
+            const btnEnable  = document.getElementById('btn-phase2-enable');
+            const btnDisable = document.getElementById('btn-phase2-disable');
+            if (enabled) {
+                statusEl.textContent = '● LIVE';
+                statusEl.className = 'status on';
+                btnEnable.style.display  = 'none';
+                btnDisable.style.display = 'inline-block';
+            } else {
+                statusEl.textContent = '● DISABLED';
+                statusEl.className = 'status off';
+                btnEnable.style.display  = 'inline-block';
+                btnDisable.style.display = 'none';
+            }
+        }
+
+        async function enablePhase2() {
+            if (!confirm('Enable Phase 2 live trading?\n\nJarvis will request your approval before every real trade.\nYou can disable at any time with the Kill Switch.')) return;
+            const r = await fetch('/crypto/api/phase2/enable', { method: 'POST' });
+            const d = await r.json();
+            updatePhase2UI(d.enabled);
+        }
+
+        async function disablePhase2() {
+            const r = await fetch('/crypto/api/phase2/disable', { method: 'POST' });
+            const d = await r.json();
+            updatePhase2UI(d.enabled);
+        }
+
+        // ---------------------------------------------------------
+        // Approval Panel
+        // ---------------------------------------------------------
+        async function fetchPendingTrades() {
+            const r = await fetch('/crypto/api/pending-trades');
+            const approvals = await r.json();
+            const panel = document.getElementById('approval-panel');
+
+            if (approvals.length === 0) {
+                panel.classList.remove('visible');
+                _pendingApprovalId = null;
+                if (_countdownTimer) clearInterval(_countdownTimer);
+                return;
+            }
+
+            const a = approvals[0];
+            _pendingApprovalId = a.id;
+            panel.classList.add('visible');
+
+            const actionClass = a.action === 'BUY' ? 'buy' : 'sell';
+            document.getElementById('approval-details').innerHTML = `
+                <div class="ap-row"><span class="ap-label">Action</span><span class="ap-val ${actionClass}">${a.action}</span></div>
+                <div class="ap-row"><span class="ap-label">Amount</span><span class="ap-val">${a.ada_amount} ADA</span></div>
+                <div class="ap-row"><span class="ap-label">Price</span><span class="ap-val">$${a.price}</span></div>
+                <div class="ap-row"><span class="ap-label">Reason</span><span class="ap-val">${a.reason}</span></div>
+                <div class="ap-row"><span class="ap-label">EMA Short</span><span class="ap-val">${a.ema_short}</span></div>
+                <div class="ap-row"><span class="ap-label">EMA Long</span><span class="ap-val">${a.ema_long}</span></div>
+                <div class="ap-row"><span class="ap-label">Approval ID</span><span class="ap-val">${a.id}</span></div>
+            `;
+
+            // Countdown timer
+            if (_countdownTimer) clearInterval(_countdownTimer);
+            _countdownTimer = setInterval(() => {
+                const expires  = new Date(a.expires_at);
+                const now      = new Date();
+                const remaining = Math.max(0, Math.floor((expires - now) / 1000));
+                const mins = Math.floor(remaining / 60);
+                const secs = remaining % 60;
+                document.getElementById('approval-countdown').textContent =
+                    `⏰ Expires in ${mins}:${secs.toString().padStart(2,'0')} — auto-rejects if no response`;
+                if (remaining === 0) {
+                    clearInterval(_countdownTimer);
+                    panel.classList.remove('visible');
+                    fetchPendingTrades();
+                }
+            }, 1000);
+        }
+
+        async function approveTrade() {
+            if (!_pendingApprovalId) return;
+            if (!confirm(`Approve ${_pendingApprovalId} — execute real trade on Minswap?`)) return;
+            document.getElementById('btn-approve').textContent = 'Executing...';
+            document.getElementById('btn-approve').disabled = true;
+            const r = await fetch(`/crypto/api/approve-trade/${_pendingApprovalId}`, { method: 'POST' });
+            const d = await r.json();
+            if (d.ok) {
+                alert(`✅ Trade executed!\nTX ID: ${d.tx_id}`);
+            } else {
+                alert(`❌ Trade failed at step [${d.step}]:\n${d.error}`);
+            }
+            document.getElementById('btn-approve').textContent = '✅ Approve Trade';
+            document.getElementById('btn-approve').disabled = false;
+            fetchPendingTrades();
+            fetchApprovalHistory();
+            fetchRealTrades();
+            fetchBalance();
+        }
+
+        async function rejectTrade() {
+            if (!_pendingApprovalId) return;
+            const r = await fetch(`/crypto/api/reject-trade/${_pendingApprovalId}`, { method: 'POST' });
+            const d = await r.json();
+            if (d.ok) {
+                document.getElementById('approval-panel').classList.remove('visible');
+                fetchApprovalHistory();
+            }
+        }
+
+        // ---------------------------------------------------------
+        // Data Cards
+        // ---------------------------------------------------------
+        async function fetchBalance() {
+            const r = await fetch('/crypto/api/balance');
+            const d = await r.json();
+            if (d.error) {
+                document.getElementById('balance').textContent = 'Error';
+                document.getElementById('wallet-address').textContent = d.error;
+            } else {
+                const DJED_TOKEN = '8db269c3ec630e06ae29f74bc39edd1f87c819f1056206e879a1cd644a65644d6963726f555344';
+                const djedToken  = (d.tokens || []).find(t => t.unit === DJED_TOKEN);
+                const djedAmt    = djedToken ? (parseInt(djedToken.quantity) / 1_000_000).toFixed(2) : '0.00';
+                document.getElementById('balance').innerHTML =
+                    d.ada + ' ADA<br><span style="font-size:1rem;color:#f0c040;">' + djedAmt + ' DJED</span>';
+                document.getElementById('wallet-address').textContent = d.address;
+            }
+        }
+
+        async function fetchPrice() {
+            const r = await fetch('/crypto/api/price');
+            const d = await r.json();
+            document.getElementById('ada-price').textContent = '$' + d.usd;
+            const ch  = d.change_24h || 0;
+            const cls = ch >= 0 ? 'change-pos' : 'change-neg';
+            const sign = ch >= 0 ? '+' : '';
+            document.getElementById('price-change').innerHTML =
+                `<span class="${cls}">${sign}${ch.toFixed(2)}% (24h)</span>`;
+        }
+
+        async function fetchSignal() {
+            const r = await fetch('/crypto/api/signal');
+            const d = await r.json();
+            const sig = d.signal || 'UNKNOWN';
+            document.getElementById('signal-display').innerHTML =
+                `<span class="signal-${sig}">${sig}</span>`;
+            document.getElementById('signal-reason').textContent = d.reason || '';
+            const wt = d.would_trade;
+            if (wt) {
+                const box = document.getElementById('would-trade');
+                box.style.display = 'block';
+                box.innerHTML = `Would <span>${wt.action}</span> <span>${wt.ada_amount} ADA</span>
+                    at <span>$${wt.at_price}</span> |
+                    Stop: <span>$${wt.stop_loss}</span> |
+                    TP: <span>$${wt.take_profit}</span>`;
+            }
+        }
+
+        async function fetchPerformance() {
+            const r = await fetch('/crypto/api/performance');
+            const d = await r.json();
+            if (d.error) {
+                document.getElementById('perf-stats').textContent = d.error;
+                return;
+            }
+            document.getElementById('perf-stats').innerHTML = `
+                <div class="stat-row"><span class="stat-label">Tracking Since</span><span class="stat-val">${d.tracking_since}</span></div>
+                <div class="stat-row"><span class="stat-label">Total Signals</span><span class="stat-val">${d.total_signals}</span></div>
+                <div class="stat-row"><span class="stat-label">Buy Signals</span><span class="stat-val change-pos">${d.buy_signals}</span></div>
+                <div class="stat-row"><span class="stat-label">Sell Signals</span><span class="stat-val change-neg">${d.sell_signals}</span></div>
+                <div class="stat-row"><span class="stat-label">Hold Signals</span><span class="stat-val">${d.hold_signals}</span></div>
+            `;
+        }
+
+        async function fetchSignalHistory() {
+            const r = await fetch('/crypto/api/signals?count=20');
+            const signals = await r.json();
+            const tbody = document.getElementById('signal-table');
+            if (!signals.length) {
+                tbody.innerHTML = '<tr><td colspan="5" style="color:#718096;padding:1rem;">No signals yet — building 15-min candle history.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = signals.reverse().map(s => `
+                <tr>
+                    <td><span class="badge-${s.signal}">${s.signal}</span></td>
+                    <td>$${s.price}</td>
+                    <td>${s.ema_short || '—'}</td>
+                    <td>${s.ema_long  || '—'}</td>
+                    <td>${s.timestamp ? s.timestamp.slice(0,16).replace('T',' ') : '—'}</td>
+                </tr>
+            `).join('');
+        }
+
+        async function fetchApprovalHistory() {
+            const r = await fetch('/crypto/api/trade-history');
+            const approvals = await r.json();
+            const tbody = document.getElementById('approval-table');
+            if (!approvals.length) {
+                tbody.innerHTML = '<tr><td colspan="7" style="color:#718096;padding:1rem;">No approval history yet.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = approvals.reverse().map(a => `
+                <tr>
+                    <td style="font-family:monospace;font-size:0.78rem;">${a.id}</td>
+                    <td><span class="badge-${a.action === 'BUY' ? 'BUY' : 'SELL'}">${a.action}</span></td>
+                    <td>${a.ada_amount}</td>
+                    <td>$${a.price}</td>
+                    <td><span class="badge-${a.status}">${a.status}</span></td>
+                    <td style="font-family:monospace;font-size:0.75rem;">${a.tx_id ? a.tx_id.slice(0,20)+'...' : '—'}</td>
+                    <td>${a.created_at ? a.created_at.slice(0,16).replace('T',' ') : '—'}</td>
+                </tr>
+            `).join('');
+        }
+
+        async function fetchPaperPerf() {
+            try {
+                const r = await fetch('/crypto/api/paper-performance');
+                const d = await r.json();
+
+                if (d.message) {
+                    document.getElementById('paper-summary').innerHTML =
+                        `<span class="loading">${d.message}</span>`;
+                    return;
+                }
+
+                const pnlColor = d.total_pnl_usd >= 0 ? '#68d391' : '#fc8181';
+                const pnlSign  = d.total_pnl_usd >= 0 ? '+' : '';
+                document.getElementById('paper-summary').innerHTML = `
+                    <div class="stat-row"><span class="stat-label">Open Trades</span><span class="stat-val">${d.open_trades}</span></div>
+                    <div class="stat-row"><span class="stat-label">Closed Trades</span><span class="stat-val">${d.closed_trades}</span></div>
+                    <div class="stat-row"><span class="stat-label">Wins / Losses</span><span class="stat-val"><span class="change-pos">${d.wins}</span> / <span class="change-neg">${d.losses}</span></span></div>
+                    <div class="stat-row"><span class="stat-label">Win Rate</span><span class="stat-val">${d.win_rate_pct}%</span></div>
+                    <div class="stat-row"><span class="stat-label">Total P&L</span><span class="stat-val" style="color:${pnlColor}">${pnlSign}$${d.total_pnl_usd}</span></div>
+                `;
+
+                // Open trades table
+                const openBody = document.getElementById('paper-open-body');
+                if (d.open && d.open.length > 0) {
+                    openBody.innerHTML = d.open.map(t => `
+                        <tr>
+                            <td><span class="badge-${t.direction}">${t.direction}</span></td>
+                            <td>$${t.entry_price}</td>
+                            <td style="color:#68d391;">$${t.take_profit}</td>
+                            <td style="color:#fc8181;">$${t.stop_loss}</td>
+                            <td>${t.opened_at.slice(0,16).replace('T',' ')}</td>
+                        </tr>`).join('');
+                } else {
+                    openBody.innerHTML = '<tr><td colspan="5" style="color:#718096;padding:0.75rem;">No open trades</td></tr>';
+                }
+
+                // Closed trades table
+                const closedBody = document.getElementById('paper-closed-body');
+                if (d.closed && d.closed.length > 0) {
+                    closedBody.innerHTML = d.closed.map(t => {
+                        const icon   = t.outcome === 'WIN' ? '✅' : '❌';
+                        const pnlClr = t.pnl_usd >= 0 ? '#68d391' : '#fc8181';
+                        const pnlFmt = (t.pnl_usd >= 0 ? '+' : '') + '$' + t.pnl_usd.toFixed(4);
+                        return `
+                        <tr>
+                            <td>${icon} ${t.outcome}</td>
+                            <td><span class="badge-${t.direction}">${t.direction}</span></td>
+                            <td>$${t.entry_price}</td>
+                            <td>$${t.exit_price}</td>
+                            <td style="color:${pnlClr};">${pnlFmt}</td>
+                            <td>${t.closed_at.slice(0,16).replace('T',' ')}</td>
+                        </tr>`;
+                    }).join('');
+                } else {
+                    closedBody.innerHTML = '<tr><td colspan="6" style="color:#718096;padding:0.75rem;">No closed trades yet — waiting for first crossover + TP/SL hit</td></tr>';
+                }
+            } catch(e) {
+                document.getElementById('paper-summary').innerHTML = '<span class="loading">Could not load paper performance.</span>';
+            }
+        }
+
+        async function fetchRealTrades() {
+            const r = await fetch('/crypto/api/real-trades');
+            const trades = await r.json();
+            const tbody = document.getElementById('real-trades-table');
+            if (!trades.length) {
+                tbody.innerHTML = '<tr><td colspan="5" style="color:#718096;padding:1rem;">No real trades executed yet.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = trades.reverse().map(t => `
+                <tr>
+                    <td><span class="badge-${t.action === 'BUY' ? 'BUY' : 'SELL'}">${t.action}</span></td>
+                    <td>${t.ada_amount} ADA</td>
+                    <td>$${t.price}</td>
+                    <td style="font-family:monospace;font-size:0.75rem;">${t.tx_id ? t.tx_id.slice(0,30)+'...' : '—'}</td>
+                    <td>${t.executed_at ? t.executed_at.slice(0,16).replace('T',' ') : '—'}</td>
+                </tr>
+            `).join('');
+        }
+
+        // ---------------------------------------------------------
+        // Refresh All
+        // ---------------------------------------------------------
+        function refreshAll() {
+            fetchPhase2Status();
+            fetchPendingTrades();
+            fetchBalance();
+            fetchPrice();
+            fetchSignal();
+            fetchPerformance();
+            fetchSignalHistory();
+            fetchPaperPerf();
+            fetchApprovalHistory();
+            fetchRealTrades();
+            const now = new Date();
+            document.getElementById('refresh-note').textContent =
+                `Last refreshed: ${now.toLocaleTimeString()} — Auto-refresh every 15 minutes`;
+        }
+
+        // Load on page open
+        refreshAll();
+
+        // Auto-refresh every 15 minutes (matches candle interval)
+        setInterval(refreshAll, 900000);
+
+        // Check for pending approvals every 30 seconds
+        setInterval(fetchPendingTrades, 30000);
+    </script>
+<footer style="text-align:center;padding:18px 0 12px;color:#777;font-size:0.82rem;border-top:1px solid #2d3a52;margin-top:30px;">
+    &copy; 2026 Jarvis AI - Engineered by Ekimtech.com
+</footer>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "tts",
+  "version": "1.0.0",
+  "description": "Piper TTS MCP server for Jarvis",
+  "entry_point": "tts.py",
+  "schema": "schema.json"
+}
