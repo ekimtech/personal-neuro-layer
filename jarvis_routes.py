@@ -583,10 +583,13 @@ def talk():
     if not user_input:
         return jsonify({"error": "No input received"}), 400
 
-    if not session_id:
-        return jsonify({"error": "No session ID provided"}), 400
+    # Normalize session_id — treat "None", "null", empty as no session
+    if session_id in (None, "None", "null", "", 0, "0"):
+        session_id = None
 
-    add_turn(session_id, "user", user_input)
+    # Only store turns if a real session is active
+    if session_id:
+        add_turn(session_id, "user", user_input)
 
     result = handle_request(user_input, session_id=session_id)
 
@@ -595,7 +598,8 @@ def talk():
     else:
         response_text = str(result)
 
-    add_turn(session_id, "jarvis", response_text)
+    if session_id:
+        add_turn(session_id, "jarvis", response_text)
 
     return jsonify({
         "message": response_text,

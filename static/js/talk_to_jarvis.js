@@ -1,4 +1,5 @@
-let session_id = "{{ selected_session_id }}";
+// Session ID injected by Flask into index.html as window.JARVIS_SESSION_ID
+let session_id = (typeof window.JARVIS_SESSION_ID !== 'undefined') ? window.JARVIS_SESSION_ID : null;
 let voiceEnabled = true;
 
 // Make all links in chat open in a new tab
@@ -159,7 +160,7 @@ function startWakeWordPolling() {
 async function sendMessage() {
   const input = document.getElementById("chatInput");
   const message = input.value.trim();
-  if (!message || !session_id) return;
+  if (!message) return;
 
   appendBubble(message, "user");
   input.value = "";

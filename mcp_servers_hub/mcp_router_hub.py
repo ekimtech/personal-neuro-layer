@@ -554,8 +554,16 @@ def handle_request(user_input: str, session_id=None) -> dict:
     # Log this as a miss — no organ handled it
     _log_miss(user_input, intent)
 
-    # 1. Retrieve relevant memory chunks
-    memory_results = search_similar(user_input, top_k=3)
+    # 1. Retrieve relevant memory chunks — only for document/command queries
+    _doc_keywords = {
+        "how", "command", "trigger", "turn", "device", "light", "thermostat",
+        "lock", "document", "invoice", "estimate", "letter", "guide",
+        "what command", "how do", "how to", "what does my", "uploaded"
+    }
+    _input_lower = user_input.lower()
+    _use_vector = any(k in _input_lower for k in _doc_keywords)
+
+    memory_results = search_similar(user_input, top_k=3) if _use_vector else []
 
     # 2. Build memory context string
     memory_context = ""

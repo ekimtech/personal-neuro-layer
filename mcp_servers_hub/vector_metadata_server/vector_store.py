@@ -39,14 +39,25 @@ init_vector_db()
 
 
 # ============================================================
-# SIMPLE LOCAL EMBEDDING (HASH-BASED)
+# WORD-LEVEL EMBEDDING (HASH-BASED, POSITION-INDEPENDENT)
+# Maps each word to a consistent bucket so matching words
+# in query and document produce high cosine similarity.
+# Version: 2
 # ============================================================
+
+EMBED_VERSION = 2  # Bump this to force a re-index on next startup
 
 def embed_text(text: str) -> List[float]:
     vec = [0.0] * EMBED_DIM
-    for i, ch in enumerate(text):
-        idx = (ord(ch) + i) % EMBED_DIM
-        vec[idx] += 1.0
+    for word in text.lower().split():
+        # Strip punctuation so "light?" == "light"
+        word = ''.join(c for c in word if c.isalnum())
+        if not word:
+            continue
+        # Stable word hash: sum of (char_value * position_within_word)
+        # Same word always maps to the same bucket regardless of sentence position
+        h = sum(ord(c) * (i + 1) for i, c in enumerate(word)) % EMBED_DIM
+        vec[h] += 1.0
 
     norm = math.sqrt(sum(v * v for v in vec)) or 1.0
     return [v / norm for v in vec]
@@ -162,3 +173,61 @@ def search_similar(query: str, top_k: int = 5) -> List[Dict]:
 
     conn_meta.close()
     return results
+
+
+# ============================================================
+# AUTO RE-INDEX ON STARTUP
+# If EMBED_VERSION doesn't match what's stored, clear all
+# embeddings and rebuild so results stay accurate.
+# ============================================================
+
+def _check_and_reindex():
+    try:
+        conn = sqlite3.connect(VECTOR_DB_PATH)
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS embed_version (
+                id INTEGER PRIMARY KEY,
+                version INTEGER NOT NULL
+            )
+        """)
+        row = conn.execute("SELECT version FROM embed_version WHERE id = 1").fetchone()
+        stored_version = row[0] if row else 0
+        conn.close()
+
+        if stored_version != EMBED_VERSION:
+            # Clear stale embeddings
+            conn = sqlite3.connect(VECTOR_DB_PATH)
+            conn.execute("DELETE FROM vector_embeddings")
+            conn.execute("""
+                INSERT INTO embed_version (id, version) VALUES (1, ?)
+                ON CONFLICT(id) DO UPDATE SET version=excluded.version
+            """, (EMBED_VERSION,))
+            conn.commit()
+            conn.close()
+
+            # Re-index all chunks with new embedding
+            count = index_all_chunks()
+            print(f"[VectorStore] Embed version upgraded to v{EMBED_VERSION}. Re-indexed {count} chunks.")
+        else:
+            # Ensure chunk counts match (catches orphaned embeddings)
+            conn_meta = sqlite3.connect(METADATA_DB_PATH)
+            meta_count = conn_meta.execute("SELECT COUNT(*) FROM vector_metadata").fetchone()[0]
+            conn_meta.close()
+
+            conn_vec = sqlite3.connect(VECTOR_DB_PATH)
+            vec_count = conn_vec.execute("SELECT COUNT(*) FROM vector_embeddings").fetchone()[0]
+            conn_vec.close()
+
+            if meta_count != vec_count:
+                conn_vec = sqlite3.connect(VECTOR_DB_PATH)
+                conn_vec.execute("DELETE FROM vector_embeddings")
+                conn_vec.commit()
+                conn_vec.close()
+                count = index_all_chunks()
+                print(f"[VectorStore] Count mismatch fixed. Re-indexed {count} chunks.")
+
+    except Exception as e:
+        print(f"[VectorStore] Re-index check failed: {e}")
+
+
+_check_and_reindex()

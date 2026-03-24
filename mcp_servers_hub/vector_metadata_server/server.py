@@ -141,15 +141,23 @@ def list_chunks(page=1, search="", file_type=""):
 # ============================================================
 
 def delete_chunk(chunk_id):
-    """Delete a single chunk by ID."""
+    """Delete a single chunk from both metadata and vector embeddings DBs."""
+    # Delete from metadata DB
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-
     cursor.execute("DELETE FROM vector_metadata WHERE id = ?", (chunk_id,))
     conn.commit()
     deleted = cursor.rowcount > 0
-
     conn.close()
+
+    # Also delete from vector embeddings DB to prevent orphaned embeddings
+    vector_db = os.path.join(BASE_DIR, "vector_store.db")
+    if os.path.exists(vector_db):
+        conn_vec = sqlite3.connect(vector_db)
+        conn_vec.execute("DELETE FROM vector_embeddings WHERE chunk_id = ?", (chunk_id,))
+        conn_vec.commit()
+        conn_vec.close()
+
     return deleted
 
 

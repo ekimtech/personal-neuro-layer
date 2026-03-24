@@ -19,7 +19,7 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 
 app = Flask(__name__, static_folder=STATIC_DIR, template_folder=TEMPLATE_DIR)
-app.secret_key = "CHANGE_THIS_TO_A_RANDOM_SECRET_KEY"   # Generate one: python -c "import secrets; print(secrets.token_hex(32))"
+app.secret_key = os.environ.get("JARVIS_SECRET_KEY", "change-me-in-production")
 
 # Optional: trust reverse proxy headers
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
@@ -91,6 +91,20 @@ def stt_record():
 
 if __name__ == "__main__":
 
+    # Clear stale session turns so old wrong answers don't poison new conversations
+    try:
+        import sqlite3 as _sqlite3, os as _os
+        _session_db = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)),
+            "mcp_servers_hub", "memory_servers", "sqlite_server", "session.db")
+        if _os.path.exists(_session_db):
+            _conn = _sqlite3.connect(_session_db)
+            _conn.execute("DELETE FROM turns")
+            _conn.commit()
+            _conn.close()
+            print("[Jarvis] Session history cleared on startup.")
+    except Exception as e:
+        print(f"[Jarvis] Session clear failed: {e}")
+
     # Warm JSONL memory cache into RAM before first request
     try:
         from mcp_servers_hub.memory_servers.jsonl_server.jsonl_memory_server import warm_cache
@@ -119,7 +133,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"[Jarvis] Candle collector failed to start: {e}")
 
-    print("[Jarvis] Running on http://0.0.0.0:5000")
+    print("[Jarvis] Flask is running on port 5000.")
 
     app.run(
         host="0.0.0.0",

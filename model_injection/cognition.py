@@ -86,8 +86,9 @@ def generate_response(user_input, session=None):
     try:
         all_entries = list_memory()
 
-        # Score memory relevance based on keyword matches
-        keywords = set(user_input.lower().split())
+        # Score memory relevance based on keyword matches (strip punctuation)
+        keywords = set(re.split(r'\W+', user_input.lower()))
+        keywords.discard('')  # remove empty strings from split
         scored = []
 
         for entry in all_entries:
@@ -95,11 +96,15 @@ def generate_response(user_input, session=None):
             score = sum(1 for k in keywords if k in content)
             scored.append((score, entry))
 
-        # Sort by score (desc), then take top 20
+        # Sort by score (desc), then take top 20 with minimum relevance threshold
         scored.sort(key=lambda x: x[0], reverse=True)
-        top_entries = [e for score, e in scored[:20] if score > 0]
+        top_entries = [e for score, e in scored[:20] if score >= 3]
 
-        # Fallback: if no relevant matches, take the 20 most recent
+        # Fallback: if nothing meets threshold, try score > 0
+        if not top_entries:
+            top_entries = [e for score, e in scored[:20] if score > 0]
+
+        # Final fallback: take 20 most recent if still nothing
         if not top_entries:
             top_entries = all_entries[-20:]
 

@@ -11,7 +11,7 @@
 <body class="flex flex-col items-center justify-center min-h-screen p-4 space-y-4">
 
   <div class="text-center space-y-1">
-    <h1 class="text-xl font-semibold">Jarvis Personal Neuro Layer</h1>
+    <h1 class="text-xl font-semibold">Flemings Personal Assistant</h1>
     <h2 class="text-base text-gray-300">Engage with the future of intelligent assistance.</h2>
     <img
       src="/static/images/JarvisLogo.png"
@@ -141,6 +141,7 @@
   </footer>
 
   <script src="/static/js/marked.min.js"></script>
+  <script>window.JARVIS_SESSION_ID = {{ selected_session_id | tojson }};</script>
   <script src="/static/js/talk_to_jarvis.js"></script>
 </body>
 </html>

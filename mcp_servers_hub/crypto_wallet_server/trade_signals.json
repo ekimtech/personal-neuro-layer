@@ -1900,5 +1900,25 @@
     "reason": "No crossover \u2014 Fast EMA (0.2628) above Slow EMA (0.2605).",
     "would_trade": null,
     "timestamp": "2026-03-23T16:06:53.142005+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.26104,
+    "change_24h": 2.1,
+    "ema_short": 0.262232,
+    "ema_long": 0.260591,
+    "reason": "No crossover \u2014 Fast EMA (0.2622) above Slow EMA (0.2606).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T16:21:53.467887+00:00"
+  },
+  {
+    "signal": "HOLD",
+    "price": 0.259179,
+    "change_24h": 0,
+    "ema_short": 0.261214,
+    "ema_long": 0.260456,
+    "reason": "No crossover \u2014 Fast EMA (0.2612) above Slow EMA (0.2605).",
+    "would_trade": null,
+    "timestamp": "2026-03-23T16:36:53.973472+00:00"
   }
 ]
