@@ -5,6 +5,12 @@ A fully working personal AI assistant you can run in your own home today.
 While enterprise AI frameworks are blueprints, **Personal Neuro Layer** is a complete, running system built for real daily life — home automation, email, crypto trading, security monitoring, documents, memory, and voice control, all connected through a single intelligent routing layer.
 
 ---
+<p align="center">
+  <a href="https://www.youtube.com/embed/L9WQumzdK98?si=N6pUyJ35ha0a3AIb&controls=0" target="_blank">
+    <img src="https://img.youtube.com/vi/L9WQumzdK98/0.jpg" alt="Demo Video" style="width:70%; max-width:560px;">
+  </a>
+</p>
+---
 
 ## What It Does
 
