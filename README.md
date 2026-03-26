@@ -6,7 +6,7 @@ While enterprise AI frameworks are blueprints, **Personal Neuro Layer** is a com
 
 ---
 <p align="center">
-  <a href="https://www.youtube.com/embed/L9WQumzdK98?si=N6pUyJ35ha0a3AIb&controls=0" target="_blank">
+  <a href="https://www.youtube.com/embed/sn-Pq4JHAxw?si=4ip3zGVsTNk3NaLJ" target="_blank">
     <img src="https://img.youtube.com/vi/L9WQumzdK98/0.jpg" alt="Demo Video" style="width:70%; max-width:560px;">
   </a>
 </p>
