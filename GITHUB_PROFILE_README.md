@@ -49,6 +49,22 @@ You need a problem worth solving and the will to keep going when it breaks.
 
 ---
 
+## System Requirements
+
+**LM Studio** is required to run the AI brain locally. Performance depends entirely on your hardware.
+
+Recommended minimum specs:
+- **RAM:** 16GB (32GB recommended)
+- **GPU:** NVIDIA GPU with 8GB+ VRAM for best performance
+- **CPU:** Modern 6-core or better (CPU-only mode works but is slow)
+- **Storage:** 20GB+ free for models
+
+The default model used is **Qwen2.5-14B** — a strong balance of intelligence and speed on mid-range hardware. If your machine struggles you can swap to a smaller 7B model in the config with no other changes required.
+
+No cloud API required — everything runs locally on your machine.
+
+---
+
 ## What's Next
 - 📱 React Native mobile app
 - 🏢 Small business client portal

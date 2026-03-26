@@ -71,6 +71,12 @@ def handle_tools_list(req_id):
 # 6. Run Piper
 # ---------------------------------------------------------
 def run_piper(text, voice):
+    # Strip non-latin characters that Windows cp1252 cannot encode
+    text = text.encode("ascii", errors="ignore").decode("ascii")
+    text = text.strip()
+    if not text:
+        return {"audio_path": None}
+
     model_path = VOICES_DIR / f"{voice}.onnx"
 
     # Save directly into the Flask static folder

@@ -242,11 +242,16 @@ def detect_intent(user_input: str) -> str:
     ]) or re.search(r"\bweb\b.*(find|get|show|look)", text):
         return "internet"
 
-    # Weather
+    # Weather / Air Quality / Hurricane
     if any(k in text for k in [
         "weather", "forecast", "temperature", "rain", "raining",
         "sunny", "cloudy", "humid", "humidity", "snow", "snowing",
-        "cold outside", "hot outside"
+        "cold outside", "hot outside",
+        "air quality", "aqi", "uv index", "uv level", "pm2.5", "pm10",
+        "air pollution", "air today", "how's the air", "how is the air",
+        "hurricane", "tropical storm", "tropical depression",
+        "storm surge", "active storms", "any storms", "nhc",
+        "hurricane warning", "hurricane watch", "tropical warning", "cyclone"
     ]):
         return "weather"
 
@@ -445,7 +450,18 @@ def handle_request(user_input: str, session_id=None) -> dict:
 
     # --- Weather Organ ---
     if intent == "weather":
-        result = weather_handle(user_input)
+        # Air quality and hurricane route through internet_handle
+        _wtext = user_input.lower()
+        if any(k in _wtext for k in [
+            "air quality", "aqi", "uv index", "uv level", "pm2.5", "pm10",
+            "air pollution", "air today", "how's the air", "how is the air",
+            "hurricane", "tropical storm", "tropical depression",
+            "storm surge", "active storms", "any storms", "nhc",
+            "hurricane warning", "hurricane watch", "tropical warning", "cyclone"
+        ]):
+            result = internet_handle(user_input)
+        else:
+            result = weather_handle(user_input)
         response_text = result.get("data", "Could not get weather.")
         cleaned = remove_emojis(response_text)
         tts_handle("say " + cleaned)

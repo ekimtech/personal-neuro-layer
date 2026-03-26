@@ -5,7 +5,7 @@
 import re
 import logging
 
-from .weather import get_weather, WeatherError
+from .weather import get_weather, get_air_quality, get_hurricane_status, WeatherError
 from .search import web_search, SearchError
 from .fetch import fetch_page, FetchError
 from .news import get_news, NewsError
@@ -14,7 +14,7 @@ from .utils import extract_url
 logger = logging.getLogger("internet_server")
 
 # --- Default location for bare weather queries ---
-DEFAULT_LOCATION = "New York, NY"  # Change this to your city
+DEFAULT_LOCATION = "Palm Coast, FL"
 
 
 # ---------------------------------------------------------
@@ -77,6 +77,65 @@ def _format_search(data: dict) -> str:
     return "\n".join(lines)
 
 
+def _format_air_quality(data: dict) -> str:
+    loc   = data.get("location_name", "Unknown")
+    aqi   = data.get("us_aqi")
+    label = data.get("aqi_label", "Unknown")
+    pm25  = data.get("pm2_5")
+    pm10  = data.get("pm10")
+    uv    = data.get("uv_index")
+
+    parts = [f"Air quality in {loc}"]
+    if aqi is not None:
+        parts.append(f"US AQI {aqi} — {label}")
+    if pm25 is not None:
+        parts.append(f"PM2.5 {pm25:.1f} µg/m³")
+    if pm10 is not None:
+        parts.append(f"PM10 {pm10:.1f} µg/m³")
+    if uv is not None:
+        parts.append(f"UV Index {uv:.1f}")
+    return ". ".join(parts) + "."
+
+
+def _format_hurricane(data: dict) -> str:
+    storms  = data.get("active_storms", [])
+    alerts  = data.get("fl_alerts", [])
+
+    lines = []
+
+    if not storms and not alerts:
+        lines.append("No active tropical storms or warnings in the Atlantic basin or Florida at this time.")
+        return "\n".join(lines)
+
+    if storms:
+        lines.append(f"⚠️ {len(storms)} active Atlantic storm(s):")
+        for s in storms:
+            wind_mph = int(s["intensity"] * 1.15) if s.get("intensity") else None
+            line = f"  • {s['type']} {s['name']}"
+            if wind_mph:
+                line += f" — {wind_mph} mph winds"
+            if s.get("pressure"):
+                line += f", pressure {s['pressure']} mb"
+            if s.get("movement"):
+                line += f", moving {s['movement']}"
+            lines.append(line)
+            if s.get("headline"):
+                lines.append(f"    {s['headline'][:120]}")
+    else:
+        lines.append("No active tropical storms in the Atlantic basin.")
+
+    if alerts:
+        lines.append(f"\n🚨 {len(alerts)} active Florida tropical alert(s):")
+        for a in alerts:
+            lines.append(f"  • {a['event']} — {a['area']}")
+            if a.get("headline"):
+                lines.append(f"    {a['headline'][:120]}")
+    else:
+        lines.append("No active tropical alerts for Florida.")
+
+    return "\n".join(lines)
+
+
 def _format_news(data: dict) -> str:
     results = data.get("results", [])
     if not results:
@@ -121,6 +180,37 @@ def handle(user_input: str) -> dict:
         except WeatherError as e:
             logger.error(f"[Internet] Weather error: {e}")
             return {"data": f"Sorry, I could not get weather data. {e}"}
+
+    # --- Air Quality ---
+    if any(k in text for k in [
+        "air quality", "aqi", "air index", "pm2.5", "pm10",
+        "uv index", "uv level", "air pollution", "air today"
+    ]):
+        try:
+            location = _extract_location(user_input) if any(
+                k in text for k in ["in ", "for ", "at "]
+            ) else DEFAULT_LOCATION
+            logger.info(f"[Internet] Air quality lookup for: {location}")
+            data = get_air_quality(location)
+            return {"data": _format_air_quality(data)}
+        except WeatherError as e:
+            logger.error(f"[Internet] Air quality error: {e}")
+            return {"data": f"Sorry, I could not get air quality data. {e}"}
+
+    # --- Hurricane / Tropical Storm ---
+    if any(k in text for k in [
+        "hurricane", "tropical storm", "tropical depression",
+        "storm surge", "nhc", "national hurricane", "cyclone",
+        "any storms", "active storms", "hurricane warning",
+        "hurricane watch", "tropical warning"
+    ]):
+        try:
+            logger.info("[Internet] Hurricane status check")
+            data = get_hurricane_status()
+            return {"data": _format_hurricane(data)}
+        except Exception as e:
+            logger.error(f"[Internet] Hurricane error: {e}")
+            return {"data": f"Sorry, I could not retrieve hurricane data. {e}"}
 
     # --- News / Headlines ---
     if any(k in text for k in [
