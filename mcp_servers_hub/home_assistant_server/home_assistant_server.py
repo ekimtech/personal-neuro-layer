@@ -10,13 +10,15 @@ import requests
 
 logger = logging.getLogger(__name__)
 
+DEFAULT_SPEAKER = "media_player.bedroom_speaker_2"
+
 # Load config
 try:
     from mcp_servers_hub.home_assistant_server.ha_config import HA_URL, HA_TOKEN
 except ImportError:
-    HA_URL = "http://192.168.X.X:8123"
+    HA_URL = "http://192.168.2.42:8123"
     HA_TOKEN = ""
-    logger.error("[HomeAssistant] Could not load ha_config.py — check ha_config.py!")
+    logger.error("[HomeAssistant] Could not load ha_config.py!")
 
 
 # ---------------------------------------------------------
@@ -36,7 +38,7 @@ def _get(path: str) -> dict:
         r.raise_for_status()
         return {"ok": True, "data": r.json()}
     except requests.exceptions.ConnectionError:
-        return {"ok": False, "error": "Cannot reach Home Assistant. Check HA_URL in ha_config.py."}
+        return {"ok": False, "error": "Cannot reach Home Assistant. Is it running on 192.168.2.42:8123?"}
     except Exception as e:
         return {"ok": False, "error": str(e)}
 
@@ -61,7 +63,7 @@ def _post(path: str, payload: dict = None) -> dict:
         except Exception:
             return {"ok": True, "data": body}
     except requests.exceptions.ConnectionError:
-        return {"ok": False, "error": "Cannot reach Home Assistant. Check HA_URL in ha_config.py."}
+        return {"ok": False, "error": "Cannot reach Home Assistant. Is it running on 192.168.2.42:8123?"}
     except requests.exceptions.HTTPError as e:
         return {"ok": False, "error": f"HA returned {e.response.status_code}: {body}"}
     except Exception as e:
@@ -306,7 +308,7 @@ def _get_default_speaker() -> str:
         if "speaker" in name or "home" in name or "mini" in name:
             return eid
     # Last resort: confirmed default
-    return "media_player.bedroom_speaker"
+    return "media_player.bedroom_speaker_2"
 
 
 # ---------------------------------------------------------
@@ -388,13 +390,64 @@ def _resolve_cast_device(text: str) -> str:
     if any(k in text for k in ["bedroom tv", "television", "on the tv", "on tv", "tv"]):
         return "media_player.bedroom_tv_onn_box"
     if any(k in text for k in ["bedroom speaker", "speaker", "google home", "home speaker"]):
-        return "media_player.bedroom_speaker"
-    return "media_player.bedroom_speaker"
+        return "media_player.bedroom_speaker_2"
+    return "media_player.bedroom_speaker_2"
 
 
 # ---------------------------------------------------------
 # Tool: Play music by artist or album name
 # ---------------------------------------------------------
+
+def _browse_local_media_ws() -> list:
+    """Browse HA local media source via WebSocket. Returns flat list of media items."""
+    ws_url = HA_URL.replace("http://", "ws://").replace("https://", "wss://") + "/api/websocket"
+    items = []
+    done = threading.Event()
+    req_id = 99
+
+    def on_message(ws, message):
+        try:
+            data = json.loads(message)
+            t = data.get("type")
+            if t == "auth_required":
+                ws.send(json.dumps({"type": "auth", "access_token": HA_TOKEN}))
+            elif t == "auth_ok":
+                ws.send(json.dumps({
+                    "id": req_id,
+                    "type": "media_source/browse_media",
+                    "media_content_id": "media-source://media_source/local"
+                }))
+            elif t == "result" and data.get("id") == req_id:
+                if data.get("success"):
+                    children = data.get("result", {}).get("children", [])
+                    items.extend(children)
+                    logger.info(f"[HA] Local media browse: {len(children)} items found")
+                else:
+                    logger.warning(f"[HA] Local media browse error: {data.get('error')}")
+                done.set()
+                ws.close()
+        except Exception as e:
+            logger.error(f"[HA] WS message error: {e}")
+            done.set()
+
+    def on_error(ws, error):
+        logger.error(f"[HA] WS error: {error}")
+        done.set()
+
+    def on_close(ws, *args):
+        done.set()
+
+    try:
+        ws = websocket.WebSocketApp(ws_url, on_message=on_message, on_error=on_error, on_close=on_close)
+        t = threading.Thread(target=ws.run_forever)
+        t.daemon = True
+        t.start()
+        done.wait(timeout=10)
+    except Exception as e:
+        logger.error(f"[HA] WS connect error: {e}")
+
+    return items
+
 
 def _ws_browse_album(entity_id: str, content_id: str) -> list:
     """
@@ -469,46 +522,36 @@ def _ws_browse_album(entity_id: str, content_id: str) -> list:
 
 def play_music(query: str, entity_id: str = None) -> dict:
     """
-    Play music via Music Assistant (mass.play_media).
-    query is either "ARTIST" or "ARTIST/Album Name" (from the handle patterns).
-    Converts ALL CAPS artist names to Title Case for Music Assistant search.
+    Play music via Music Assistant (music_assistant.play_media).
+    query is either "ARTIST" or "ARTIST/Album Name".
     """
-    eid = entity_id or "media_player.bedroom_speaker"
+    eid = entity_id or "media_player.bedroom_speaker_2"
     logger.info(f"[HA] play_music query='{query}' entity={eid}")
 
     if "/" in query:
-        # Artist + specific album
         parts      = query.split("/", 1)
-        artist     = parts[0].strip().title()   # "JOSH GROBAN" → "Josh Groban"
-        album      = parts[1].strip()           # "Live at the Greek"
+        artist     = parts[0].strip().title()
+        album      = parts[1].strip()
         media_id   = album
         media_type = "album"
         display    = f"{album} by {artist}"
+        payload    = {"media_id": media_id, "media_type": media_type, "artist": artist, "enqueue": "replace"}
     else:
-        # Artist only — play everything by them
-        artist     = query.strip().title()      # "MICHAEL JACKSON" → "Michael Jackson"
+        artist     = query.strip().title()
         media_id   = artist
         media_type = "artist"
         display    = artist
+        payload    = {"media_id": media_id, "media_type": media_type, "enqueue": "replace"}
 
-    logger.info(f"[HA] mass.play_media → media_id='{media_id}' type={media_type} entity={eid}")
-
-    result = call_service("mass", "play_media", eid, {
-        "media_id":   media_id,
-        "media_type": media_type,
-        "enqueue":    "replace"
-    })
+    logger.info(f"[HA] music_assistant.play_media → entity={eid} payload={payload}")
+    result = call_service("music_assistant", "play_media", eid, payload)
 
     if result["status"] == "success":
         return {"status": "success", "data": f"Playing {display} on your speaker."}
 
-    return {
-        "status": "error",
-        "data": (
-            f"Couldn't play {display}. Make sure Music Assistant is running "
-            f"and '{media_id}' exists in your library."
-        )
-    }
+    error = result.get("data", "unknown error")
+    logger.error(f"[HA] music_assistant.play_media failed: {error}")
+    return {"status": "error", "data": f"Couldn't play {display}. Error: {error}"}
 
 
 # ---------------------------------------------------------
