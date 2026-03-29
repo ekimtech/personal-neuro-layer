@@ -367,4 +367,42 @@ def handle(user_input: str) -> dict:
     result = list_shared_folders()
     if "error" in result:
         return {"data": f"QNAP error: {result['error']}"}
-    return {"data": f"QNAP shared folders: {json.dumps(result['data'], indent=2)}"}
+
+    # Parse and format shared folders cleanly
+    try:
+        raw = result.get("data", {})
+        # The data may be nested inside content/text as a JSON string
+        if isinstance(raw, dict) and "content" in raw:
+            import json as _json
+            text_content = raw["content"][0].get("text", "{}")
+            parsed = _json.loads(text_content)
+        elif isinstance(raw, str):
+            import json as _json
+            parsed = _json.loads(raw)
+        else:
+            parsed = raw
+
+        folders = parsed.get("sharedfolders", [])
+        if not folders:
+            return {"data": "No shared folders found on the QNAP."}
+
+        visible = [f for f in folders if not f.get("hidden", False)]
+        hidden = [f for f in folders if f.get("hidden", False)]
+
+        lines = ["Here are your QNAP shared folders:\n"]
+        for f in visible:
+            dirs = f.get("dir_count", 0)
+            files = f.get("file_count", 0)
+            comment = f.get("comment", "")
+            note = f" — {comment}" if comment and comment != "System default share" else ""
+            dir_word = "folder" if dirs == 1 else "folders"
+            file_word = "file" if files == 1 else "files"
+            lines.append(f"  • {f['name']}: {dirs:,} {dir_word}, {files:,} {file_word}{note}")
+
+        if hidden:
+            lines.append(f"\nHidden volumes: {', '.join(f['name'] for f in hidden)}")
+
+        return {"data": "\n".join(lines)}
+
+    except Exception:
+        return {"data": f"QNAP shared folders: {json.dumps(result['data'], indent=2)}"}
