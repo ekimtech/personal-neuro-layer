@@ -2,19 +2,28 @@
 # Full QNAP tool list discovered and mapped correctly
 
 import json
+import os
 import re
+import shutil
 import threading
 import time
 import requests
 import logging
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
 try:
-    from mcp_servers_hub.qnap_server.qnap_config import QNAP_TOKEN, QNAP_URL
+    from mcp_servers_hub.qnap_server.qnap_config import (
+        QNAP_TOKEN, QNAP_URL,
+        JARVIS_SOURCE, JARVIS_BACKUP_PATH, NAS_DRIVE
+    )
 except ImportError:
     QNAP_TOKEN = ""
     QNAP_URL = "http://192.168.X.X:8442/sse"
+    JARVIS_SOURCE = r"C:\path\to\your\Jarvis4.0"
+    JARVIS_BACKUP_PATH = r"X:\backups"
+    NAS_DRIVE = r"X:\\"
     logger.error("[QNAP] Could not load qnap_config.py — check qnap_config.py!")
 
 
@@ -233,14 +242,28 @@ def advanced_search(query: str, categories: list = None, limit: int = 20) -> dic
 
 
 def create_folder(path: str) -> dict:
-    """Create a new folder. Path must include the new folder name."""
-    result = _call_qnap("tools/call", {
-        "name": "create_folder",
-        "arguments": {"path": path}
-    })
-    if "error" in result:
-        return result
-    return {"status": "success", "data": result}
+    """Create a new folder directly on the mapped NAS drive."""
+    try:
+        os.makedirs(path, exist_ok=True)
+        return {"status": "success", "data": f"Folder created at {path}"}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+def backup_jarvis() -> dict:
+    """Back up the Jarvis project folder to the NAS backup path, skipping venv."""
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
+    dest = os.path.join(JARVIS_BACKUP_PATH, f"Jarvis4.0_{timestamp}")
+
+    def ignore_venv(dir, contents):
+        return [c for c in contents if c == "venv"]
+
+    try:
+        os.makedirs(JARVIS_BACKUP_PATH, exist_ok=True)
+        shutil.copytree(JARVIS_SOURCE, dest, ignore=ignore_venv)
+        return {"status": "success", "data": f"Backup complete — saved to {dest}"}
+    except Exception as e:
+        return {"error": str(e)}
 
 
 def list_logs(limit: int = 20, query_text: str = "") -> dict:
@@ -336,18 +359,37 @@ def handle(user_input: str) -> dict:
                         return {"data": f"QNAP search error: {result['error']}"}
                     return {"data": f"QNAP search results for '{query}': {json.dumps(result['data'], indent=2)}"}
 
+    # Backup Jarvis
+    if any(k in text for k in ["backup jarvis", "back up jarvis", "backup the project", "backup jarvis4"]):
+        result = backup_jarvis()
+        if "error" in result:
+            return {"data": f"Backup failed: {result['error']}"}
+        return {"data": result["data"]}
+
     # Create folder
-    if any(k in text for k in ["create folder", "make folder", "new folder", "mkdir"]):
-        parts = text
-        for kw in ["create folder", "make folder", "new folder", "mkdir"]:
-            parts = parts.replace(kw, "").strip()
-        if parts:
-            path = parts if parts.startswith("/") else f"/{parts}"
-            result = create_folder(path)
+    if any(k in text for k in ["create folder", "create a folder", "make folder", "new folder", "mkdir", "folder named"]):
+        # Extract folder name — use original input to preserve underscores and casing
+        folder_name = user_input
+        for kw in ["create a folder named", "create folder named", "create a folder", "create folder",
+                   "make folder named", "make folder", "new folder named", "new folder",
+                   "folder named", "mkdir"]:
+            if kw.lower() in folder_name.lower():
+                idx = folder_name.lower().index(kw.lower())
+                folder_name = folder_name[idx + len(kw):].strip()
+                break
+        # Strip common location phrases
+        for phrase in ["in the jarvis shared drive", "in the jarvis share", "on the jarvis drive",
+                       "on the nas", "on qnap", "in jarvis", "on jarvis", "in the nas"]:
+            folder_name = folder_name.replace(phrase, "").replace(phrase.title(), "").strip()
+        # Keep only valid folder name characters (letters, digits, underscores, hyphens)
+        folder_name = re.sub(r"[^\w\-]", "", folder_name).strip("_")
+        if folder_name:
+            full_path = os.path.join(NAS_DRIVE, folder_name)
+            result = create_folder(full_path)
             if "error" in result:
-                return {"data": f"QNAP create folder error: {result['error']}"}
-            return {"data": f"Folder created at {path}"}
-        return {"data": "Please specify a folder path to create."}
+                return {"data": f"Could not create folder: {result['error']}"}
+            return {"data": f"Folder '{folder_name}' created on the NAS drive at {full_path}"}
+        return {"data": "Please specify a folder name to create."}
 
     # List files
     if any(k in text for k in ["list files", "list folder", "show files", "browse", "contents"]):

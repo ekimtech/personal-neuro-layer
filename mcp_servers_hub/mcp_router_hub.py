@@ -264,7 +264,9 @@ def detect_intent(user_input: str) -> str:
         return "stt"
 
     # QNAP
-    if any(k in text for k in ["qnap", "nas", "storage", "network drive", "shared folder"]):
+    if any(k in text for k in ["qnap", "nas", "storage", "network drive", "shared folder",
+                                "backup jarvis", "back up jarvis", "backup the project",
+                                "create folder", "create a folder", "make folder", "new folder", "folder named"]):
         return "qnap"
 
     # MikroTik
