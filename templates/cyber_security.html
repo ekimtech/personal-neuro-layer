@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis — Cyber Security Dashboard</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary:    #00bfff;
+            --danger:     #ff4444;
+            --warning:    #ffaa00;
+            --success:    #00cc66;
+            --bg:         #1e2736;
+            --card-bg:    #253044;
+            --border:     #384459;
+            --text:       #e0e0e0;
+            --muted:      #999;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 40px;
+        }
+
+        /* ── Header ── */
+        .hero {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, #30384d, var(--bg));
+            border-bottom: 2px solid var(--primary);
+        }
+        .hero h1 { font-size: 2.2rem; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+        .hero p  { color: var(--muted); margin-top: 6px; }
+
+        /* ── Alert Ticker ── */
+        .ticker-bar {
+            background: #1a1f2e;
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-label { color: var(--danger); font-weight: bold; margin-right: 12px; font-size: 0.85rem; }
+        .ticker-text  { color: var(--warning); font-size: 0.85rem; }
+
+        /* ── Layout ── */
+        .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
+
+        /* ── Summary Cards ── */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .summary-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .summary-card h3  { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .summary-card .num { font-size: 2.4rem; font-weight: bold; }
+        .summary-card .sub { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+        .num.danger  { color: var(--danger); }
+        .num.warning { color: var(--warning); }
+        .num.success { color: var(--success); }
+        .num.primary { color: var(--primary); }
+
+        /* ── Section Panels ── */
+        .panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(0,191,255,0.05);
+        }
+        .panel-header h2 { font-size: 1rem; color: var(--primary); }
+        .panel-body { padding: 16px 20px; }
+
+        /* ── Tables ── */
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th { color: var(--muted); text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
+        td { padding: 8px 10px; border-bottom: 1px solid rgba(56,68,89,0.5); vertical-align: top; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(0,191,255,0.04); }
+
+        /* ── Badges ── */
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-critical { background: rgba(255,68,68,0.2);  color: var(--danger); }
+        .badge-high     { background: rgba(255,120,0,0.2);  color: #ff7800; }
+        .badge-medium   { background: rgba(255,170,0,0.2);  color: var(--warning); }
+        .badge-low      { background: rgba(0,204,102,0.2);  color: var(--success); }
+        .badge-unknown  { background: rgba(150,150,150,0.2);color: var(--muted); }
+        .badge-opted_out   { background: rgba(0,204,102,0.2);  color: var(--success); }
+        .badge-pending     { background: rgba(255,170,0,0.2);  color: var(--warning); }
+        .badge-unchecked   { background: rgba(150,150,150,0.2);color: var(--muted); }
+        .badge-failed      { background: rgba(255,68,68,0.2);   color: var(--danger); }
+
+        /* ── Buttons ── */
+        .btn {
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.8; }
+        .btn-primary { background: var(--primary); color: #000; }
+        .btn-danger  { background: var(--danger);  color: #fff; }
+        .btn-success { background: var(--success); color: #000; }
+        .btn-warning { background: var(--warning); color: #000; }
+        .btn-sm      { padding: 3px 8px; font-size: 0.75rem; }
+
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+
+        /* ── Digest Box ── */
+        .digest-box {
+            background: #1a1f2e;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        .digest-status-clean  { color: var(--success); font-size: 1.1rem; font-weight: bold; }
+        .digest-status-action { color: var(--danger);  font-size: 1.1rem; font-weight: bold; }
+        .digest-alert { color: var(--warning); }
+
+        /* ── Loading ── */
+        .loading { color: var(--muted); font-style: italic; font-size: 0.85rem; padding: 10px 0; }
+
+        /* ── Scrollable table wrapper ── */
+        .table-wrap { overflow-x: auto; }
+
+        /* ── Empty state ── */
+        .empty { color: var(--muted); font-size: 0.85rem; padding: 10px 0; }
+
+        /* ── Input ── */
+        .input-row { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+        input[type="text"], input[type="email"] {
+            background: #1a1f2e;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            min-width: 240px;
+        }
+        input:focus { outline: none; border-color: var(--primary); }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 1.6rem; }
+        }
+        @media (max-width: 480px) {
+            .summary-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Cyber Security Dashboard</h1>
+    <p>Identity Protection · Threat Intelligence · System Integrity</p>
+</div>
+
+<!-- Alert Ticker -->
+<div class="ticker-bar">
+    <span class="ticker-label">SECURITY</span>
+    <span class="ticker-text" id="tickerText">Loading security status...</span>
+</div>
+
+<div class="container">
+
+    <!-- Summary Cards -->
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>Brokers Confirmed</h3>
+            <div class="num success" id="sumConfirmed">—</div>
+            <div class="sub" id="sumTotal">of — total brokers</div>
+        </div>
+        <div class="summary-card">
+            <h3>Submitted / Pending</h3>
+            <div class="num warning" id="sumSubmitted">—</div>
+            <div class="sub">awaiting confirmation</div>
+        </div>
+        <div class="summary-card">
+            <h3>Not Started</h3>
+            <div class="num danger" id="sumNotStarted">—</div>
+            <div class="sub">need opt-out submitted</div>
+        </div>
+        <div class="summary-card">
+            <h3>Due for Re-Removal</h3>
+            <div class="num warning" id="sumDueSoon">—</div>
+            <div class="sub">within next 14 days</div>
+        </div>
+        <div class="summary-card">
+            <h3>Critical CVEs</h3>
+            <div class="num danger" id="sumCveCritical">—</div>
+            <div class="sub" id="sumCveTotal">of — total CVEs tracked</div>
+        </div>
+        <div class="summary-card">
+            <h3>Files Changed</h3>
+            <div class="num" id="sumFilesChanged">—</div>
+            <div class="sub" id="sumFilesMonitored">of — monitored</div>
+        </div>
+    </div>
+
+    <!-- Daily Digest -->
+    <div class="panel">
+        <div class="panel-header">
+            <h2>Security Digest</h2>
+            <button class="btn btn-primary btn-sm" onclick="loadDigest()">Refresh Digest</button>
+        </div>
+        <div class="panel-body">
+            <div class="digest-box" id="digestBox">
+                <span class="loading">Click Refresh Digest to generate report...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Identity Protection -->
+    <div class="panel">
+        <div class="panel-header">
+            <h2>Identity Protection — Personal Info</h2>
+            <button class="btn btn-primary btn-sm" onclick="toggleInfoForm()">Edit Info</button>
+        </div>
+        <div class="panel-body">
+            <!-- Personal info display -->
+            <div id="infoDisplay" style="font-size:0.85rem;margin-bottom:12px;color:var(--muted);">
+                Loading...
+            </div>
+            <!-- Personal info edit form (hidden by default) -->
+            <div id="infoForm" style="display:none;margin-bottom:16px;">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:10px;">
+                    <input type="text" id="infoFirst" placeholder="First Name">
+                    <input type="text" id="infoLast"  placeholder="Last Name">
+                    <input type="text" id="infoCity"  placeholder="City">
+                    <input type="text" id="infoState" placeholder="State (e.g. NY)">
+                    <input type="text" id="infoEmail" placeholder="Email">
+                    <input type="text" id="infoPhone" placeholder="Phone">
+                </div>
+                <button class="btn btn-success" onclick="saveInfo()">Save Info</button>
+                <button class="btn btn-sm" style="background:var(--border);margin-left:8px" onclick="toggleInfoForm()">Cancel</button>
+                <div id="infoSaveResult" style="margin-top:8px;font-size:0.82rem;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Broker Opt-Out Tracker -->
+    <div class="panel">
+        <div class="panel-header">
+            <h2>Data Broker Opt-Out Tracker</h2>
+            <button class="btn btn-primary btn-sm" onclick="loadBrokers()">Refresh</button>
+        </div>
+        <div class="panel-body">
+            <div style="color:var(--muted);font-size:0.82rem;margin-bottom:14px;">
+                Click <strong style="color:var(--primary)">Search My Name</strong> to find your record on each broker, then click <strong style="color:var(--warning)">Go to Opt-Out</strong> to submit removal. Mark <strong style="color:var(--success)">Submitted</strong> or <strong style="color:var(--success)">Confirmed</strong> when done. Jarvis tracks dates and alerts you when re-removal is due in 90 days.
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Broker</th>
+                            <th>Status</th>
+                            <th>Submitted</th>
+                            <th>Confirmed</th>
+                            <th>Next Due</th>
+                            <th>Instructions</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="brokerTable">
+                        <tr><td colspan="7" class="loading">Loading brokers...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Refused Brokers -->
+    <div class="panel">
+        <div class="panel-header">
+            <h2>Brokers That Refused Removal</h2>
+            <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener">
+                <button class="btn btn-danger btn-sm">Report to FTC ↗</button>
+            </a>
+        </div>
+        <div class="panel-body">
+            <div style="color:var(--muted);font-size:0.82rem;margin-bottom:12px;">
+                These brokers were tested and refused voluntary removal requests. Report them to the FTC at <strong style="color:var(--primary)">reportfraud.ftc.gov</strong> — enough complaints triggers federal investigation.
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Broker</th>
+                            <th>Reason</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="refusedTable">
+                        <tr><td colspan="3" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Threat Intelligence -->
+    <div class="panel">
+        <div class="panel-header">
+            <h2>Threat Intelligence — CVE Feed & Dependencies</h2>
+        </div>
+        <div class="panel-body">
+            <div class="btn-row">
+                <input type="text" id="cveKeyword" placeholder="Search keyword (e.g. flask, python)" style="min-width:200px;">
+                <button class="btn btn-warning" onclick="fetchCVE()">Fetch CVEs</button>
+                <button class="btn btn-primary" onclick="scanDeps()">Scan Dependencies</button>
+                <button class="btn btn-primary btn-sm" onclick="loadCVEs()">Refresh CVE List</button>
+            </div>
+            <div id="threatResult" style="margin-bottom:12px;font-size:0.85rem;"></div>
+
+            <!-- Dependency Scan Results -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;margin-top:4px;">
+                <div style="font-size:0.82rem;color:var(--primary);font-weight:600;">Vulnerable Packages in Your Environment</div>
+                <button class="btn btn-sm" style="background:var(--border)" onclick="clearAllDeps()">Dismiss All</button>
+            </div>
+            <div class="table-wrap" style="margin-bottom:20px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Package</th>
+                            <th>Version</th>
+                            <th>Vulnerability</th>
+                            <th>Severity</th>
+                            <th>Scanned</th>
+                        </tr>
+                    </thead>
+                    <tbody id="depTable">
+                        <tr><td colspan="5" class="loading">Run Scan Dependencies to check your packages...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CVE Feed Results -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <div style="font-size:0.82rem;color:var(--primary);font-weight:600;">CVE Feed Results</div>
+                <button class="btn btn-sm" style="background:var(--border)" onclick="clearAllCVEs()">Dismiss All CVEs</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CVE ID</th>
+                            <th>Severity</th>
+                            <th>Score</th>
+                            <th>Published</th>
+                            <th>Summary</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cveTable">
+                        <tr><td colspan="6" class="loading">Loading CVE data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Security -->
+    <div class="panel">
+        <div class="panel-header">
+            <h2>System Security — Code Integrity</h2>
+        </div>
+        <div class="panel-body">
+            <div class="btn-row">
+                <button class="btn btn-success" onclick="buildBaseline()">Build Baseline</button>
+                <button class="btn btn-warning" onclick="runIntegrityCheck()">Run Integrity Check</button>
+                <button class="btn btn-primary btn-sm" onclick="loadIntegrityLog()">Refresh Log</button>
+            </div>
+            <div id="integrityResult" style="margin-bottom:12px;font-size:0.85rem;"></div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>File</th>
+                            <th>Change</th>
+                            <th>Detected</th>
+                            <th>Resolved</th>
+                        </tr>
+                    </thead>
+                    <tbody id="integrityTable">
+                        <tr><td colspan="4" class="loading">Loading integrity log...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /container -->
+
+<script>
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+function severityBadge(s) {
+    if (!s) s = "UNKNOWN";
+    const cls = {
+        CRITICAL: "badge-critical", HIGH: "badge-high",
+        MEDIUM: "badge-medium", LOW: "badge-low"
+    }[s.toUpperCase()] || "badge-unknown";
+    return `<span class="badge ${cls}">${s}</span>`;
+}
+
+function statusBadge(s) {
+    return `<span class="badge badge-${s}">${s.replace("_"," ")}</span>`;
+}
+
+function shortPath(p) {
+    if (!p) return "";
+    const parts = p.replace(/\\/g, "/").split("/");
+    return parts.slice(-3).join("/");
+}
+
+function fmtDate(d) {
+    if (!d) return "—";
+    return d.substring(0, 10);
+}
+
+// ── Digest ─────────────────────────────────────────────────────────────────
+
+async function loadDigest() {
+    document.getElementById("digestBox").innerHTML = '<span class="loading">Generating digest...</span>';
+    const r = await fetch("/cyber/digest");
+    const d = await r.json();
+
+    const statusClass = d.status === "CLEAN" ? "digest-status-clean" : "digest-status-action";
+    let html = `<div class="${statusClass}">${d.status}</div>`;
+    html += `<div style="color:var(--muted);font-size:0.78rem;margin:4px 0 10px;">Generated: ${fmtDate(d.generated)}</div>`;
+
+    if (d.alerts && d.alerts.length > 0) {
+        d.alerts.forEach(a => {
+            html += `<div class="digest-alert">⚠ ${a}</div>`;
+        });
+    } else {
+        html += `<div style="color:var(--success)">✓ No active alerts — all systems clear.</div>`;
+    }
+
+    document.getElementById("digestBox").innerHTML = html;
+
+    // Also update ticker
+    if (d.alerts && d.alerts.length > 0) {
+        document.getElementById("tickerText").textContent = d.alerts.join("  ·  ");
+    } else {
+        document.getElementById("tickerText").textContent = "All systems clear — no active security alerts.";
+    }
+
+    if (d.threats) {
+        const el = document.getElementById("sumCveCritical");
+        el.textContent = d.threats.cve_critical;
+        el.className = "num " + (d.threats.cve_critical > 0 ? "danger" : "success");
+        document.getElementById("sumCveTotal").textContent = `of ${d.threats.cve_total} total CVEs tracked`;
+    }
+    if (d.system) {
+        const el = document.getElementById("sumFilesChanged");
+        el.textContent = d.system.files_changed;
+        el.className = "num " + (d.system.files_changed > 0 ? "danger" : "success");
+        document.getElementById("sumFilesMonitored").textContent = `of ${d.system.files_monitored} monitored`;
+    }
+}
+
+// ── Identity / Personal Info ───────────────────────────────────────────────
+
+function toggleInfoForm() {
+    const form = document.getElementById("infoForm");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+}
+
+async function loadPersonalInfo() {
+    const r = await fetch("/cyber/identity");
+    const d = await r.json();
+    const el = document.getElementById("infoDisplay");
+    if (!d || !d.first_name) {
+        el.innerHTML = '<span style="color:var(--warning)">⚠ No personal info saved yet. Click Edit Info to add your details.</span>';
+    } else {
+        el.innerHTML = `
+            <span style="color:var(--success)">✓ Identity profile loaded</span>
+            <span style="margin-left:16px">
+                <strong style="color:var(--text)">${d.first_name} ${d.last_name}</strong>
+                &nbsp;·&nbsp; ${d.city}, ${d.state}
+                &nbsp;·&nbsp; ${d.email}
+                &nbsp;·&nbsp; ${d.phone}
+            </span>
+            <span style="color:var(--muted);font-size:0.78rem;margin-left:12px">Updated: ${fmtDate(d.updated_on)}</span>
+        `;
+        // Pre-fill form fields
+        document.getElementById("infoFirst").value = d.first_name || "";
+        document.getElementById("infoLast").value  = d.last_name  || "";
+        document.getElementById("infoCity").value  = d.city       || "";
+        document.getElementById("infoState").value = d.state      || "";
+        document.getElementById("infoEmail").value = d.email      || "";
+        document.getElementById("infoPhone").value = d.phone      || "";
+    }
+}
+
+async function saveInfo() {
+    const body = {
+        first_name: document.getElementById("infoFirst").value.trim(),
+        last_name:  document.getElementById("infoLast").value.trim(),
+        city:       document.getElementById("infoCity").value.trim(),
+        state:      document.getElementById("infoState").value.trim(),
+        email:      document.getElementById("infoEmail").value.trim(),
+        phone:      document.getElementById("infoPhone").value.trim(),
+    };
+    const r = await fetch("/cyber/identity", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(body)
+    });
+    const d = await r.json();
+    document.getElementById("infoSaveResult").innerHTML =
+        d.status === "ok"
+            ? '<span style="color:var(--success)">✓ Saved — broker search links updated.</span>'
+            : `<span style="color:var(--danger)">${d.error}</span>`;
+    loadPersonalInfo();
+    loadBrokers();
+    setTimeout(() => { document.getElementById("infoForm").style.display = "none"; }, 1200);
+}
+
+// ── Broker Opt-Out Tracker ─────────────────────────────────────────────────
+
+const STATUS_COLORS = {
+    confirmed:   "var(--success)",
+    submitted:   "var(--warning)",
+    not_started: "var(--danger)"
+};
+
+async function loadBrokers() {
+    const tbody = document.getElementById("brokerTable");
+    tbody.innerHTML = '<tr><td colspan="7" class="loading">Loading...</td></tr>';
+    const [bRes, sRes] = await Promise.all([
+        fetch("/cyber/brokers"),
+        fetch("/cyber/identity/summary")
+    ]);
+    const brokers = await bRes.json();
+    const summary = await sRes.json();
+
+    // Update summary cards
+    document.getElementById("sumConfirmed").textContent  = summary.confirmed   ?? "—";
+    document.getElementById("sumSubmitted").textContent  = summary.submitted   ?? "—";
+    document.getElementById("sumNotStarted").textContent = summary.not_started ?? "—";
+    document.getElementById("sumDueSoon").textContent    = summary.due_soon    ?? "—";
+    document.getElementById("sumTotal").textContent      = `of ${summary.total} total brokers`;
+
+    const notStartedEl = document.getElementById("sumNotStarted");
+    notStartedEl.className = "num " + (summary.not_started > 0 ? "danger" : "success");
+    document.getElementById("sumConfirmed").className = "num " + (summary.confirmed === summary.total ? "success" : "primary");
+
+    if (!brokers.length) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty">No brokers found.</td></tr>';
+        return;
+    }
+
+    tbody.innerHTML = brokers.map(b => {
+        const statusColor = STATUS_COLORS[b.status] || "var(--muted)";
+        const statusLabel = (b.status || "not_started").replace("_", " ");
+        return `
+        <tr>
+            <td style="font-weight:600;color:var(--text)">${b.name}</td>
+            <td><span style="color:${statusColor};font-weight:600;font-size:0.82rem">${statusLabel}</span></td>
+            <td>${fmtDate(b.submitted_on)}</td>
+            <td>${fmtDate(b.confirmed_on)}</td>
+            <td style="color:${b.next_due && b.next_due <= new Date().toISOString().slice(0,10) ? 'var(--danger)' : 'var(--text)'}">
+                ${fmtDate(b.next_due)}
+            </td>
+            <td style="font-size:0.78rem;color:var(--muted);max-width:180px">${b.instructions || "—"}</td>
+            <td style="white-space:nowrap">
+                <a href="${b.search_url}" target="_blank" rel="noopener">
+                    <button class="btn btn-primary btn-sm">Search My Name</button>
+                </a>
+                <a href="${b.optout_url}" target="_blank" rel="noopener" style="margin-left:4px">
+                    <button class="btn btn-warning btn-sm">Go to Opt-Out</button>
+                </a>
+                <button class="btn btn-success btn-sm" style="margin-left:4px"
+                    onclick="markBroker('${b.name}','submitted')">Submitted</button>
+                <button class="btn btn-sm" style="background:#1a7a3a;color:#fff;margin-left:4px"
+                    onclick="markBroker('${b.name}','confirmed')">Confirmed ✓</button>
+            </td>
+        </tr>`;
+    }).join("");
+}
+
+async function markBroker(brokerName, action) {
+    await fetch("/cyber/brokers/log", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({broker_name: brokerName, action})
+    });
+    loadBrokers();
+}
+
+// ── Refused Brokers ───────────────────────────────────────────────────────
+
+async function loadRefusedBrokers() {
+    const tbody = document.getElementById("refusedTable");
+    const r = await fetch("/cyber/brokers/refused");
+    const brokers = await r.json();
+
+    if (!brokers.length) {
+        tbody.innerHTML = '<tr><td colspan="3" class="empty">No refused brokers logged.</td></tr>';
+        return;
+    }
+
+    tbody.innerHTML = brokers.map(b => `
+        <tr>
+            <td style="font-weight:600;color:var(--danger)">${b.name}</td>
+            <td style="font-size:0.82rem;color:var(--muted)">${b.reason}</td>
+            <td>
+                <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener">
+                    <button class="btn btn-danger btn-sm">Report to FTC</button>
+                </a>
+            </td>
+        </tr>
+    `).join("");
+}
+
+// ── CVEs ───────────────────────────────────────────────────────────────────
+
+async function fetchCVE() {
+    const keyword = document.getElementById("cveKeyword").value.trim() || "python";
+    document.getElementById("threatResult").innerHTML = '<span class="loading">Fetching CVEs from NVD...</span>';
+    const r = await fetch("/cyber/cve/fetch", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({keyword})
+    });
+    const d = await r.json();
+    if (d.error) {
+        document.getElementById("threatResult").innerHTML = `<span style="color:var(--danger)">${d.error}</span>`;
+    } else {
+        document.getElementById("threatResult").innerHTML = `<span style="color:var(--success)">✓ Found ${d.found} CVEs for "${keyword}", saved ${d.saved} new.</span>`;
+        loadCVEs();
+    }
+}
+
+async function scanDeps() {
+    document.getElementById("threatResult").innerHTML = '<span class="loading">Scanning requirements.txt against OSV database...</span>';
+    const r = await fetch("/cyber/deps/scan", {method: "POST"});
+    const d = await r.json();
+    if (d.error) {
+        document.getElementById("threatResult").innerHTML = `<span style="color:var(--danger)">${d.error}</span>`;
+    } else {
+        const color = d.vulnerable > 0 ? "var(--warning)" : "var(--success)";
+        document.getElementById("threatResult").innerHTML =
+            `<span style="color:${color}">Scanned ${d.packages_scanned} packages — ${d.vulnerable} vulnerable, ${d.clean} clean.</span>`;
+        loadDepResults();
+    }
+}
+
+async function loadDepResults() {
+    const tbody = document.getElementById("depTable");
+    const r = await fetch("/cyber/deps/results");
+    const deps = await r.json();
+
+    if (!deps.length) {
+        tbody.innerHTML = '<tr><td colspan="5" class="empty" style="color:var(--success)">✓ No vulnerable packages found.</td></tr>';
+        return;
+    }
+
+    tbody.innerHTML = deps.map(d => `
+        <tr>
+            <td style="font-weight:600;color:var(--warning)">${d.package}</td>
+            <td>${d.version}</td>
+            <td style="font-size:0.78rem">${d.vuln_id}</td>
+            <td>${severityBadge(d.severity)}</td>
+            <td>${fmtDate(d.scanned_on)}</td>
+        </tr>
+    `).join("");
+}
+
+async function clearAllDeps() {
+    await fetch("/cyber/deps/clear", {method: "POST"});
+    loadDepResults();
+}
+
+async function loadCVEsWrapper() { loadCVEs(); }
+
+async function dismissCVE(id) {
+    await fetch(`/cyber/cve/${id}/dismiss`, {method: "POST"});
+    loadCVEs();
+}
+
+async function clearAllCVEs() {
+    await fetch("/cyber/cve/clear", {method: "POST"});
+    loadCVEs();
+}
+
+async function loadCVEs() {
+    const tbody = document.getElementById("cveTable");
+    tbody.innerHTML = '<tr><td colspan="6" class="loading">Loading...</td></tr>';
+    const r = await fetch("/cyber/cves");
+    const cves = await r.json();
+
+    if (!cves.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty" style="color:var(--success)">✓ No active CVEs — all dismissed or none fetched yet.</td></tr>';
+        return;
+    }
+
+    tbody.innerHTML = cves.slice(0, 50).map(c => `
+        <tr>
+            <td><a href="https://nvd.nist.gov/vuln/detail/${c.cve_id}" target="_blank" rel="noopener" style="color:var(--primary)">${c.cve_id}</a></td>
+            <td>${severityBadge(c.severity)}</td>
+            <td>${c.score !== null ? c.score : "—"}</td>
+            <td>${fmtDate(c.published)}</td>
+            <td style="font-size:0.78rem;max-width:300px">${c.description ? c.description.substring(0,160) + (c.description.length > 160 ? '…' : '') : '—'}</td>
+            <td><button class="btn btn-sm" style="background:var(--border)" onclick="dismissCVE(${c.id})">Dismiss</button></td>
+        </tr>
+    `).join("");
+}
+
+async function dismissCVE(id) {
+    await fetch(`/cyber/cve/${id}/dismiss`, {method: "POST"});
+    loadCVEs();
+}
+
+async function clearAllCVEs() {
+    await fetch("/cyber/cve/clear", {method: "POST"});
+    loadCVEs();
+}
+
+// ── Integrity ──────────────────────────────────────────────────────────────
+
+async function buildBaseline() {
+    document.getElementById("integrityResult").innerHTML = '<span class="loading">Building baseline — scanning all files...</span>';
+    const r = await fetch("/cyber/integrity/baseline", {method: "POST"});
+    const d = await r.json();
+    if (d.error) {
+        document.getElementById("integrityResult").innerHTML = `<span style="color:var(--danger)">${d.error}</span>`;
+    } else {
+        document.getElementById("integrityResult").innerHTML =
+            `<span style="color:var(--success)">✓ Baseline built — ${d.files_baselined} files hashed at ${fmtDate(d.timestamp)}.</span>`;
+    }
+}
+
+async function runIntegrityCheck() {
+    document.getElementById("integrityResult").innerHTML = '<span class="loading">Running integrity check...</span>';
+    const r = await fetch("/cyber/integrity/check", {method: "POST"});
+    const d = await r.json();
+    if (d.error) {
+        document.getElementById("integrityResult").innerHTML = `<span style="color:var(--danger)">${d.error}</span>`;
+    } else if (d.clean) {
+        document.getElementById("integrityResult").innerHTML =
+            `<span style="color:var(--success)">✓ All ${d.checked} files match baseline — no changes detected.</span>`;
+    } else {
+        let msg = `<span style="color:var(--warning)">⚠ Changes detected: ${d.changed.length} modified, ${d.new_files.length} new, ${d.missing.length} missing.</span>`;
+        document.getElementById("integrityResult").innerHTML = msg;
+        loadIntegrityLog();
+    }
+}
+
+async function loadIntegrityLog() {
+    const tbody = document.getElementById("integrityTable");
+    tbody.innerHTML = '<tr><td colspan="4" class="loading">Loading...</td></tr>';
+    const r = await fetch("/cyber/integrity/log");
+    const log = await r.json();
+
+    if (!log.length) {
+        tbody.innerHTML = '<tr><td colspan="4" class="empty">No integrity events logged.</td></tr>';
+        return;
+    }
+
+    const changeColor = {"modified": "var(--warning)", "new_file": "var(--primary)", "deleted": "var(--danger)"};
+
+    tbody.innerHTML = log.map(l => `
+        <tr>
+            <td style="font-size:0.78rem;word-break:break-all">${shortPath(l.filepath)}</td>
+            <td><span style="color:${changeColor[l.change_type] || 'var(--text)'}">${l.change_type}</span></td>
+            <td>${fmtDate(l.detected_on)}</td>
+            <td>${l.resolved ? '<span style="color:var(--success)">✓</span>' : '<span style="color:var(--muted)">open</span>'}</td>
+        </tr>
+    `).join("");
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────
+window.addEventListener("DOMContentLoaded", () => {
+    loadDigest();
+    loadPersonalInfo();
+    loadBrokers();
+    loadRefusedBrokers();
+    loadDepResults();
+    loadCVEs();
+    loadIntegrityLog();
+});
+</script>
+</body>
+</html>

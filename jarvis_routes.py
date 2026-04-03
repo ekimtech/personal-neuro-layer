@@ -574,6 +574,103 @@ def stt_upload():
 def controlpanel():
     return render_template("controlpanel.html")
 
+# ============================================================
+# CYBER SECURITY DASHBOARD ROUTES
+# ============================================================
+from mcp_servers_hub.cyber_security_servers.cyber_security_server import (
+    generate_security_digest,
+    get_personal_info, save_personal_info, build_broker_urls, log_broker_submission, get_identity_summary,
+    REFUSED_BROKERS,
+    fetch_cve_feed, scan_dependencies, get_all_cves, get_threat_summary, get_dependency_results,
+    dismiss_cve, clear_all_cves, clear_dep_results,
+    build_integrity_baseline, run_integrity_check, get_integrity_log, get_system_summary
+)
+
+@jarvis_bp.route("/cyber/dashboard", methods=["GET"])
+def cyber_dashboard():
+    return render_template("cyber_security.html")
+
+@jarvis_bp.route("/cyber/digest", methods=["GET"])
+def cyber_digest():
+    return jsonify(generate_security_digest())
+
+@jarvis_bp.route("/cyber/identity", methods=["GET"])
+def cyber_identity_get():
+    return jsonify(get_personal_info())
+
+@jarvis_bp.route("/cyber/identity", methods=["POST"])
+def cyber_identity_save():
+    d = request.get_json(silent=True) or {}
+    return jsonify(save_personal_info(
+        d.get("first_name",""), d.get("last_name",""),
+        d.get("city",""),       d.get("state",""),
+        d.get("email",""),      d.get("phone","")
+    ))
+
+@jarvis_bp.route("/cyber/brokers", methods=["GET"])
+def cyber_brokers():
+    return jsonify(build_broker_urls())
+
+@jarvis_bp.route("/cyber/brokers/log", methods=["POST"])
+def cyber_broker_log():
+    d      = request.get_json(silent=True) or {}
+    broker = d.get("broker_name","")
+    action = d.get("action","submitted")
+    notes  = d.get("notes","")
+    if not broker:
+        return jsonify({"error": "broker_name required"}), 400
+    return jsonify(log_broker_submission(broker, action, notes))
+
+@jarvis_bp.route("/cyber/identity/summary", methods=["GET"])
+def cyber_identity_summary():
+    return jsonify(get_identity_summary())
+
+@jarvis_bp.route("/cyber/brokers/refused", methods=["GET"])
+def cyber_brokers_refused():
+    return jsonify(REFUSED_BROKERS)
+
+@jarvis_bp.route("/cyber/cve/fetch", methods=["POST"])
+def cyber_cve_fetch():
+    data    = request.get_json(silent=True) or {}
+    keyword = data.get("keyword", "python")
+    return jsonify(fetch_cve_feed(keyword))
+
+@jarvis_bp.route("/cyber/deps/scan", methods=["POST"])
+def cyber_deps_scan():
+    return jsonify(scan_dependencies())
+
+@jarvis_bp.route("/cyber/cves", methods=["GET"])
+def cyber_cves():
+    return jsonify(get_all_cves())
+
+@jarvis_bp.route("/cyber/deps/results", methods=["GET"])
+def cyber_deps_results():
+    return jsonify(get_dependency_results())
+
+@jarvis_bp.route("/cyber/cve/<int:cve_id>/dismiss", methods=["POST"])
+def cyber_cve_dismiss(cve_id):
+    return jsonify(dismiss_cve(cve_id))
+
+@jarvis_bp.route("/cyber/cve/clear", methods=["POST"])
+def cyber_cve_clear():
+    return jsonify(clear_all_cves())
+
+@jarvis_bp.route("/cyber/deps/clear", methods=["POST"])
+def cyber_deps_clear():
+    return jsonify(clear_dep_results())
+
+@jarvis_bp.route("/cyber/integrity/baseline", methods=["POST"])
+def cyber_baseline():
+    return jsonify(build_integrity_baseline())
+
+@jarvis_bp.route("/cyber/integrity/check", methods=["POST"])
+def cyber_integrity_check():
+    return jsonify(run_integrity_check())
+
+@jarvis_bp.route("/cyber/integrity/log", methods=["GET"])
+def cyber_integrity_log():
+    return jsonify(get_integrity_log())
+
 @jarvis_bp.route("/talk", methods=["POST"])
 def talk():
     data = request.get_json(silent=True) or {}
