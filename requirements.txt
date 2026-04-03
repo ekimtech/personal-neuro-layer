@@ -197,7 +197,7 @@ typing-inspection==0.4.2
 typing_extensions==4.15.0
 tzdata==2025.2
 uritemplate==4.2.0
-urllib3==2.3.0
+urllib3==2.6.3
 uvicorn==0.38.0
 vosk==0.3.45
 watchdog==6.0.0
