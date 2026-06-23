@@ -130,7 +130,7 @@ pybase64==1.4.2
 pycardano==0.19.2
 pycparser==2.23
 pydantic==2.12.4
-pydantic-settings==2.13.1
+pydantic-settings==2.14.2
 pydantic_core==2.41.5
 pydeck==0.9.1
 pydyf==0.12.1
