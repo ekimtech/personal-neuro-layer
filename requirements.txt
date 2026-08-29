@@ -67,7 +67,7 @@ httpx==0.28.1
 httpx-sse==0.4.3
 huggingface-hub==0.36.0
 humanfriendly==10.0
-idna==3.11
+idna==3.15
 importlib_metadata==8.7.0
 importlib_resources==6.5.2
 invoke==2.2.1
